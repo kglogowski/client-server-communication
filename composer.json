@@ -1,0 +1,26 @@
+{
+  "name": "kglogowski/client-server-communication",
+  "type": "symfony-bundle",
+  "keywords": [],
+  "description": "Library to communication between client and server",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Krzysztof Głogowski",
+      "email": "k.glogowski2@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CSC\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CSC\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": ">=7.1.0"
+  }
+}
