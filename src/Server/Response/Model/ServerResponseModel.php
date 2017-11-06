@@ -7,7 +7,10 @@ namespace CSC\Server\Response\Model;
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-interface ServerResponseModelInterface
+interface ServerResponseModel
 {
-
+    /**
+     * @return ServerResponseModel
+     */
+    public function getResponse(): ServerResponseModel;
 }

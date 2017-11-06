@@ -2,9 +2,9 @@
 
 namespace CSC\Server\Manager;
 
-use CSC\Server\DataObject\DataObjectInterface;
-use CSC\Server\Request\Processor\ServerRequestProcessorInterface;
-use CSC\Server\Response\Processor\ServerResponseProcessorInterface;
+use CSC\Server\DataObject\DataObject;
+use CSC\Server\Request\Processor\ServerRequestProcessor;
+use CSC\Server\Response\Processor\ServerResponseProcessor;
 
 /**
  * Class ServerDataObjectProcessorManager
@@ -14,32 +14,32 @@ use CSC\Server\Response\Processor\ServerResponseProcessorInterface;
 class ServerDataObjectProcessorManager
 {
     /**
-     * @var ServerRequestProcessorInterface
+     * @var ServerRequestProcessor
      */
     protected $requestProcessor;
 
     /**
-     * @var ServerResponseProcessorInterface
+     * @var ServerResponseProcessor
      */
     protected $responseProcessor;
     /**
      * ServerDataObjectProcessorManager constructor.
      *
-     * @param ServerRequestProcessorInterface  $requestProcessor
-     * @param ServerResponseProcessorInterface $responseProcessor
+     * @param ServerRequestProcessor  $requestProcessor
+     * @param ServerResponseProcessor $responseProcessor
      */
-    public function __construct(ServerRequestProcessorInterface $requestProcessor, ServerResponseProcessorInterface $responseProcessor)
+    public function __construct(ServerRequestProcessor $requestProcessor, ServerResponseProcessor $responseProcessor)
     {
         $this->requestProcessor = $requestProcessor;
         $this->responseProcessor = $responseProcessor;
     }
 
     /**
-     * @param DataObjectInterface $dataObject
+     * @param DataObject $dataObject
      *
      * @return mixed
      */
-    public function process(DataObjectInterface $dataObject)
+    public function process(DataObject $dataObject)
     {
         $responseModel = $this->requestProcessor->process($dataObject);
 
