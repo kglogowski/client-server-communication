@@ -17,11 +17,24 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "CSC\\Tests\\": "tests"
+      "CSC\\Tests\\": "tests/"
     }
   },
   "require": {
     "php": ">=7.1.0",
-    "phpunit/phpunit": "6.4"
+    "symfony/framework-bundle": "^2.7 || ^3.0",
+    "symfony/security-bundle": "^2.7 || ^3.0",
+    "symfony/translation": "^2.7 || ^3.0",
+    "symfony/validator": "^2.7 || ^3.0",
+    "symfony/monolog-bundle": "^2.7 || ^3.0",
+    "friendsofsymfony/rest-bundle": "2.2.0",
+    "phpunit/phpunit": "6.4",
+    "doctrine/orm": "^2.5",
+    "doctrine/doctrine-bundle": "^1.6",
+    "doctrine/doctrine-cache-bundle": "^1.2",
+    "doctrine/doctrine-migrations-bundle": "^1.2",
+    "jms-serializer/serializer-bundle": "1.1.*",
+    "jms/serializer": "^1.1",
+    "knplabs/knp-paginator-bundle": "2.5.*"
   }
 }

@@ -7,7 +7,7 @@ namespace CSC\Server\Response\Model;
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-abstract class AbstractServerResponseModel implements ServerResponseModel
+class BasicServerResponseModel implements ServerResponseModel
 {
     /**
      * @return ServerResponseModel

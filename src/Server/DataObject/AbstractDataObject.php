@@ -2,6 +2,8 @@
 
 namespace CSC\Server\DataObject;
 
+use CSC\Server\Response\Model\ServerResponseModel;
+
 /**
  * Class AbstractDataObject
  *
@@ -10,9 +12,19 @@ namespace CSC\Server\DataObject;
 abstract class AbstractDataObject implements DataObject
 {
     /**
+     * @var ServerResponseModel|null
+     */
+    protected $responseModel;
+
+    /**
      * @var bool
      */
     protected $async = false;
+
+    /**
+     * @var array
+     */
+    protected $validationGroups = [];
 
     /**
      * @return bool
@@ -20,5 +32,67 @@ abstract class AbstractDataObject implements DataObject
     public function isAsync(): bool
     {
         return $this->async;
+    }
+
+    /**
+     * @param bool $async
+     *
+     * @return DataObject
+     */
+    public function setAsync(bool $async): DataObject
+    {
+        $this->async = $async;
+
+        return $this;
+    }
+
+    /**
+     * @return ServerResponseModel|null
+     */
+    public function getResponseModel(): ?ServerResponseModel
+    {
+        return $this->responseModel;
+    }
+
+    /**
+     * @param ServerResponseModel $responseModel
+     *
+     * @return DataObject
+     */
+    public function setResponseModel(ServerResponseModel $responseModel): DataObject
+    {
+        $this->responseModel = $responseModel;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getValidationGroups(): array
+    {
+        return $this->validationGroups;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setValidationGroups(array $validationGroups): DataObject
+    {
+        $this->validationGroups = $validationGroups;
+
+        return $this;
+    }
+
+    /**
+     * @param string $validationGroup
+     *
+     * @return DataObject
+     */
+    public function addValidationGroup(string $validationGroup): DataObject
+    {
+        $this->validationGroups[] = $validationGroup;
+
+        return $this;
     }
 }
