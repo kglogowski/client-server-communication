@@ -4,6 +4,7 @@ namespace CSC\Server\Response\Processor;
 
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\Response\Model\ServerResponseModel;
+use FOS\RestBundle\View\View;
 
 /**
  * Interface ServerResponseProcessor
@@ -13,10 +14,9 @@ use CSC\Server\Response\Model\ServerResponseModel;
 interface ServerResponseProcessor
 {
     /**
-     * @param ServerResponseModel $responseModel
-     * @param DataObject          $dataObject
+     * @param DataObject $dataObject
      *
-     * @return mixed
+     * @return View
      */
-    public function process(ServerResponseModel $responseModel, DataObject $dataObject);
+    public function process(DataObject $dataObject): View;
 }

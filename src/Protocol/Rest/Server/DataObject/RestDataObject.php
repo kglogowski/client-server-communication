@@ -1,7 +1,8 @@
 <?php
 
-namespace CSC\Server\Protocol\Rest\DataObject;
+namespace CSC\Protocol\Rest\Server\DataObject;
 
+use CSC\ORM\EntityNameAware;
 use CSC\Server\DataObject\DataObject;
 
 /**
@@ -9,27 +10,24 @@ use CSC\Server\DataObject\DataObject;
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-interface RestDataObject extends DataObject
-{    /**
- * Basic groups to validation and serialization
- */
+interface RestDataObject extends DataObject, EntityNameAware
+{
+    /**
+     * Basic groups to validation and serialization
+     */
     const
         POST    = 'Post',
         PATCH   = 'Patch',
         GET     = 'Get',
-        DELETE  = 'Delete'
+        DELETE  = 'Delete',
+        ANY     = 'Any',
+        NONE    = 'None'
     ;
 
     /**
-     * Default serialization group
+     * @return array
      */
-    const SERIALIZED_GROUP_ANY = 'Any';
-    const SERIALIZED_GROUP_NONE = 'None';
-
-    /**
-     * @return array|null
-     */
-    public function getParameters(): ?array;
+    public function getParameters(): array;
 
     /**
      * @return bool
@@ -37,21 +35,9 @@ interface RestDataObject extends DataObject
     public function hasParameters(): bool;
 
     /**
-     * @return array|null
+     * @return array
      */
-    public function getValidationGroups(): ?array;
-
-    /**
-     * @param array $validationGroups
-     *
-     * @return RestDataObject
-     */
-    public function setValidationGroups(array $validationGroups): RestDataObject;
-
-    /**
-     * @return array|null
-     */
-    public function getSerializationGroups(): ?array;
+    public function getSerializationGroups(): array;
 
     /**
      * @param array $serializationGroups
