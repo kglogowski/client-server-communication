@@ -1,4 +1,4 @@
-Unfinished, tmp version!!
+Unfinished, not for use!!
 =========================
 
 Installation
