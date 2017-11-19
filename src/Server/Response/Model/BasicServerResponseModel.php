@@ -10,9 +10,9 @@ namespace CSC\Server\Response\Model;
 class BasicServerResponseModel implements ServerResponseModel
 {
     /**
-     * @return ServerResponseModel
+     * @return mixed
      */
-    public function getResponse(): ServerResponseModel
+    public function getResult()
     {
         return $this;
     }

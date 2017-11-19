@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Controller;
+namespace CSC\Protocol\Rest\Controller;
 
 use CSC\Generator\RestExceptionResponseGenerator;
 use FOS\RestBundle\Controller\ExceptionController as BaseController;

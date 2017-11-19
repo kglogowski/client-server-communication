@@ -6,7 +6,7 @@ use CSC\Protocol\Rest\Server\Manager\RestDataObjectManager;
 use CSC\Protocol\Rest\Server\Provider\HttpSuccessStatusProvider;
 use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;
 use CSC\Protocol\Rest\Server\Request\Processor\RestGetRequestProcessor;
-use CSC\Protocol\Rest\Server\Response\Processor\ServerRestResponseProcessor;
+use CSC\Protocol\Rest\Server\Response\Processor\RestResponseProcessor;
 use CSC\Tests\Model\ModelMock;
 use CSC\Tests\ORM\EntityManagerProviderMock;
 use CSC\Tests\Protocol\Rest\Server\DataObject\RestDataObjectSimple;
@@ -46,7 +46,7 @@ class DataObjectTest extends TestCase
         $dataObject = new RestDataObjectSimple(null, []);
 
         $requestProcessor = new RestGetRequestProcessor($this->getRestGetElementProvider());
-        $responseProcessor = new ServerRestResponseProcessor(new HttpSuccessStatusProvider());
+        $responseProcessor = new RestResponseProcessor(new HttpSuccessStatusProvider());
 
         $manager = new RestDataObjectManager($requestProcessor, $responseProcessor);
 

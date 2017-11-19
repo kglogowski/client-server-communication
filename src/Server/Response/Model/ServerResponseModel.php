@@ -10,7 +10,7 @@ namespace CSC\Server\Response\Model;
 interface ServerResponseModel
 {
     /**
-     * @return ServerResponseModel
+     * @return mixed
      */
-    public function getResponse(): ServerResponseModel;
+    public function getResult();
 }

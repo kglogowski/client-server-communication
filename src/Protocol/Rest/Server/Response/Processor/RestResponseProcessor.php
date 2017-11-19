@@ -8,11 +8,11 @@ use CSC\Server\DataObject\DataObject;
 use FOS\RestBundle\View\View;
 
 /**
- * Class ServerRestResponseProcessor
+ * Class RestResponseProcessor
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class ServerRestResponseProcessor extends AbstractRestResponseProcessor
+class RestResponseProcessor extends AbstractRestResponseProcessor
 {
     /**
      * @var HttpSuccessStatusProvider
@@ -20,7 +20,7 @@ class ServerRestResponseProcessor extends AbstractRestResponseProcessor
     protected $httpSuccessStatusProvider;
 
     /**
-     * ServerRestResponseProcessor constructor.
+     * RestResponseProcessor constructor.
      *
      * @param HttpSuccessStatusProvider $httpSuccessStatusProvider
      */

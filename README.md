@@ -1,4 +1,4 @@
-Unfinished, not for use!!
+Unfinished, not to use!!
 =======
 
 Installation

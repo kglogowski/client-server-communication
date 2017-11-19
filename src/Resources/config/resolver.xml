@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="csc.rest.data_object.pager_resolver" class="CSC\Protocol\Rest\Resolver\RestDataObjectPagerResolver">
+            <argument type="service" id="request_stack"/>
+            <argument>20</argument>
+        </service>
+        <service id="csc.rest.data_object.simple_resolver" class="CSC\Protocol\Rest\Resolver\RestDataObjectSimpleResolver">
+            <argument type="service" id="request_stack"/>
+        </service>
+    </services>
+</container>

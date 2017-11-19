@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!--REST   REST   REST   REST   REST   REST   REST   REST   REST   REST-->
+        <!--REQUEST-->
+        <service id="csc.rest.request_processor.pager" class="CSC\Protocol\Rest\Server\Request\Processor\RestPagerRequestProcessor">
+            <argument type="service" id="csc.rest.factory.pager_request_model" />
+            <argument type="service" id="csc.rest.provider.pager_query" />
+            <argument type="service" id="csc.rest.paginator.basic" />
+            <argument type="service" id="csc.rest.factory.pager_response_model" />
+        </service>
+        <!--<service id="csc.rest.request_processor.plain_pager" class="">-->
+        <!--</service>-->
+        <!--<service id="csc.rest.request_processor.simple" class="">-->
+        <!--</service>-->
+
+        <!--RESPONSE-->
+        <service id="csc.rest.response_processor" class="CSC\Protocol\Rest\Server\Response\Processor\RestResponseProcessor">
+            <argument type="service" id="csc.rest.provider.http_success_status" />
+        </service>
+    </services>
+</container>
