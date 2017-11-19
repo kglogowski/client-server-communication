@@ -8,7 +8,7 @@ use CSC\Protocol\Rest\Builder\RestPagerQueryBuilder;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Protocol\Rest\Server\Request\Model\RestPagerRequestModel;
 use CSC\Provider\UserProvider;
-use CSC\Server\Provider\EntityManagerProvider;
+use CSC\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 

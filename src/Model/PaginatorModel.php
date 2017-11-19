@@ -1,13 +1,13 @@
 <?php
 
-namespace CSC\Protocol\Rest\Server\Request\Model;
+namespace CSC\Model;
 
 /**
- * Class PagerPaginatorModel
+ * Class PaginatorModel
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class PagerPaginatorModel
+class PaginatorModel
 {
     /**
      * @var int
@@ -40,9 +40,9 @@ class PagerPaginatorModel
     /**
      * @param int $page
      *
-     * @return PagerPaginatorModel
+     * @return PaginatorModel
      */
-    public function setPage(int $page): PagerPaginatorModel
+    public function setPage(int $page): PaginatorModel
     {
         $this->page = $page;
 
@@ -60,9 +60,9 @@ class PagerPaginatorModel
     /**
      * @param int $perPage
      *
-     * @return PagerPaginatorModel
+     * @return PaginatorModel
      */
-    public function setPerPage(int $perPage): PagerPaginatorModel
+    public function setPerPage(int $perPage): PaginatorModel
     {
         $this->perPage = $perPage;
 
@@ -80,9 +80,9 @@ class PagerPaginatorModel
     /**
      * @param int $count
      *
-     * @return PagerPaginatorModel
+     * @return PaginatorModel
      */
-    public function setCount(int $count): PagerPaginatorModel
+    public function setCount(int $count): PaginatorModel
     {
         $this->count = $count;
 
@@ -100,9 +100,9 @@ class PagerPaginatorModel
     /**
      * @param array $items
      *
-     * @return PagerPaginatorModel
+     * @return PaginatorModel
      */
-    public function setItems(array $items): PagerPaginatorModel
+    public function setItems(array $items): PaginatorModel
     {
         $this->items = $items;
 

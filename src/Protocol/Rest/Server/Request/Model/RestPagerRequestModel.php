@@ -2,6 +2,7 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Model;
 
+use CSC\Model\QueryFilterModel;
 use CSC\Server\Exception\ServerException;
 use Doctrine\Common\Util\Inflector;
 use Doctrine\ORM\Query;
@@ -24,7 +25,7 @@ class RestPagerRequestModel
     private $limit;
 
     /**
-     * @var PagerSortModel[]
+     * @var SortModel[]
      */
     private $sort;
 
@@ -94,7 +95,7 @@ class RestPagerRequestModel
     }
 
     /**
-     * @return PagerSortModel[]
+     * @return SortModel[]
      */
     public function getSort(): array
     {
@@ -102,7 +103,7 @@ class RestPagerRequestModel
     }
 
     /**
-     * @param PagerSortModel[] $sort
+     * @param SortModel[] $sort
      *
      * @return RestPagerRequestModel
      */

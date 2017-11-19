@@ -2,7 +2,7 @@
 
 namespace CSC\Tests\ORM;
 
-use CSC\Server\Provider\EntityManagerProvider;
+use CSC\Provider\EntityManagerProvider;
 use CSC\Tests\Repository\AbstractTestRepository;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;

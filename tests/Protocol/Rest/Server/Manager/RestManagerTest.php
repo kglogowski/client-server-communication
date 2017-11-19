@@ -3,7 +3,7 @@
 namespace CSC\Tests\Protocol\Rest\Server\Manager;
 
 use CSC\Protocol\Rest\Server\Manager\RestDataObjectManager;
-use CSC\Protocol\Rest\Server\Provider\HttpSuccessStatusProvider;
+use CSC\Protocol\Rest\Server\Response\Provider\HttpSuccessStatusProvider;
 use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;
 use CSC\Protocol\Rest\Server\Request\Processor\RestGetRequestProcessor;
 use CSC\Protocol\Rest\Server\Response\Processor\RestResponseProcessor;

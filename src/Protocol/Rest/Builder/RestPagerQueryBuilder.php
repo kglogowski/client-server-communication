@@ -4,8 +4,8 @@ namespace CSC\Protocol\Rest\Builder;
 
 use CSC\Protocol\Rest\Checker\PagerParametersChecker;
 use CSC\Protocol\Rest\Modernizer\QueryBuilderFilterModernizer;
-use CSC\Protocol\Rest\Server\Request\Model\PagerSortModel;
-use CSC\Protocol\Rest\Server\Request\Model\QueryFilterModel;
+use CSC\Model\SortModel;
+use CSC\Model\QueryFilterModel;
 use Doctrine\Common\Util\Inflector;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -163,7 +163,7 @@ class RestPagerQueryBuilder
     }
 
     /**
-     * @param PagerSortModel[] $sortModels
+     * @param SortModel[] $sortModels
      * @param string|null                 $alias
      *
      * @return RestPagerQueryBuilder
@@ -178,12 +178,12 @@ class RestPagerQueryBuilder
     }
 
     /**
-     * @param PagerSortModel $sortModel
-     * @param string|null    $alias
+     * @param SortModel   $sortModel
+     * @param string|null $alias
      *
      * @return RestPagerQueryBuilder
      */
-    public function addSort(PagerSortModel $sortModel, $alias = null): RestPagerQueryBuilder
+    public function addSort(SortModel $sortModel, $alias = null): RestPagerQueryBuilder
     {
         $this->checker->checkSortParameter($sortModel, $this->supportSortParameters);
         $sortColumn = Inflector::camelize($sortModel->getField());

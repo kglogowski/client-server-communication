@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Server\Provider;
+namespace CSC\Provider;
 
 use Doctrine\ORM\Query;
 

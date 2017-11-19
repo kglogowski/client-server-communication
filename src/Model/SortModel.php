@@ -1,13 +1,13 @@
 <?php
 
-namespace CSC\Protocol\Rest\Server\Request\Model;
+namespace CSC\Model;
 
 /**
- * Class PagerSortModel
+ * Class SortModel
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class PagerSortModel
+class SortModel
 {
     /**
      * @var string
@@ -30,9 +30,9 @@ class PagerSortModel
     /**
      * @param string $field
      *
-     * @return PagerSortModel
+     * @return SortModel
      */
-    public function setField(string $field): PagerSortModel
+    public function setField(string $field): SortModel
     {
         $this->field = $field;
 
@@ -50,9 +50,9 @@ class PagerSortModel
     /**
      * @param string $direction
      *
-     * @return PagerSortModel
+     * @return SortModel
      */
-    public function setDirection(string $direction): PagerSortModel
+    public function setDirection(string $direction): SortModel
     {
         $this->direction = $direction;
 

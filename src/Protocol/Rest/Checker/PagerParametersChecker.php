@@ -2,8 +2,8 @@
 
 namespace CSC\Protocol\Rest\Checker;
 
-use CSC\Protocol\Rest\Server\Request\Model\PagerSortModel;
-use CSC\Protocol\Rest\Server\Request\Model\QueryFilterModel;
+use CSC\Model\SortModel;
+use CSC\Model\QueryFilterModel;
 use CSC\Server\Request\Exception\ServerRequestException;
 
 /**
@@ -34,12 +34,12 @@ class PagerParametersChecker
     }
 
     /**
-     * @param PagerSortModel $sortModel
-     * @param array          $sortSupportedParameters
+     * @param SortModel $sortModel
+     * @param array     $sortSupportedParameters
      *
      * @throws ServerRequestException
      */
-    public function checkSortParameter(PagerSortModel $sortModel, array $sortSupportedParameters)
+    public function checkSortParameter(SortModel $sortModel, array $sortSupportedParameters)
     {
         if (!in_array($sortModel->getField(), $sortSupportedParameters, true)) {
             throw new ServerRequestException(

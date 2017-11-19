@@ -3,7 +3,7 @@
 namespace CSC\Protocol\Rest\Resolver;
 
 use CSC\Protocol\Rest\Modernizer\QueryBuilderFilterModernizer;
-use CSC\Protocol\Rest\Server\Request\Model\PagerSortModel;
+use CSC\Model\SortModel;
 
 /**
  * Class RestPagerSortResolver
@@ -42,7 +42,7 @@ class RestPagerSortResolver
                 throw new \LogicException('Incorrect parameters to sorting');
             }
 
-            $pagerOrderedSortModel = (new PagerSortModel())
+            $pagerOrderedSortModel = (new SortModel())
                 ->setField($field)
                 ->setDirection($direction)
             ;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Provider;
+namespace CSC\Provider;
 
 use Doctrine\ORM\EntityManagerInterface;
 

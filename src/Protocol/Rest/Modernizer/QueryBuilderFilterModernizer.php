@@ -3,7 +3,7 @@
 namespace CSC\Protocol\Rest\Modernizer;
 
 
-use CSC\Protocol\Rest\Server\Request\Model\QueryFilterModel;
+use CSC\Model\QueryFilterModel;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 use Doctrine\Common\Util\Inflector;

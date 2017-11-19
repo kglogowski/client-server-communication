@@ -3,9 +3,9 @@
 namespace CSC\Protocol\Rest\Server\Request\Paginator;
 
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Protocol\Rest\Server\Provider\QueryCountProvider;
-use CSC\Protocol\Rest\Server\Provider\QueryItemsProvider;
-use CSC\Protocol\Rest\Server\Request\Model\PagerPaginatorModel;
+use CSC\Provider\QueryCountProvider;
+use CSC\Provider\QueryItemsProvider;
+use CSC\Model\PaginatorModel;
 use CSC\Protocol\Rest\Server\Request\Model\RestPagerRequestModel;
 
 /**
@@ -41,16 +41,16 @@ class RestBasicPagerPaginator implements RestPagerPaginator
      * @param RestPagerRequestModel $requestModel
      * @param RestPagerDataObject   $dataObject
      *
-     * @return PagerPaginatorModel
+     * @return PaginatorModel
      */
-    public function paginate(RestPagerRequestModel $requestModel, RestPagerDataObject $dataObject): PagerPaginatorModel
+    public function paginate(RestPagerRequestModel $requestModel, RestPagerDataObject $dataObject): PaginatorModel
     {
         $count = $this->countProvider->countItems($requestModel->getQuery());
         $items = $this->itemsProvider->getItems($requestModel->getQuery());
 
         //TODO Dorobić obróbkę danych jak będzie taka potrzeba $this->itemsResolver->resolve($items, $dataObject);
 
-        return (new PagerPaginatorModel())
+        return (new PaginatorModel())
             ->setCount($count)
             ->setItems($items)
             ->setPage($requestModel->getPage())

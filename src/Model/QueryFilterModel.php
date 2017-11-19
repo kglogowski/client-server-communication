@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Server\Request\Model;
+namespace CSC\Model;
 
 /**
  * Class QueryFilterModel
