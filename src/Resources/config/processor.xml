@@ -54,9 +54,10 @@
             <call method="setSerializer">
                 <argument type="service" id="jms_serializer.serializer" />
             </call>
-            <call method="setLogger">
-                <argument type="service" id="monolog.logger_prototype"/>
-            </call>
+            <!--TODO Add logger -->
+            <!--<call method="setLogger">-->
+                <!--<argument type="service" id="monolog.logger_prototype"/>-->
+            <!--</call>-->
             <call method="setRequestStack">
                 <argument type="service" id="request_stack"/>
             </call>
