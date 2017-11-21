@@ -29,9 +29,12 @@ class CSCExtension extends Extension
 
         $loader->load('builder.xml');
         $loader->load('checker.xml');
+        $loader->load('controller.xml');
         $loader->load('executor.xml');
         $loader->load('factory.xml');
+        $loader->load('generator.xml');
         $loader->load('manager.xml');
+        $loader->load('normalizer.xml');
         $loader->load('paginator.xml');
         $loader->load('processor.xml');
         $loader->load('provider.xml');

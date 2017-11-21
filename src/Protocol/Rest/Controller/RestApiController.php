@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Controller;
+namespace CSC\Protocol\Rest\Controller;
 
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
