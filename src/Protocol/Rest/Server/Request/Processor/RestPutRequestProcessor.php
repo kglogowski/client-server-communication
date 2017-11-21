@@ -2,36 +2,36 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Processor;
 
-use CSC\Executor\InsertExecutor;
 use CSC\Executor\MergeExecutor;
 use CSC\Model\EntityInitializer;
-use CSC\Protocol\Rest\Server\Checker\FieldsCheckerSimpleDataObjectInterface;
+use CSC\Protocol\Rest\Executor\PatchExecutor;
+use CSC\Protocol\Rest\Server\Checker\UpdatableChecker;
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
 use CSC\Protocol\Rest\Server\Response\Factory\RestResponseModelFactory;
 use CSC\Server\Request\Exception\ServerRequestException;
 
 /**
- * Class RestPostRequestProcessor
+ * Class RestPutRequestProcessor
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestPostRequestProcessor extends AbstractRestRequestProcessor
+class RestPutRequestProcessor extends AbstractRestRequestProcessor
 {
     /**
-     * @var FieldsCheckerSimpleDataObjectInterface
+     * @var UpdatableChecker
      */
     protected $checker;
 
     /**
-     * @var InsertExecutor
+     * @var PatchExecutor
      */
-    protected $insertExecutor;
+    protected $patchExecutor;
 
     /**
      * @var MergeExecutor
      */
-    protected $mergeExecutor;
+    protected $mergeSimpleExecutor;
 
     /**
      * @var RestResponseModelFactory
@@ -39,25 +39,26 @@ class RestPostRequestProcessor extends AbstractRestRequestProcessor
     protected $responseModelFactory;
 
     /**
-     * RestPostRequestProcessor constructor.
+     * RestPutRequestProcessor constructor.
      *
-     * @param FieldsCheckerSimpleDataObjectInterface $checker
-     * @param InsertExecutor                         $insertExecutor
-     * @param MergeExecutor                          $mergeExecutor
-     * @param RestResponseModelFactory               $responseModelFactory
+     * @param UpdatableChecker         $checker
+     * @param PatchExecutor            $patchExecutor
+     * @param MergeExecutor            $mergeSimpleExecutor
+     * @param RestResponseModelFactory $responseModelFactory
      */
     public function __construct(
-        FieldsCheckerSimpleDataObjectInterface $checker,
-        InsertExecutor $insertExecutor,
-        MergeExecutor $mergeExecutor,
+        UpdatableChecker $checker,
+        PatchExecutor $patchExecutor,
+        MergeExecutor $mergeSimpleExecutor,
         RestResponseModelFactory $responseModelFactory
     )
     {
         $this->checker = $checker;
-        $this->insertExecutor = $insertExecutor;
-        $this->mergeExecutor = $mergeExecutor;
+        $this->patchExecutor = $patchExecutor;
+        $this->mergeSimpleExecutor = $mergeSimpleExecutor;
         $this->responseModelFactory = $responseModelFactory;
     }
+
 
     /**
      * @param RestDataObject|RestSimpleDataObject $dataObject
@@ -85,12 +86,13 @@ class RestPostRequestProcessor extends AbstractRestRequestProcessor
      *
      * @throws ServerRequestException
      */
-    public function processObject($object, RestSimpleDataObject $dataObject)
+    public function processObject($object, RestSimpleDataObject $dataObject): void
     {
         $this->validateExternalObject($object, $dataObject);
 
-        $object = $this->mergeExecutor->execute($object, true);
-        $this->insertExecutor->execute($object);
+        $object = $this->mergeSimpleExecutor->execute($object);
+
+        $this->patchExecutor->execute($object);
 
         $dataObject->setResponseModel($this->responseModelFactory->create($object));
     }

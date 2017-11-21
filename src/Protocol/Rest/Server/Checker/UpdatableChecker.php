@@ -9,7 +9,7 @@ use CSC\DependencyInjection\Configuration;
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class UpdatableChecker
+class UpdatableChecker extends AbstractFieldsCheckerSimpleDataObject
 {
     /**
      * {@inheritdoc}

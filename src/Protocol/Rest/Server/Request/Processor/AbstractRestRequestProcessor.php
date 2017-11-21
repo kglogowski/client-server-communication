@@ -6,6 +6,7 @@ use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Provider\EntityManagerProvider;
 use CSC\Server\Request\Processor\AbstractServerRequestProcessor;
 use Doctrine\ORM\EntityManager;
+use JMS\Serializer\Serializer;
 
 /**
  * Class AbstractRestRequestProcessor
@@ -23,6 +24,11 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
      * @var array
      */
     protected $simpleDataObjectConfiguration;
+
+    /**
+     * @var Serializer
+     */
+    protected $serializer;
 
     /**
      * {@inheritdoc}
@@ -65,5 +71,24 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
     public function setSimpleDataObjectConfiguration(array $simpleDataObjectConfiguration)
     {
         $this->simpleDataObjectConfiguration = $simpleDataObjectConfiguration;
+    }
+
+    /**
+     * @param Serializer $serializer
+     */
+    public function setSerializer(Serializer $serializer)
+    {
+        $this->serializer = $serializer;
+    }
+
+    /**
+     * @param string $modelString
+     * @param string $classType
+     *
+     * @return mixed
+     */
+    public function deserialize(string $modelString, string $classType)
+    {
+        return $this->serializer->deserialize($modelString, $classType, 'json');
     }
 }
