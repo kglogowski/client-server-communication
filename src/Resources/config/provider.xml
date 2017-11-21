@@ -24,7 +24,7 @@
         </service>
         <service id="csc.entity_manager.provider" class="CSC\Provider\EntityManagerProvider">
             <call method="setEntityManager">
-                <argument type="service" id="doctrine.orm.entity_manager.abstract" />
+                <argument type="service" id="doctrine.orm.entity_manager" />
             </call>
         </service>
         <service id="csc.rest.provider.get_element" class="CSC\Protocol\Rest\Server\Provider\RestGetElementProvider">
