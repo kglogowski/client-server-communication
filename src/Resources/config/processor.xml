@@ -52,7 +52,7 @@
                 <argument type="service" id="csc.entity_manager.provider" />
             </call>
             <call method="setSerializer">
-                <argument type="service" id="jms_serializer.serializer" />
+                <argument type="service" id="jms_serializer" />
             </call>
             <!--TODO Add logger -->
             <!--<call method="setLogger">-->
