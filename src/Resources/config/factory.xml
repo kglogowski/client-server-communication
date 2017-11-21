@@ -12,10 +12,7 @@
         </service>
 
         <!--Response-->
-        <service id="csc.rest.factory.pager_response_model" class="CSC\Protocol\Rest\Server\Response\Factory\RestPagerResponseModelFactory">
-            <argument type="service" id="csc.rest.factory.pager_response_model" />
-        </service>
-        <service id="csc.rest.factory.simple_response_model" class="CSC\Protocol\Rest\Server\Response\Factory\RestSimpleResponseModelFactory">
+        <service id="csc.rest.factory.response_model" class="CSC\Protocol\Rest\Server\Response\Factory\RestDefaultResponseModelFactory">
         </service>
     </services>
 </container>

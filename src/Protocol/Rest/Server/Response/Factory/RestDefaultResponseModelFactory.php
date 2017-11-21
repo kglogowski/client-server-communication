@@ -6,11 +6,11 @@ use CSC\Server\Response\Model\BasicServerResponseModel;
 use CSC\Server\Response\Model\ServerResponseModel;
 
 /**
- * Class RestSimpleResponseModelFactory
+ * Class RestDefaultResponseModelFactory
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestSimpleResponseModelFactory implements RestResponseModelFactory
+class RestDefaultResponseModelFactory implements RestResponseModelFactory
 {
     /**
      * {@inheritdoc}

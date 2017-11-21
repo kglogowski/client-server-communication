@@ -11,34 +11,34 @@
             <argument type="service" id="csc.rest.factory.pager_request_model" />
             <argument type="service" id="csc.rest.provider.pager_query" />
             <argument type="service" id="csc.rest.paginator.basic" />
-            <argument type="service" id="csc.rest.factory.pager_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <service id="csc.rest.request_processor.plain_pager" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestPlainPagerRequestProcessor">
             <argument type="service" id="csc.rest.factory.plain_pager_request_model" />
             <argument type="service" id="csc.rest.provider.pager_query" />
-            <argument type="service" id="csc.rest.factory.pager_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <!--Simple-->
         <service id="csc.rest.request_processor.get" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestGetRequestProcessor">
             <argument type="service" id="csc.rest.provider.get_element" />
-            <argument type="service" id="csc.rest.factory.simple_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <service id="csc.rest.request_processor.post" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestPostRequestProcessor">
             <argument type="service" id="csc.rest.checker.insertable" />
             <argument type="service" id="csc.executor.insert" />
             <argument type="service" id="csc.executor.merge" />
-            <argument type="service" id="csc.rest.factory.simple_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <service id="csc.rest.request_processor.put" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestPutRequestProcessor">
             <argument type="service" id="csc.rest.checker.updatable" />
             <argument type="service" id="csc.executor.patch" />
             <argument type="service" id="csc.executor.merge" />
-            <argument type="service" id="csc.rest.factory.simple_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <service id="csc.rest.request_processor.delete" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestDeleteRequestProcessor">
             <argument type="service" id="csc.rest.provider.get_element" />
             <argument type="service" id="csc.executor.delete" />
-            <argument type="service" id="csc.rest.factory.simple_response_model" />
+            <argument type="service" id="csc.rest.factory.response_model" />
         </service>
         <service id="csc.rest.request_processor.crud" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestCrudRequestProcessor">
             <argument type="service" id="csc.rest.request_processor.post" />
