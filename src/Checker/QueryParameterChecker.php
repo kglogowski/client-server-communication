@@ -1,17 +1,17 @@
 <?php
 
-namespace CSC\Protocol\Rest\Checker;
+namespace CSC\Checker;
 
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
 use CSC\Server\Request\Exception\ServerRequestException;
 
 /**
- * Class PagerParametersChecker
+ * Class QueryParameterChecker
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class PagerParametersChecker
+class QueryParameterChecker
 {
     const MESSAGE_NOT_SUPPORTED_FILTER = 'Not supported filter';
     const MESSAGE_NOT_SUPPORTED_SORT_PARAMETER = 'Not supported sort parameter';

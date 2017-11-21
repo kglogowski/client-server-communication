@@ -3,7 +3,7 @@
 namespace CSC\Protocol\Rest\Server\Response\Processor;
 
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
-use CSC\Protocol\Rest\Server\Response\Provider\HttpSuccessStatusProvider;
+use CSC\Provider\HttpSuccessStatusProvider;
 use CSC\Server\DataObject\DataObject;
 use FOS\RestBundle\View\View;
 

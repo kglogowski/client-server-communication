@@ -1,7 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Modernizer;
-
+namespace CSC\Builder;
 
 use CSC\Model\QueryFilterModel;
 use CSC\Server\Exception\ServerException;
@@ -13,11 +12,11 @@ use Doctrine\ORM\Query\Expr\Func;
 use PDO;
 
 /**
- * Class QueryBuilderFilterModernizer
+ * Class QueryFilterBuilder
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class QueryBuilderFilterModernizer
+class QueryFilterBuilder
 {
     /**
      * Sort

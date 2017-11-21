@@ -5,6 +5,7 @@ namespace CSC\Server\Request\Processor;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ValidationServerRequestException;
 use CSC\Translate\TranslateDictionary;
+use JMS\Serializer\Serializer;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -17,6 +18,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 abstract class AbstractServerRequestProcessor
 {
+    /**
+     * @var Serializer
+     */
+    protected $serializer;
+
     /**
      * @var RequestStack
      */
@@ -31,6 +37,25 @@ abstract class AbstractServerRequestProcessor
      * @var Logger
      */
     protected $logger;
+
+    /**
+     * @param Serializer $serializer
+     */
+    public function setSerializer(Serializer $serializer)
+    {
+        $this->serializer = $serializer;
+    }
+
+    /**
+     * @param string $modelString
+     * @param string $classType
+     *
+     * @return mixed
+     */
+    public function deserialize(string $modelString, string $classType)
+    {
+        return $this->serializer->deserialize($modelString, $classType, 'json');
+    }
 
     /**
      * @param RequestStack $requestStack

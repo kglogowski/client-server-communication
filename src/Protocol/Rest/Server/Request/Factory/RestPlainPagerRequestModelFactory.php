@@ -2,20 +2,19 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Factory;
 
-use CSC\Resolver\QueryParameterResolver;
+use CSC\Model\PagerRequestModel;
 use CSC\Protocol\Rest\Resolver\SortResolver;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Model\PagerRequestModel;
+use CSC\Resolver\QueryParameterResolver;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
 
 /**
- * Class RestPagerRequestModelFactory
+ * Class RestPlainPagerRequestModelFactory
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestPagerRequestModelFactory
+class RestPlainPagerRequestModelFactory
 {
     /**
      * @param RestPagerDataObject $dataObject
@@ -29,11 +28,7 @@ class RestPagerRequestModelFactory
         $missingKeys = $this->getMissingKeys($dataObject->getParameters());
 
         if (0 !== count($missingKeys)) {
-            throw new ServerRequestException(
-                ServerException::ERROR_TYPE_INVALID_PARAMETER,
-                TranslateDictionary::KEY_FORGOT_REQUIRED_PARAMETERS,
-                $missingKeys
-            );
+            throw new ServerRequestException(ServerException::ERROR_TYPE_INVALID_PARAMETER, sprintf('Forgot required parameters'), $missingKeys);
         }
 
         return $this->createInstance($dataObject);
@@ -52,8 +47,6 @@ class RestPagerRequestModelFactory
         return $requestModel
             ->setFilter((new QueryParameterResolver())->resolveParams($dataObjectParameters['filter']))
             ->setSort((new SortResolver())->resolveParams($dataObjectParameters['sort']))
-            ->setLimit($dataObjectParameters['limit'])
-            ->setPage($dataObjectParameters['page'])
             ->setRoutingParameters($dataObjectParameters['routingParameters'])
             ->setMethodName($dataObjectParameters['methodName'])
             ->setEntityName($dataObject->getEntityName())
@@ -65,7 +58,7 @@ class RestPagerRequestModelFactory
      */
     protected function getRequiredKeys(): array
     {
-        return ['filter', 'sort', 'limit', 'page', 'methodName'];
+        return ['filter', 'sort', 'methodName'];
     }
 
     /**

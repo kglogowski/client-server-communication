@@ -5,8 +5,8 @@
 
     <services>
         <service id="csc.rest.paginator.basic" class="CSC\Protocol\Rest\Server\Request\Paginator\RestBasicPagerPaginator">
-            <argument type="service" id="csc.rest.provider.count" />
-            <argument type="service" id="csc.rest.provider.query_items" />
+            <argument type="service" id="csc.provider.count" />
+            <argument type="service" id="csc.provider.query_items" />
         </service>
     </services>
 </container>

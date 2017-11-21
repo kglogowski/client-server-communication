@@ -10,10 +10,28 @@ namespace CSC\Server\Response\Model;
 class BasicServerResponseModel implements ServerResponseModel
 {
     /**
+     * @var object
+     *
+     * @JMS\Expose
+     * @JMS\Groups({"Any"})
+     */
+    protected $result;
+
+    /**
+     * SimpleDataResponseModel constructor.
+     *
+     * @param mixed $result
+     */
+    public function __construct($result = null)
+    {
+        $this->result = $result;
+    }
+
+    /**
      * @return mixed
      */
     public function getResult()
     {
-        return $this;
+        return $this->result;
     }
 }

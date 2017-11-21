@@ -3,7 +3,7 @@
 namespace CSC\Protocol\Rest\Server\Request\Processor;
 
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
-use CSC\Server\Provider\EntityManagerProvider;
+use CSC\Provider\EntityManagerProvider;
 use CSC\Server\Request\Processor\AbstractServerRequestProcessor;
 use Doctrine\ORM\EntityManager;
 

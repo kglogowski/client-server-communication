@@ -2,15 +2,15 @@
 
 namespace CSC\Protocol\Rest\Resolver;
 
-use CSC\Protocol\Rest\Modernizer\QueryBuilderFilterModernizer;
+use CSC\Builder\QueryFilterBuilder;
 use CSC\Model\SortModel;
 
 /**
- * Class RestPagerSortResolver
+ * Class SortResolver
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestPagerSortResolver
+class SortResolver
 {
     const PREG_MATCH_COUNT_FOR_FILLED_SORTING_DIRECTION = 3;
 
@@ -35,7 +35,7 @@ class RestPagerSortResolver
                 $direction = strtolower($sortParameters[2]);
             } else {
                 $field = $sortParameters[0];
-                $direction = QueryBuilderFilterModernizer::DIRECTION_ASCENDING;
+                $direction = QueryFilterBuilder::DIRECTION_ASCENDING;
             }
 
             if ('' === $field) {

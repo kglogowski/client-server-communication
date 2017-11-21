@@ -4,22 +4,29 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!--REST   REST   REST   REST   REST   REST   REST   REST   REST   REST-->
-        <!--REQUEST-->
+        <!--Rest-->
+        <!--Request-->
+        <!--Pager-->
         <service id="csc.rest.request_processor.pager" class="CSC\Protocol\Rest\Server\Request\Processor\RestPagerRequestProcessor">
             <argument type="service" id="csc.rest.factory.pager_request_model" />
             <argument type="service" id="csc.rest.provider.pager_query" />
             <argument type="service" id="csc.rest.paginator.basic" />
             <argument type="service" id="csc.rest.factory.pager_response_model" />
         </service>
-        <!--<service id="csc.rest.request_processor.plain_pager" class="">-->
-        <!--</service>-->
-        <!--<service id="csc.rest.request_processor.simple" class="">-->
-        <!--</service>-->
+        <service id="csc.rest.request_processor.plain_pager" class="CSC\Protocol\Rest\Server\Request\Processor\RestPlainPagerRequestProcessor">
+            <argument type="service" id="csc.rest.factory.plain_pager_request_model" />
+            <argument type="service" id="csc.rest.provider.pager_query" />
+            <argument type="service" id="csc.rest.factory.pager_response_model" />
+        </service>
+        <!--Simple-->
+        <service id="csc.rest.request_processor.get" class="CSC\Protocol\Rest\Server\Request\Processor\RestGetRequestProcessor">
+            <argument type="service" id="csc.rest.provider.get_element" />
+            <argument type="service" id="csc.rest.factory.simple_response_model" />
+        </service>
 
-        <!--RESPONSE-->
+        <!--Response-->
         <service id="csc.rest.response_processor" class="CSC\Protocol\Rest\Server\Response\Processor\RestResponseProcessor">
-            <argument type="service" id="csc.rest.provider.http_success_status" />
+            <argument type="service" id="csc.provider.http_success_status" />
         </service>
     </services>
 </container>

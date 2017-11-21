@@ -1,18 +1,18 @@
 <?php
 
-namespace CSC\Protocol\Rest\Server\Request\Model;
+namespace CSC\Model;
 
-use CSC\Model\QueryFilterModel;
 use CSC\Server\Exception\ServerException;
+use CSC\Translate\TranslateDictionary;
 use Doctrine\Common\Util\Inflector;
 use Doctrine\ORM\Query;
 
 /**
- * Class RestPagerRequestModel
+ * Class PagerRequestModel
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestPagerRequestModel
+class PagerRequestModel
 {
     /**
      * @var int
@@ -65,9 +65,9 @@ class RestPagerRequestModel
     /**
      * @param int $page
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setPage(int $page): RestPagerRequestModel
+    public function setPage(int $page): PagerRequestModel
     {
         $this->page = $page;
 
@@ -85,9 +85,9 @@ class RestPagerRequestModel
     /**
      * @param int $limit
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setLimit(int $limit): RestPagerRequestModel
+    public function setLimit(int $limit): PagerRequestModel
     {
         $this->limit = $limit;
 
@@ -105,9 +105,9 @@ class RestPagerRequestModel
     /**
      * @param SortModel[] $sort
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setSort(array $sort): RestPagerRequestModel
+    public function setSort(array $sort): PagerRequestModel
     {
         $this->sort = $sort;
 
@@ -125,9 +125,9 @@ class RestPagerRequestModel
     /**
      * @param QueryFilterModel[] $filter
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setFilter(array $filter): RestPagerRequestModel
+    public function setFilter(array $filter): PagerRequestModel
     {
         $this->filter = $filter;
 
@@ -204,9 +204,9 @@ class RestPagerRequestModel
     /**
      * @param array $routingParameters
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setRoutingParameters(array $routingParameters): RestPagerRequestModel
+    public function setRoutingParameters(array $routingParameters): PagerRequestModel
     {
         $this->routingParameters = $routingParameters;
 
@@ -224,9 +224,9 @@ class RestPagerRequestModel
     /**
      * @param Query $query
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setQuery(Query $query): RestPagerRequestModel
+    public function setQuery(Query $query): PagerRequestModel
     {
         $this->query = $query;
 
@@ -244,9 +244,9 @@ class RestPagerRequestModel
     /**
      * @param string $methodName
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setMethodName(string $methodName): RestPagerRequestModel
+    public function setMethodName(string $methodName): PagerRequestModel
     {
         $this->methodName = $methodName;
 
@@ -264,9 +264,9 @@ class RestPagerRequestModel
     /**
      * @param string $entityName
      *
-     * @return RestPagerRequestModel
+     * @return PagerRequestModel
      */
-    public function setEntityName(string $entityName): RestPagerRequestModel
+    public function setEntityName(string $entityName): PagerRequestModel
     {
         $this->entityName = $entityName;
 
@@ -281,7 +281,7 @@ class RestPagerRequestModel
     private function checkRoutingParameterExists(string $key)
     {
         if (!array_key_exists($key, $this->routingParameters)) {
-            throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, 'Parameter does not exist', $key);
+            throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, TranslateDictionary::KEY_PARAMETER_DOES_NOT_EXIST, $key);
         }
     }
 }

@@ -3,8 +3,8 @@
 namespace CSC\Protocol\Rest\Server\Provider;
 
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Protocol\Rest\Server\Request\Model\RestPagerRequestModel;
-use CSC\Server\Provider\EntityManagerProvider;
+use CSC\Model\PagerRequestModel;
+use CSC\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 
@@ -26,12 +26,12 @@ class RestBasicQueryProvider implements RestQueryProvider
     }
 
     /**
-     * @param RestPagerRequestModel $requestModel
-     * @param RestPagerDataObject   $dataObject
+     * @param PagerRequestModel   $requestModel
+     * @param RestPagerDataObject $dataObject
      *
      * @return Query
      */
-    public function generateQuery(RestPagerRequestModel $requestModel, RestPagerDataObject $dataObject): Query
+    public function generateQuery(PagerRequestModel $requestModel, RestPagerDataObject $dataObject): Query
     {
         $methodName = $requestModel->getMethodName();
         $entityName = $requestModel->getEntityName();

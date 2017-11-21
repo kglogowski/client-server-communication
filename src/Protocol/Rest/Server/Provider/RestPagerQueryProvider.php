@@ -6,7 +6,7 @@ use CSC\ORM\GuardUserAware;
 use CSC\Protocol\Rest\Builder\PagerQueryBuilderAware;
 use CSC\Protocol\Rest\Builder\RestPagerQueryBuilder;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Protocol\Rest\Server\Request\Model\RestPagerRequestModel;
+use CSC\Model\PagerRequestModel;
 use CSC\Provider\UserProvider;
 use CSC\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
@@ -67,14 +67,14 @@ class RestPagerQueryProvider implements RestQueryProvider
     }
 
     /**
-     * @param RestPagerRequestModel $requestModel
-     * @param RestPagerDataObject   $dataObject
+     * @param PagerRequestModel   $requestModel
+     * @param RestPagerDataObject $dataObject
      *
      * @return Query
      *
      * @throws \Exception
      */
-    public function generateQuery(RestPagerRequestModel $requestModel, RestPagerDataObject $dataObject): Query
+    public function generateQuery(PagerRequestModel $requestModel, RestPagerDataObject $dataObject): Query
     {
         $methodName = $dataObject->getMethodName();
         $entityName = $requestModel->getEntityName();

@@ -8,14 +8,14 @@
         <service id="csc.provider.user_provider" class="CSC\Provider\UserProvider">
             <argument type="service" id="security.token_storage" />
         </service>
-        <service id="csc.rest.provider.count" class="CSC\Provider\QueryCountProvider">
+        <service id="csc.provider.count" class="CSC\Provider\QueryCountProvider">
         </service>
-        <service id="csc.rest.provider.query_items" class="CSC\Provider\QueryItemsProvider">
+        <service id="csc.provider.query_items" class="CSC\Provider\QueryItemsProvider">
+        </service>
+        <service id="csc.provider.http_success_status" class="CSC\Provider\HttpSuccessStatusProvider">
         </service>
 
         <!--Rest-->
-        <service id="csc.rest.provider.http_success_status" class="CSC\Protocol\Rest\Server\Response\Provider\HttpSuccessStatusProvider">
-        </service>
         <service id="csc.rest.provider.pager_query" class="CSC\Protocol\Rest\Server\Provider\RestPagerQueryProvider">
             <argument type="service" id="csc.entity_manager.provider" />
             <argument type="service" id="csc.rest.builder.pager_query" />
@@ -26,6 +26,9 @@
             <call method="setEntityManager">
                 <argument type="service" id="doctrine.orm.entity_manager.abstract" />
             </call>
+        </service>
+        <service id="csc.rest.provider.get_element" class="CSC\Protocol\Rest\Server\Provider\RestGetElementProvider">
+            <argument type="service" id="csc.entity_manager.provider" />
         </service>
     </services>
 </container>

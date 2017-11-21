@@ -4,6 +4,7 @@ namespace CSC\Protocol\Rest\Server\Request\Processor;
 
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;
+use CSC\Protocol\Rest\Server\Response\Factory\RestResponseModelFactory;
 use CSC\Server\Response\Model\ServerResponseModel;
 
 /**
@@ -19,13 +20,20 @@ class RestGetRequestProcessor extends AbstractRestRequestProcessor
     protected $elementProvider;
 
     /**
-     * GetRequestProcessor constructor.
-     *
-     * @param RestGetElementProvider $elementProvider
+     * @var RestResponseModelFactory
      */
-    public function __construct(RestGetElementProvider $elementProvider)
+    protected $responseModelFactory;
+
+    /**
+     * RestGetRequestProcessor constructor.
+     *
+     * @param RestGetElementProvider   $elementProvider
+     * @param RestResponseModelFactory $responseModelFactory
+     */
+    public function __construct(RestGetElementProvider $elementProvider, RestResponseModelFactory $responseModelFactory)
     {
         $this->elementProvider = $elementProvider;
+        $this->responseModelFactory = $responseModelFactory;
     }
 
     /**
@@ -42,7 +50,7 @@ class RestGetRequestProcessor extends AbstractRestRequestProcessor
             throw new \Exception(sprintf('Entity "%s" must implement ServerResponseModel', get_class($object)));
         }
 
-        $dataObject->setResponseModel($object);
+        $dataObject->setResponseModel($this->responseModelFactory->create($object));
 
         return $dataObject;
     }

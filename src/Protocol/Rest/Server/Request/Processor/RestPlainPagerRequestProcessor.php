@@ -2,23 +2,23 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Processor;
 
+use CSC\Model\PagerRequestModel;
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Protocol\Rest\Server\Provider\RestQueryProvider;
-use CSC\Protocol\Rest\Server\Request\Factory\RestPagerRequestModelFactory;
-use CSC\Protocol\Rest\Server\Request\Paginator\RestPagerPaginator;
+use CSC\Protocol\Rest\Server\Request\Factory\RestPlainPagerRequestModelFactory;
 use CSC\Protocol\Rest\Server\Response\Factory\RestResponseModelFactory;
-use CSC\Protocol\Rest\Server\Response\Model\RestPagerResponseModel;
+use CSC\Protocol\Rest\Server\Response\Model\RestPlainPagerResponseModel;
 
 /**
- * Class RestPagerRequestProcessor
+ * Class RestPlainPagerRequestProcessor
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-class RestPagerRequestProcessor extends AbstractRestRequestProcessor
+class RestPlainPagerRequestProcessor extends AbstractRestRequestProcessor
 {
     /**
-     * @var RestPagerRequestModelFactory
+     * @var RestPlainPagerRequestModelFactory
      */
     protected $requestModelFactory;
 
@@ -28,33 +28,25 @@ class RestPagerRequestProcessor extends AbstractRestRequestProcessor
     protected $queryProvider;
 
     /**
-     * @var RestPagerPaginator
-     */
-    protected $paginator;
-
-    /**
      * @var RestResponseModelFactory
      */
     protected $responseModelFactory;
 
     /**
-     * PagerOrderedRequestProcessor constructor.
+     * ServerRestPlainPagerOrderedDataRequestProcessor constructor.
      *
-     * @param RestPagerRequestModelFactory $requestModelFactory
-     * @param RestQueryProvider            $queryProvider
-     * @param RestPagerPaginator           $paginator
-     * @param RestResponseModelFactory     $responseModelFactory
+     * @param RestPlainPagerRequestModelFactory $requestModelFactory
+     * @param RestQueryProvider                 $queryProvider
+     * @param RestResponseModelFactory          $responseModelFactory
      */
     public function __construct(
-        RestPagerRequestModelFactory $requestModelFactory,
+        RestPlainPagerRequestModelFactory $requestModelFactory,
         RestQueryProvider $queryProvider,
-        RestPagerPaginator $paginator,
         RestResponseModelFactory $responseModelFactory
     )
     {
         $this->requestModelFactory = $requestModelFactory;
         $this->queryProvider = $queryProvider;
-        $this->paginator = $paginator;
         $this->responseModelFactory = $responseModelFactory;
     }
 
@@ -65,7 +57,6 @@ class RestPagerRequestProcessor extends AbstractRestRequestProcessor
      */
     public function process(RestDataObject $dataObject): RestDataObject
     {
-
         $this->setupDataObject($dataObject);
 
         $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
@@ -75,20 +66,29 @@ class RestPagerRequestProcessor extends AbstractRestRequestProcessor
 
         $query = $this->queryProvider->generateQuery($requestModel, $dataObject);
 
-        $requestModel->setQuery($query);
+        $items = $query->getResult();
+        $items = $this->processData($requestModel, $items);
 
-        $paginationModel = $this->paginator->paginate($requestModel, $dataObject);
-
-        $responseModel = (new RestPagerResponseModel())
-            ->setCount($paginationModel->getCount())
-            ->setPage($paginationModel->getPage())
-            ->setPerPage($paginationModel->getPerPage())
-            ->setItems($paginationModel->getItems())
-            ->setHref($this->requestStack->getCurrentRequest()->getUri())
+        $responseObject = (new RestPlainPagerResponseModel())
+            ->setItems($items)
+            ->setHref($this->getCurrentRequest()->getUri())
         ;
 
-        $dataObject->setResponseModel($this->responseModelFactory->create($responseModel));
+        $dataObject->setResponseModel($this->responseModelFactory->create($responseObject));
 
         return $dataObject;
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
+     * @param PagerRequestModel $requestModel
+     * @param array             $items
+     *
+     * @return array
+     */
+    protected function processData(PagerRequestModel $requestModel, array $items): array
+    {
+        return $items;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace CSC\Protocol\Rest\Builder;
 
-use CSC\Protocol\Rest\Checker\PagerParametersChecker;
-use CSC\Protocol\Rest\Modernizer\QueryBuilderFilterModernizer;
+use CSC\Checker\QueryParameterChecker;
+use CSC\Builder\QueryFilterBuilder;
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
 use Doctrine\Common\Util\Inflector;
@@ -20,24 +20,24 @@ class RestPagerQueryBuilder
     const UNLIMITED_VALUE = '-1';
 
     /**
-     * @var QueryBuilderFilterModernizer
+     * @var QueryFilterBuilder
      */
-    protected $modernizer;
+    protected $filterBuilder;
 
     /**
-     * @var PagerParametersChecker
+     * @var QueryParameterChecker
      */
     protected $checker;
 
     /**
      * PagerOrderedQueryBuilder constructor.
      *
-     * @param QueryBuilderFilterModernizer $modernizer
-     * @param PagerParametersChecker       $checker
+     * @param QueryFilterBuilder    $filterBuilder
+     * @param QueryParameterChecker $checker
      */
-    public function __construct(QueryBuilderFilterModernizer $modernizer, PagerParametersChecker $checker)
+    public function __construct(QueryFilterBuilder $filterBuilder, QueryParameterChecker $checker)
     {
-        $this->modernizer = $modernizer;
+        $this->filterBuilder = $filterBuilder;
         $this->checker = $checker;
     }
 
@@ -157,14 +157,14 @@ class RestPagerQueryBuilder
     public function addFilter(QueryFilterModel $filterModel, $alias = null): RestPagerQueryBuilder
     {
         $this->checker->checkFilterParameter($filterModel, $this->supportFilterParameters);
-        $this->modernizer->modernize($this->queryBuilder, $filterModel, $alias);
+        $this->filterBuilder->modernize($this->queryBuilder, $filterModel, $alias);
 
         return $this;
     }
 
     /**
      * @param SortModel[] $sortModels
-     * @param string|null                 $alias
+     * @param string|null $alias
      *
      * @return RestPagerQueryBuilder
      */
