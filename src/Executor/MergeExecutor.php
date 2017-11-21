@@ -4,6 +4,7 @@ namespace CSC\Executor;
 
 use CSC\Model\ExternalAccessibleEntity;
 use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Translate\TranslateDictionary;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
@@ -30,12 +31,12 @@ class MergeExecutor extends AbstractDoctrineExecutor
         try {
             $object = $this->getEntityManager()->merge($object);
         } catch (\Exception $exception) {
-            throw new ServerRequestException('An error occurred while saving the item.');
+            throw new ServerRequestException(TranslateDictionary::KEY_MERGE_GENERAL_ERROR);
         }
 
         $unitOfWork = $this->getEntityManager()->getUnitOfWork();
         if (true === $unique && false === empty($unitOfWork->getOriginalEntityData($object))) {
-            throw new ServerRequestException(sprintf('Item with given ID already exists.'));
+            throw new ServerRequestException(TranslateDictionary::KEY_ID_ALREADY_EXISTS);
         }
 
         $metaData = $this->getEntityManager()->getClassMetadata($className);
@@ -50,7 +51,11 @@ class MergeExecutor extends AbstractDoctrineExecutor
         $insertions = $unitOfWork->getScheduledEntityInsertions();
         foreach ($insertions as $insertion) {
             if (!$insertion instanceof $className && !$insertion instanceof ExternalAccessibleEntity) {
-                throw new ServerRequestException('Item is not external accessible.');
+                throw new \LogicException(sprintf(
+                    'Item "%s" must implement "%s"',
+                    $className,
+                    ExternalAccessibleEntity::class
+                ));
             }
         }
 
@@ -101,7 +106,11 @@ class MergeExecutor extends AbstractDoctrineExecutor
         }
 
         if (!$relatedEntity instanceof ExternalAccessibleEntity) {
-            throw new ServerRequestException('Item is not external accessible.');
+            throw new \LogicException(sprintf(
+                'Item "%s" must implement "%s"',
+                get_class($relatedEntity),
+                ExternalAccessibleEntity::class
+            ));
         }
 
         try {

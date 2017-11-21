@@ -76,7 +76,7 @@ class RestApiController extends FOSRestController
      */
     protected function getSimpleDataObjectProcessorManager(): RestDataObjectManager
     {
-        return $this->get('csc.rest.data_object_manager.simple');
+        return $this->get('csc.rest.data_object_manager.crud');
     }
 
     /**

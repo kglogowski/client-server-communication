@@ -15,10 +15,10 @@ class ExceptionNormalizer implements ExceptionNormalizerInterface
     public function normalize(\Exception $exception): array
     {
         return [
-            'error' => self::ERROR_TYPE,
-            'description' => $exception->getMessage(),
-            'details' => [],
-            'code' => $exception->getCode(),
+            self::KEY_ERROR => self::ERROR_TYPE,
+            self::KEY_DESCRIPTION => $exception->getMessage(),
+            self::KEY_DETAILS => [],
+            self::KEY_CODE => $exception->getCode(),
         ];
     }
 }

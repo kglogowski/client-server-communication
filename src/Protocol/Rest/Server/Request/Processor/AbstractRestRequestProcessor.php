@@ -21,11 +21,6 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
     protected $entityManager;
 
     /**
-     * @var array
-     */
-    protected $simpleDataObjectConfiguration;
-
-    /**
      * @var Serializer
      */
     protected $serializer;
@@ -63,14 +58,6 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
     public function setEntityManager(EntityManagerProvider $entityManagerProvider)
     {
         $this->entityManager = $entityManagerProvider->getEntityManager();
-    }
-
-    /**
-     * @param array $simpleDataObjectConfiguration
-     */
-    public function setSimpleDataObjectConfiguration(array $simpleDataObjectConfiguration)
-    {
-        $this->simpleDataObjectConfiguration = $simpleDataObjectConfiguration;
     }
 
     /**

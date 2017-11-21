@@ -40,6 +40,12 @@
             <argument type="service" id="csc.executor.delete" />
             <argument type="service" id="csc.rest.factory.simple_response_model" />
         </service>
+        <service id="csc.rest.request_processor.crud" parent="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\RestCrudRequestProcessor">
+            <argument type="service" id="csc.rest.request_processor.post" />
+            <argument type="service" id="csc.rest.request_processor.get" />
+            <argument type="service" id="csc.rest.request_processor.put" />
+            <argument type="service" id="csc.rest.request_processor.delete" />
+        </service>
         <!--Abstract-->
         <service id="csc.rest.processor.abstract" class="CSC\Protocol\Rest\Server\Request\Processor\AbstractRestRequestProcessor" abstract="true">
             <call method="setEntityManager">
@@ -47,9 +53,6 @@
             </call>
             <call method="setSerializer">
                 <argument type="service" id="jms_serializer.serializer" />
-            </call>
-            <call method="setSimpleDataObjectConfiguration">
-                <argument>%simple_data_object%</argument>
             </call>
             <call method="setLogger">
                 <argument type="service" id="monolog.logger_prototype"/>

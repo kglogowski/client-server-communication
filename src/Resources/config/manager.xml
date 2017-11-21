@@ -12,7 +12,9 @@
             <argument type="service" id="csc.rest.request_processor.plain_pager" />
             <argument type="service" id="csc.rest.response_processor" />
         </service>
-        <!--<service id="csc.rest.data_object_manager.simple" class="CSC\Protocol\Rest\Server\Manager\RestDataObjectManager">-->
-        <!--</service>-->
+        <service id="csc.rest.data_object_manager.crud" class="CSC\Protocol\Rest\Server\Manager\RestDataObjectManager">
+            <argument type="service" id="csc.rest.request_processor.crud" />
+            <argument type="service" id="csc.rest.response_processor" />
+        </service>
     </services>
 </container>
