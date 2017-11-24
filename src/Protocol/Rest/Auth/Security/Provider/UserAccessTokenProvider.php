@@ -3,13 +3,13 @@
 namespace CSC\Protocol\Rest\Auth\Security\Provider;
 
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Protocol\Rest\Auth\Model\User;
 use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Repository\UserAccessTokenRepositoryInterface;
 use CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Class UserAccessTokenProvider
@@ -19,7 +19,7 @@ class UserAccessTokenProvider
     const MESSAGE_NULL_USER = 'No user loaded.';
 
     /**
-     * @var AdvancedUserInterface
+     * @var User
      */
     protected $user;
 
@@ -44,9 +44,9 @@ class UserAccessTokenProvider
     }
 
     /**
-     * @param AdvancedUserInterface $user
+     * @param User $user
      */
-    public function setUser(AdvancedUserInterface $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }

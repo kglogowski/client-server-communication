@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Interfaces;
 
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use CSC\Protocol\Rest\Auth\Model\User;
 
 /**
  * Interface GuardUserAware
@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 interface GuardUserAware
 {
     /**
-     * @param AdvancedUserInterface $user
+     * @param User $user
      */
-    public function setUser(AdvancedUserInterface $user);
+    public function setUser(User $user);
 }
