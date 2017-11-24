@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Server\DataObject;
 
-use CSC\ORM\EntityNameAware;
+use CSC\Component\ORM\EntityNameAware;
 use CSC\Server\DataObject\DataObject;
 
 /**

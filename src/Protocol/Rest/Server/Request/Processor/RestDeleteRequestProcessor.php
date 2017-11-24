@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Processor;
 
-use CSC\Executor\DeleteExecutor;
+use CSC\Component\Executor\DeleteExecutor;
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
 use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;

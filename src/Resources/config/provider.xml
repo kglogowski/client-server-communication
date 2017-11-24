@@ -5,14 +5,14 @@
 
     <services>
         <!--General-->
-        <service id="csc.provider.user_provider" class="CSC\Provider\UserProvider">
+        <service id="csc.provider.user_provider" class="CSC\Component\Provider\UserProvider">
             <argument type="service" id="security.token_storage" />
         </service>
-        <service id="csc.provider.count" class="CSC\Provider\QueryCountProvider">
+        <service id="csc.provider.count" class="CSC\Component\Provider\QueryCountProvider">
         </service>
-        <service id="csc.provider.query_items" class="CSC\Provider\QueryItemsProvider">
+        <service id="csc.provider.query_items" class="CSC\Component\Provider\QueryItemsProvider">
         </service>
-        <service id="csc.provider.http_success_status" class="CSC\Provider\HttpSuccessStatusProvider">
+        <service id="csc.provider.http_success_status" class="CSC\Component\Provider\HttpSuccessStatusProvider">
         </service>
 
         <!--Rest-->
@@ -22,7 +22,7 @@
             <argument type="service" id="csc.provider.user_provider" />
             <argument>%pager_data_object%</argument>
         </service>
-        <service id="csc.entity_manager.provider" class="CSC\Provider\EntityManagerProvider">
+        <service id="csc.entity_manager.provider" class="CSC\Component\Provider\EntityManagerProvider">
             <call method="setEntityManager">
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </call>

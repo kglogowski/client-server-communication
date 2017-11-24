@@ -2,8 +2,8 @@
 
 namespace CSC\Protocol\Rest\Builder;
 
-use CSC\Checker\QueryParameterChecker;
-use CSC\Builder\QueryFilterBuilder;
+use CSC\Component\Checker\QueryParameterChecker;
+use CSC\Component\Builder\QueryFilterBuilder;
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
 use Doctrine\Common\Util\Inflector;

@@ -28,6 +28,18 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->integerNode('token_lifetime')
+                ->end()
+            ->end()
+            ->children()
+                ->variableNode('token_secret')
+                ->end()
+            ->end()
+            ->children()
+                ->booleanNode('use_sso')
+                ->end()
+            ->end()
+            ->children()
                 ->arrayNode('pager_data_object')
                     ->prototype('array')
                         ->children()

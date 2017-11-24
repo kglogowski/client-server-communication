@@ -2,11 +2,11 @@
 
 namespace CSC\Protocol\Rest\Executor;
 
-use CSC\Executor\AbstractDoctrineExecutor;
+use CSC\Component\Executor\AbstractDoctrineExecutor;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Util\Inflector;
 

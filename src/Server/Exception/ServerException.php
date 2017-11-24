@@ -2,7 +2,7 @@
 
 namespace CSC\Server\Exception;
 
-use CSC\Normalizer\Normalizer;
+use CSC\Component\Normalizer\Normalizer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 

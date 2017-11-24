@@ -3,8 +3,8 @@
 namespace CSC\Tests\Protocol\Rest\Server\Manager;
 
 use CSC\Protocol\Rest\Server\Manager\RestDataObjectManager;
-use CSC\Protocol\Rest\Server\Response\Factory\RestSimpleResponseModelFactory;
-use CSC\Provider\HttpSuccessStatusProvider;
+use CSC\Protocol\Rest\Server\Response\Factory\RestDefaultResponseModelFactory;
+use CSC\Component\Provider\HttpSuccessStatusProvider;
 use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;
 use CSC\Protocol\Rest\Server\Request\Processor\RestGetRequestProcessor;
 use CSC\Protocol\Rest\Server\Response\Processor\RestResponseProcessor;
@@ -48,7 +48,7 @@ class DataObjectTest extends TestCase
 
         $requestProcessor = new RestGetRequestProcessor(
             $this->getRestGetElementProvider(),
-            new RestSimpleResponseModelFactory()
+            new RestDefaultResponseModelFactory()
         );
 
         $responseProcessor = new RestResponseProcessor(new HttpSuccessStatusProvider());

@@ -5,7 +5,7 @@
 
     <services>
         <!--General-->
-        <service id="csc.checker.query_parameter" class="CSC\Checker\QueryParameterChecker">
+        <service id="csc.checker.query_parameter" class="CSC\Component\Checker\QueryParameterChecker">
         </service>
 
         <!--Rest-->

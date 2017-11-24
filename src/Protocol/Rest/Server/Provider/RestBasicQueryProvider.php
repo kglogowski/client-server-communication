@@ -4,7 +4,7 @@ namespace CSC\Protocol\Rest\Server\Provider;
 
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Model\PagerRequestModel;
-use CSC\Provider\EntityManagerProvider;
+use CSC\Component\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 

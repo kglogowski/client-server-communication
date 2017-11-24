@@ -5,13 +5,13 @@
 
     <services>
         <!--General-->
-        <service id="csc.executor.insert" class="CSC\Executor\InsertExecutor">
+        <service id="csc.executor.insert" class="CSC\Component\Executor\InsertExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.executor.merge" class="CSC\Executor\MergeExecutor">
+        <service id="csc.executor.merge" class="CSC\Component\Executor\MergeExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.executor.delete" class="CSC\Executor\DeleteExecutor">
+        <service id="csc.executor.delete" class="CSC\Component\Executor\DeleteExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
         <!--Rest-->

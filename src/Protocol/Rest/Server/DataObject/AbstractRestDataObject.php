@@ -3,10 +3,9 @@
 namespace CSC\Protocol\Rest\Server\DataObject;
 
 use CSC\Server\DataObject\AbstractDataObject;
-use CSC\Server\DataObject\DataObject;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 use Doctrine\Common\Util\Inflector;
 use Symfony\Component\HttpFoundation\Request;
 

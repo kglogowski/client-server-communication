@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Processor;
 
-use CSC\Executor\MergeExecutor;
+use CSC\Component\Executor\MergeExecutor;
 use CSC\Model\EntityInitializer;
 use CSC\Protocol\Rest\Executor\PatchExecutor;
 use CSC\Protocol\Rest\Server\Checker\UpdatableChecker;

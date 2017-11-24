@@ -2,13 +2,13 @@
 
 namespace CSC\Protocol\Rest\Server\Request\Factory;
 
-use CSC\Resolver\QueryParameterResolver;
-use CSC\Protocol\Rest\Resolver\SortResolver;
+use CSC\Component\Resolver\QueryParameterResolver;
+use CSC\Component\Resolver\SortResolver;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Model\PagerRequestModel;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 
 /**
  * Class RestPagerRequestModelFactory

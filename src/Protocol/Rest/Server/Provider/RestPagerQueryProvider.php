@@ -2,15 +2,16 @@
 
 namespace CSC\Protocol\Rest\Server\Provider;
 
-use CSC\ORM\GuardUserAware;
+use CSC\Protocol\Rest\Auth\Interfaces\GuardUserAware;
 use CSC\Protocol\Rest\Builder\PagerQueryBuilderAware;
 use CSC\Protocol\Rest\Builder\RestPagerQueryBuilder;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Model\PagerRequestModel;
-use CSC\Provider\UserProvider;
-use CSC\Provider\EntityManagerProvider;
+use CSC\Component\Provider\UserProvider;
+use CSC\Component\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Class RestPagerQueryProvider
@@ -90,11 +91,9 @@ class RestPagerQueryProvider implements RestQueryProvider
         if ($repository instanceof GuardUserAware) {
             $user = $this->userProvider->getUser();
 
-            //TODO USER_MODEL
-            $repository->setUser($this->userProvider->getUser());
-//            if ($user instanceof User) {
-//                $repository->setUser($this->userProvider->getUser());
-//            }
+            if ($user instanceof AdvancedUserInterface) {
+                $repository->setUser($this->userProvider->getUser());
+            }
         }
 
         $dataObjectClass = get_class($dataObject);

@@ -1,1 +1,0 @@
-1. Przy dodaniu autoryzacji z autentykacją przerobić obsługę usera #TODO USER_MODEL

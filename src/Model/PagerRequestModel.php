@@ -3,7 +3,7 @@
 namespace CSC\Model;
 
 use CSC\Server\Exception\ServerException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 use Doctrine\Common\Util\Inflector;
 use Doctrine\ORM\Query;
 
@@ -281,7 +281,11 @@ class PagerRequestModel
     private function checkRoutingParameterExists(string $key)
     {
         if (!array_key_exists($key, $this->routingParameters)) {
-            throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, TranslateDictionary::KEY_PARAMETER_DOES_NOT_EXIST, $key);
+            throw new ServerException(
+                ServerException::ERROR_TYPE_INVALID_PARAMETER,
+                TranslateDictionary::KEY_PARAMETER_DOES_NOT_EXIST,
+                $key
+            );
         }
     }
 }

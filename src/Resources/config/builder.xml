@@ -5,7 +5,7 @@
 
     <services>
         <!--General-->
-        <service id="csc.builder.filter" class="CSC\Builder\QueryFilterBuilder">
+        <service id="csc.builder.filter" class="CSC\Component\Builder\QueryFilterBuilder">
         </service>
 
         <!--Rest-->

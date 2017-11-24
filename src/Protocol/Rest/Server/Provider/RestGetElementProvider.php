@@ -4,9 +4,9 @@ namespace CSC\Protocol\Rest\Server\Provider;
 
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Server\Exception\ServerException;
-use CSC\Provider\EntityManagerProvider;
+use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 use Doctrine\ORM\EntityManager;
 
 /**

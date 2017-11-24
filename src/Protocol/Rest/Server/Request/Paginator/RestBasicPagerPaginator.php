@@ -3,8 +3,8 @@
 namespace CSC\Protocol\Rest\Server\Request\Paginator;
 
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Provider\QueryCountProvider;
-use CSC\Provider\QueryItemsProvider;
+use CSC\Component\Provider\QueryCountProvider;
+use CSC\Component\Provider\QueryItemsProvider;
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;
 

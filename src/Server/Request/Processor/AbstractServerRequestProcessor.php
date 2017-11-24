@@ -4,7 +4,7 @@ namespace CSC\Server\Request\Processor;
 
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ValidationServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;

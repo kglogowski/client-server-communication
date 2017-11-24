@@ -3,9 +3,9 @@
 namespace CSC\Protocol\Rest\Server\Request\Factory;
 
 use CSC\Model\PagerRequestModel;
-use CSC\Protocol\Rest\Resolver\SortResolver;
+use CSC\Component\Resolver\SortResolver;
+use CSC\Component\Resolver\QueryParameterResolver;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
-use CSC\Resolver\QueryParameterResolver;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 

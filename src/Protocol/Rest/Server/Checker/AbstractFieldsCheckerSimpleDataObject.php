@@ -5,7 +5,7 @@ namespace CSC\Protocol\Rest\Server\Checker;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Translate\TranslateDictionary;
+use CSC\Component\Translate\TranslateDictionary;
 
 /**
  * Class AbstractFieldsCheckerSimpleDataObject
