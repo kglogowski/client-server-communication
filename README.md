@@ -60,3 +60,41 @@ csc:
        service:
            view_handler: fos_rest.view_handler.default
 ```
+4. Configure security.yml:
+```
+#Example
+security:
+    encoders:
+        AppBundle\Entity\User:
+            id: csc.rest.security.encoder.password
+
+    providers:
+        user_token:
+            entity:
+                class: AppBundle:User\User
+                property: login
+        user:
+            id: app.rest.security.provider.token_user
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_token:
+            pattern: ^/v1/auth/token$
+            provider: user_token
+            guard:
+                authenticators:
+                    - app.rest.security.authenticator.credential
+        admin:
+            pattern: ^/v1(/|/auth/token/clear$)
+            provider: user
+            guard:
+                authenticators:
+                    - app.rest.security.authenticator.token
+                    - app.rest.security.authenticator.sso
+                entry_point: app.rest.security.authenticator.token
+        main:
+            pattern: ^/
+            anonymous: ~
+```

@@ -10,6 +10,7 @@ use CSC\Model\Traits\UpdateTimestampsTrait;
 use CSC\Protocol\Rest\Auth\Interfaces\TokenKeyAware;
 use CSC\Protocol\Rest\Auth\Security\Encoder\PasswordEncoder;
 use CSC\Server\Exception\ServerException;
+use CSC\Server\Response\Model\ServerResponseModel;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,9 +19,15 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Class User
  */
-abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAware
+abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAware, ServerResponseModel
 {
     const TOKEN_KEY = 'TOKEN';
+
+    const
+        STATUS_INACTIVE = 'INACTIVE',
+        STATUS_BLOCKED = 'BLOCKED',
+        STATUS_ACTIVE = 'ACTIVE'
+    ;
 
     use PasswordDateTrait;
     use LastLoginAtTrait;
@@ -42,7 +49,7 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
      * Login
      *
      * @JMS\Type("string")
-     * @JMS\Groups({"Auth", "Get"})
+     * @JMS\Groups({"Any"})
      *
      * @var string
      */
@@ -81,9 +88,17 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
      * @var bool
      *
      * @JMS\Type("boolean")
-     * @JMS\Groups({"Auth", "Get"})
+     * @JMS\Groups({"Any"})
      */
     protected $isActive;
+
+    /**
+     * @var string
+     *
+     * @JMS\Type("boolean")
+     * @JMS\Groups({"Any"})
+     */
+    protected $status;
 
     /**
      * User constructor.
@@ -293,5 +308,93 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
         $this->accessToken = $accessToken;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     *
+     * @return User
+     */
+    public function setStatus(string $status): User
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->login,
+            $this->password,
+            $this->salt,
+            $this->isActive,
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->login,
+            $this->password,
+            $this->salt,
+            $this->isActive
+        ) = unserialize($serialized);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUsername()
+    {
+        return $this->login;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isAccountNonExpired()
+    {
+        // TODO: Implement isAccountNonExpired() method.
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isAccountNonLocked()
+    {
+        // TODO: Implement isAccountNonLocked() method.
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isCredentialsNonExpired()
+    {
+        // TODO: Implement isCredentialsNonExpired() method.
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return self::STATUS_ACTIVE === $this->status;
     }
 }
