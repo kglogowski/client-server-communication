@@ -3,13 +3,13 @@
 namespace CSC\Protocol\Rest\Auth\Response\Processor;
 
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Response\Resolver\TokenResponseResolverInterface;
 use CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use CSC\Protocol\Rest\Auth\Model\User as BaseUser;
 
 /**

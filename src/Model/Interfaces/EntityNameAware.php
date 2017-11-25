@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\ORM;
+namespace CSC\Model\Interfaces;
 
 /**
  * Interface EntityNameAware

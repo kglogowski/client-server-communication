@@ -2,10 +2,10 @@
 
 namespace CSC\Protocol\Rest\Auth\Model;
 
+use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Class UserAccessToken
@@ -24,7 +24,7 @@ abstract class UserAccessToken
     protected $id;
 
     /**
-     * @var AdvancedUserInterface
+     * @var UserInterface
      */
     protected $user;
 
@@ -57,19 +57,19 @@ abstract class UserAccessToken
     }
 
     /**
-     * @return AdvancedUserInterface
+     * @return UserInterface
      */
-    public function getUser(): AdvancedUserInterface
+    public function getUser(): UserInterface
     {
         return $this->user;
     }
 
     /**
-     * @param AdvancedUserInterface $user
+     * @param UserInterface $user
      *
      * @return UserAccessToken
      */
-    public function setUser(AdvancedUserInterface $user): UserAccessToken
+    public function setUser(UserInterface $user): UserAccessToken
     {
         $this->user = $user;
 

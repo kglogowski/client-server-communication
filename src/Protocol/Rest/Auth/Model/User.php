@@ -2,24 +2,24 @@
 
 namespace CSC\Protocol\Rest\Auth\Model;
 
+use CSC\Model\Interfaces\RoleInterface;
+use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
 use CSC\Model\Traits\LastLoginAtTrait;
 use CSC\Model\Traits\PasswordDateTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
-use CSC\Protocol\Rest\Auth\Interfaces\TokenKeyAware;
 use CSC\Protocol\Rest\Auth\Security\Encoder\PasswordEncoder;
 use CSC\Server\Exception\ServerException;
-use CSC\Server\Response\Model\ServerResponseModel;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class User
  */
-abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAware, ServerResponseModel
+abstract class User implements UserInterface
 {
     const TOKEN_KEY = 'TOKEN';
 
@@ -101,10 +101,18 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
     protected $status;
 
     /**
+     * @JMS\Type("ArrayCollection")
+     *
+     * @var Collection|null
+     */
+    protected $roles;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
+        $this->roles = new ArrayCollection();
         $this->salt = $this->regenerateSalt();
     }
 
@@ -133,9 +141,9 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -321,9 +329,9 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
     /**
      * @param string $status
      *
-     * @return User
+     * @return UserInterface
      */
-    public function setStatus(string $status): User
+    public function setStatus(?string $status): UserInterface
     {
         $this->status = $status;
 
@@ -396,5 +404,21 @@ abstract class User implements AdvancedUserInterface, \Serializable, TokenKeyAwa
     public function isEnabled()
     {
         return self::STATUS_ACTIVE === $this->status;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getResult()
+    {
+        return $this;
+    }
+
+    /**
+     * @return RoleInterface[]
+     */
+    public function getRoles(): array
+    {
+        return $this->roles->toArray();
     }
 }

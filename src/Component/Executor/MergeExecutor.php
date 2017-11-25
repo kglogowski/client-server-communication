@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Executor;
 
-use CSC\Model\ExternalAccessibleEntity;
+use CSC\Model\Interfaces\ExternalAccessibleEntity;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
 use Doctrine\ORM\Events;

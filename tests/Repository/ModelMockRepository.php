@@ -2,6 +2,7 @@
 
 namespace CSC\Tests\Repository;
 
+use CSC\Model\PagerRequestModel;
 use CSC\Tests\Model\ModelMock;
 use Doctrine\Common\Util\Inflector;
 
@@ -12,6 +13,8 @@ use Doctrine\Common\Util\Inflector;
  */
 class ModelMockRepository extends AbstractTestRepository
 {
+    const ALIAS = 'mock';
+
     /**
      * @param $id
      *
@@ -54,5 +57,40 @@ class ModelMockRepository extends AbstractTestRepository
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
         return [(new ModelMock())];
+    }
+
+    /**
+     * @param PagerRequestModel $model
+     *
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function testMethod(PagerRequestModel $model): array
+    {
+        $result = $this->builder
+            ->setQueryBuilder($this->getQueryBuilder($this))
+            ->addFilters($model->getFilter(), 'mock')
+            ->addSorts($model->getSort(), 'mock')
+            ->getResult()
+        ;
+
+        throw new \Exception($result->getDQL());
+    }
+
+    /**
+     * @return string
+     */
+    public function getEntityName(): string
+    {
+        return ModelMock::class;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlias(): string
+    {
+        return self::ALIAS;
     }
 }

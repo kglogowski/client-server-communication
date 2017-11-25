@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Model;
+namespace CSC\Model\Interfaces;
 
 /**
  * Interface EntityInitializer

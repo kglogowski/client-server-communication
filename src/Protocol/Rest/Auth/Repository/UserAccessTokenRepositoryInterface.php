@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Repository;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+use CSC\Model\Interfaces\UserInterface;
 
 /**
  * Interface UserAccessTokenRepositoryInterface

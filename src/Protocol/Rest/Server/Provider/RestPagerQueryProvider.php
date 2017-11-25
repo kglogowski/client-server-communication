@@ -2,8 +2,8 @@
 
 namespace CSC\Protocol\Rest\Server\Provider;
 
+use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Interfaces\GuardUserAware;
-use CSC\Protocol\Rest\Auth\Model\User;
 use CSC\Protocol\Rest\Builder\PagerQueryBuilderAware;
 use CSC\Protocol\Rest\Builder\RestPagerQueryBuilder;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
@@ -91,7 +91,7 @@ class RestPagerQueryProvider implements RestQueryProvider
         if ($repository instanceof GuardUserAware) {
             $user = $this->userProvider->getUser();
 
-            if ($user instanceof User) {
+            if ($user instanceof UserInterface) {
                 $repository->setUser($this->userProvider->getUser());
             }
         }

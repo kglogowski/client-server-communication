@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Provider;
 
-use CSC\Protocol\Rest\Auth\Model\User;
+use CSC\Model\Interfaces\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
@@ -28,9 +28,9 @@ class UserProvider
     }
 
     /**
-     * @return User
+     * @return UserInterface
      */
-    public function getUser(): User
+    public function getUser(): UserInterface
     {
         if (!$this->tokenStorage) {
             throw new \LogicException('The SecurityBundle is not registered in your application.');

@@ -3,6 +3,7 @@
 namespace CSC\Protocol\Rest\Auth\Security\Provider;
 
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Model\User;
 use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Repository\UserAccessTokenRepositoryInterface;
@@ -19,7 +20,7 @@ class UserAccessTokenProvider
     const MESSAGE_NULL_USER = 'No user loaded.';
 
     /**
-     * @var User
+     * @var UserInterface
      */
     protected $user;
 
@@ -44,9 +45,9 @@ class UserAccessTokenProvider
     }
 
     /**
-     * @param User $user
+     * @param UserInterface $user
      */
-    public function setUser(User $user)
+    public function setUser(UserInterface $user)
     {
         $this->user = $user;
     }

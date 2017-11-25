@@ -3,9 +3,9 @@
 namespace CSC\Protocol\Rest\Auth\Repository;
 
 use CSC\Component\Decorator\DateTime\PlainDateTimeDecorator;
+use CSC\Model\Interfaces\UserInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class UserAccessTokenRepository

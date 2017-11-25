@@ -4,6 +4,7 @@ namespace CSC\Tests\ORM;
 
 use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Tests\Repository\AbstractTestRepository;
+use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,8 @@ class EntityManagerProviderMock extends TestCase
     {
         $entityManager = $this->getMockBuilder(EntityManager::class)
             ->setMethods([
-                'getRepository'
+                'getRepository',
+                'getConfiguration',
             ])
             ->disableOriginalConstructor()
             ->getMock()
@@ -33,6 +35,12 @@ class EntityManagerProviderMock extends TestCase
             ->expects($this->any())
             ->method('getRepository')
             ->will($this->returnValue($repository))
+        ;
+
+        $entityManager
+            ->expects($this->any())
+            ->method('getConfiguration')
+            ->will($this->returnValue(new Configuration()))
         ;
 
         $entityManagerProvider = new EntityManagerProvider();

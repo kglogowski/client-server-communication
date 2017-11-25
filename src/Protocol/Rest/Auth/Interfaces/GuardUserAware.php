@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Interfaces;
 
-use CSC\Protocol\Rest\Auth\Model\User;
+use CSC\Model\Interfaces\UserInterface;
 
 /**
  * Interface GuardUserAware
@@ -12,7 +12,7 @@ use CSC\Protocol\Rest\Auth\Model\User;
 interface GuardUserAware
 {
     /**
-     * @param User $user
+     * @param UserInterface $user
      */
-    public function setUser(User $user);
+    public function setUser(UserInterface $user);
 }
