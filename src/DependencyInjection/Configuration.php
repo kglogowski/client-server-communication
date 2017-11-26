@@ -33,24 +33,23 @@ class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->root('csc');
 
-
-        $rootNode->children()
-            ->integerNode('token_lifetime')->isRequired()->min(1)->end()
-            ->scalarNode('token_secret')->isRequired()->end()
-            ->booleanNode('use_sso')->isRequired()->end()
-        ->end();
-
         $rootNode
             ->children()
-                ->integerNode('token_lifetime')
-                ->end()
-            ->end()
-            ->children()
-                ->variableNode('token_secret')
-                ->end()
-            ->end()
-            ->children()
-                ->booleanNode('use_sso')
+                ->arrayNode('configuration')
+                    ->prototype('array')
+                        ->children()
+                            ->integerNode('token_lifetime')
+                            ->end()
+                        ->end()
+                        ->children()
+                            ->variableNode('token_secret')
+                            ->end()
+                        ->end()
+                        ->children()
+                            ->booleanNode('use_sso')
+                            ->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end()
             ->children()

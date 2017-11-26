@@ -49,7 +49,8 @@ class CSCExtension extends Extension
      */
     private function loadDataObjectDefinition(array $config, ContainerBuilder $container)
     {
-        $container->setParameter('pager_data_object', $config['pager_data_object']);
-        $container->setParameter('simple_data_object', $config['simple_data_object']);
+        $container->setParameter('csc.configuration', $config['configuration']);
+        $container->setParameter('csc.pager_data_object', $config['pager_data_object']);
+        $container->setParameter('csc.simple_data_object', $config['simple_data_object']);
     }
 }

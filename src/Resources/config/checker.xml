@@ -10,10 +10,10 @@
 
         <!--Rest-->
         <service id="csc.rest.checker.insertable" class="CSC\Protocol\Rest\Server\Checker\InsertableChecker">
-            <argument>%simple_data_object%</argument>
+            <argument>%csc.simple_data_object%</argument>
         </service>
         <service id="csc.rest.checker.updatable" class="CSC\Protocol\Rest\Server\Checker\UpdatableChecker">
-            <argument>%simple_data_object%</argument>
+            <argument>%csc.simple_data_object%</argument>
         </service>
     </services>
 </container>

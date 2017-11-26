@@ -7,7 +7,7 @@ Installation
 1. Run command: ``composer require kglogowski/client-server-communication "@dev"``
 
 2. Add to Kernel:
-    ```
+    ```php
             $bundles = [
                 ...
                 new CSC\CSCBundle(),
@@ -16,7 +16,7 @@ Installation
             ];
     ```
 3. Add configuration for simple and pager data object checkers:
-    ```
+    ```yaml
     #example
     csc:
       simple_data_object:
@@ -38,7 +38,7 @@ Installation
       
     ```
 4. Configure your config.yml
-    ```
+    ```yaml
         fos_rest:
            routing_loader:
                default_format: json
@@ -60,7 +60,7 @@ Installation
                view_handler: fos_rest.view_handler.default
     ```
 5. Configure security.yml:
-    ```
+    ```yaml
     #Example
     security:
         encoders:
@@ -134,4 +134,11 @@ Installation
             return User::class === $class;
         }
     }
+    ```
+8. Add monolog:
+    ```yaml
+    # Monolog
+    monolog:
+        channels: ['raw_request', 'raw_response', 'auth']
+        use_microseconds: true
     ```

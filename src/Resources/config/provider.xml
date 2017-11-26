@@ -20,7 +20,7 @@
             <argument type="service" id="csc.entity_manager.provider" />
             <argument type="service" id="csc.rest.builder.pager_query" />
             <argument type="service" id="csc.provider.user_provider" />
-            <argument>%pager_data_object%</argument>
+            <argument>%csc.pager_data_object%</argument>
         </service>
         <service id="csc.entity_manager.provider" class="CSC\Component\Provider\EntityManagerProvider">
             <call method="setEntityManager">
