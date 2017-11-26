@@ -121,3 +121,17 @@ Installation
     }
     ```
 7. Provider
+    ```php
+    class TokenUserProvider extends BaseProvider
+    {
+        public function loadUserByUsername($username)
+        {
+           //Implement own method from repository
+        }
+    
+        public function supportsClass($class)
+        {
+            return User::class === $class;
+        }
+    }
+    ```
