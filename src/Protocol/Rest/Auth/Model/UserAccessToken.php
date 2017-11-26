@@ -16,7 +16,7 @@ abstract class UserAccessToken
     use UpdatedAtTrait;
     use UpdateTimestampsTrait;
 
-    protected static $availableStatuses = [];
+    protected static $availableTypes = [];
 
     /**
      * @var int
@@ -157,7 +157,10 @@ abstract class UserAccessToken
     /**
      * @return string
      */
-    abstract public function getType(): string;
+    public function getType(): string
+    {
+        return $this->type;
+    }
 
     /**
      * @param string $type
@@ -177,6 +180,6 @@ abstract class UserAccessToken
      */
     public static function wrongType($type): bool
     {
-        return !in_array($type, static::$availableStatuses, true);
+        return !in_array($type, static::$availableTypes, true);
     }
 }
