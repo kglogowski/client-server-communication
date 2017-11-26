@@ -24,12 +24,6 @@ abstract class User implements UserInterface
 {
     const TOKEN_KEY = 'TOKEN';
 
-    const
-        STATUS_INACTIVE = 'INACTIVE',
-        STATUS_BLOCKED = 'BLOCKED',
-        STATUS_ACTIVE = 'ACTIVE'
-    ;
-
     use PasswordDateTrait;
     use LastLoginAtTrait;
     use CreatedAtTrait;
