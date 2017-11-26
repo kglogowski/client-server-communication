@@ -7,7 +7,7 @@
 
     <services>
         <!-- REQUEST LISTENER -->
-        <service id="undefined_coders_log.request.event_listener" class="CSC\Component\EventListener\RequestListener">
+        <service id="csc.log.request.event_listener" class="CSC\Component\EventListener\RequestListener">
             <call method="setLogger">
                 <argument type="service" id="monolog.logger.raw_request" />
             </call>
@@ -15,7 +15,7 @@
         </service>
 
         <!-- RESPONSE LISTENER -->
-        <service id="undefined_coders_log.response.event_listener" class="CSC\Component\EventListener\ResponseListener">
+        <service id="csc.log.response.event_listener" class="CSC\Component\EventListener\ResponseListener">
             <call method="setLogger">
                 <argument type="service" id="monolog.logger.raw_response" />
             </call>

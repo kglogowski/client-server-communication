@@ -34,7 +34,7 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
     ;
 
     const
-        ACCESS_TOKEN_REQUEST_KEY = 'undefinedcoders_user_access_token_key',
+        ACCESS_TOKEN_REQUEST_KEY = 'csc_user_access_token_key',
         TOKEN_KEY = 'token_key',
         TOKEN_VALUE = 'token_value'
     ;
