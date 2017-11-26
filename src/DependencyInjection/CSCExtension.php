@@ -30,6 +30,7 @@ class CSCExtension extends Extension
         $loader->load('builder.xml');
         $loader->load('checker.xml');
         $loader->load('controller.xml');
+        $loader->load('event_listener.xml');
         $loader->load('executor.xml');
         $loader->load('factory.xml');
         $loader->load('generator.xml');
@@ -39,6 +40,7 @@ class CSCExtension extends Extension
         $loader->load('processor.xml');
         $loader->load('provider.xml');
         $loader->load('resolver.xml');
+        $loader->load('security.xml');
     }
 
     /**
