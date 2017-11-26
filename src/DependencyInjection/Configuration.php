@@ -17,6 +17,13 @@ class Configuration implements ConfigurationInterface
     const PAGER_DATA_OBJECT_METHODS_KEY = 'methods';
     const SIMPLE_DATA_OBJECT_UPDATABLE_KEY = 'updatable_fields';
     const SIMPLE_DATA_OBJECT_INSERTABLE_KEY = 'insertable_fields';
+
+    const
+        INDEX_TOKEN_LIFETIME = 'token_lifetime',
+        INDEX_TOKEN_SECRET   = 'token_secret',
+        INDEX_USE_SSO        = 'use_sso'
+    ;
+
     /**
      * {@inheritdoc}
      */
