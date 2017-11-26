@@ -2,6 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Security\Generator;
 
+use CSC\DependencyInjection\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Lcobucci\JWT\Builder;
@@ -34,8 +35,8 @@ class JwtUserTokenGenerator implements TokenGeneratorInterface
     public function __construct(array $config)
     {
         $this->data = [];
-        $this->jwtSecret = $config['token_secret'];
-        $this->tokenLifetime = (int) $config['token_lifetime'];
+        $this->jwtSecret = $config[Configuration::INDEX_TOKEN_SECRET];
+        $this->tokenLifetime = (int) $config[Configuration::INDEX_TOKEN_LIFETIME];
     }
 
     /**

@@ -14,8 +14,7 @@ abstract class SSOAuthenticator extends AbstractUserAuthenticator implements Tok
 {
     const
         TOKEN_NAME = 'TOKEN',
-        TOKEN_POSTFIX = '_SSOID',
-        CONF_USE_SSO = 'use_sso'
+        TOKEN_POSTFIX = '_SSOID'
     ;
 
     /**

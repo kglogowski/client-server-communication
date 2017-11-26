@@ -49,7 +49,12 @@ class CSCExtension extends Extension
      */
     private function loadDataObjectDefinition(array $config, ContainerBuilder $container)
     {
-        $container->setParameter('csc.configuration', $config['configuration']);
+        $container->setParameter('csc.configuration', [
+            Configuration::INDEX_TOKEN_LIFETIME => $config[Configuration::INDEX_TOKEN_LIFETIME],
+            Configuration::INDEX_TOKEN_SECRET => $config[Configuration::INDEX_TOKEN_SECRET],
+            Configuration::INDEX_USE_SSO => $config[Configuration::INDEX_USE_SSO]
+        ]);
+
         $container->setParameter('csc.pager_data_object', $config['pager_data_object']);
         $container->setParameter('csc.simple_data_object', $config['simple_data_object']);
     }

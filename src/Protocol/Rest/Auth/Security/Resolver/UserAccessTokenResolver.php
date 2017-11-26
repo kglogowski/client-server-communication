@@ -2,6 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Security\Resolver;
 
+use CSC\DependencyInjection\Configuration;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Security\Generator\JwtUserTokenGenerator;
@@ -33,7 +34,7 @@ class UserAccessTokenResolver implements UserAccessTokenResolverInterface
     public function __construct(TokenGeneratorInterface $tokenGenerator, array $config)
     {
         $this->tokenGenerator = $tokenGenerator;
-        $this->tokenLifetime = (int) $config['token_lifetime'];
+        $this->tokenLifetime = (int) $config[Configuration::INDEX_TOKEN_LIFETIME];
     }
 
     /**
