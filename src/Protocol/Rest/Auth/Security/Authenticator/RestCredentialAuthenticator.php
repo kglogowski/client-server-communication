@@ -14,14 +14,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 abstract class RestCredentialAuthenticator extends AbstractUserAuthenticator
 {
     /**
-     * @param LoggerInterface $logger
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getCredentials(Request $request)

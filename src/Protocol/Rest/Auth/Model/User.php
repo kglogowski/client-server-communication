@@ -2,6 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Model;
 
+use CSC\Model\Interfaces\LinkToken;
 use CSC\Model\Interfaces\RoleInterface;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
@@ -56,6 +57,16 @@ abstract class User implements UserInterface
     protected $login;
 
     /**
+     * Email
+     *
+     * @JMS\Type("string")
+     * @JMS\Groups({"Any"})
+     *
+     * @var string
+     */
+    protected $email;
+
+    /**
      * @var string
      *
      * @JMS\Type("string")
@@ -105,6 +116,13 @@ abstract class User implements UserInterface
      *
      * @var Collection|null
      */
+    protected $linkTokens;
+
+    /**
+     * @JMS\Type("ArrayCollection")
+     *
+     * @var Collection|null
+     */
     protected $roles;
 
     /**
@@ -113,6 +131,7 @@ abstract class User implements UserInterface
     public function __construct()
     {
         $this->roles = new ArrayCollection();
+        $this->linkTokens = new ArrayCollection();
         $this->salt = $this->regenerateSalt();
     }
 
@@ -176,6 +195,26 @@ abstract class User implements UserInterface
     public function setLogin(string $login): UserInterface
     {
         $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return UserInterface
+     */
+    public function setEmail(string $email): UserInterface
+    {
+        $this->email = $email;
 
         return $this;
     }
@@ -339,6 +378,50 @@ abstract class User implements UserInterface
     }
 
     /**
+     * @return LinkToken[]|Collection
+     */
+    public function getLinkTokens(): Collection
+    {
+        return $this->linkTokens;
+    }
+
+    /**
+     * @param LinkToken[]|Collection $linkTokens
+     *
+     * @return UserInterface
+     */
+    public function setLinkTokens(Collection $linkTokens): UserInterface
+    {
+        $this->linkTokens = $linkTokens;
+
+        return $this;
+    }
+
+    /**
+     * @param LinkToken $linkToken
+     *
+     * @return UserInterface
+     */
+    public function addLinkToken(LinkToken $linkToken): UserInterface
+    {
+        $this->linkTokens->add($linkToken);
+
+        return $this;
+    }
+
+    /**
+     * @param LinkToken $linkToken
+     *
+     * @return UserInterface
+     */
+    public function removeLinkToken(LinkToken $linkToken): UserInterface
+    {
+        $this->linkTokens->removeElement($linkToken);
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function serialize()
@@ -420,5 +503,41 @@ abstract class User implements UserInterface
     public function getRoles(): array
     {
         return $this->roles->toArray();
+    }
+
+    /**
+     * @param Collection $roles
+     *
+     * @return UserInterface
+     */
+    public function setRoles(Collection $roles): UserInterface
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @param RoleInterface $role
+     *
+     * @return UserInterface
+     */
+    public function addRole(RoleInterface $role): UserInterface
+    {
+        $this->roles->add($role);
+
+        return $this;
+    }
+
+    /**
+     * @param RoleInterface $role
+     *
+     * @return UserInterface
+     */
+    public function removeRole(RoleInterface $role): UserInterface
+    {
+        $this->roles->removeElement($role);
+
+        return $this;
     }
 }

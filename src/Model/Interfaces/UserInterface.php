@@ -32,42 +32,6 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
     public function setEmail(string $email): UserInterface;
 
     /**
-     * @return string
-     */
-    public function getFirstName(): string;
-
-    /**
-     * @param string $firstName
-     *
-     * @return UserInterface
-     */
-    public function setFirstName(string $firstName): UserInterface;
-
-    /**
-     * @return string
-     */
-    public function getLastName(): string;
-
-    /**
-     * @param string $lastName
-     *
-     * @return UserInterface
-     */
-    public function setLastName(string $lastName): UserInterface;
-
-    /**
-     * @return string
-     */
-    public function getPhone(): string;
-
-    /**
-     * @param string $phone
-     *
-     * @return UserInterface
-     */
-    public function setPhone(string $phone): UserInterface;
-
-    /**
      * @param Collection $roles
      *
      * @return UserInterface
@@ -87,16 +51,6 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
      * @return UserInterface
      */
     public function removeRole(RoleInterface $role): UserInterface;
-
-    /**
-     * @return array
-     */
-    public function getRoleIds(): array;
-
-    /**
-     * @return Collection|RoleInterface[]
-     */
-    public function getRolesAsCollection();
 
     /**
      * @return string
