@@ -2,7 +2,9 @@
 
 namespace CSC\Protocol\Rest\Auth\Security\Authenticator;
 
+use CSC\Protocol\Rest\Auth\Security\Checker\TokenChecker;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -24,8 +26,15 @@ abstract class TokenAuthenticator extends AbstractUserAuthenticator
         }
 
         $token = $request->headers->get(static::TOKEN_HEADER_NAME);
+
         if (null === $token) {
             return null;
+        }
+
+        if ($this->tokenChecker instanceof TokenChecker) {
+            if (!$this->tokenChecker->checkToken($token)) {
+                throw new AccessDeniedException();
+            }
         }
 
         return [

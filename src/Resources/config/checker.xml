@@ -15,5 +15,10 @@
         <service id="csc.rest.checker.updatable" class="CSC\Protocol\Rest\Server\Checker\UpdatableChecker">
             <argument>%csc.simple_data_object%</argument>
         </service>
+        <service id="csc.rest.checker.jwt_token" class="CSC\Protocol\Rest\Auth\Security\Checker\JwtTokenChecker">
+            <call method="setConfig">
+                <argument>%csc.configuration%</argument>
+            </call>
+        </service>
     </services>
 </container>

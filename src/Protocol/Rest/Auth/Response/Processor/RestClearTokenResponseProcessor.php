@@ -3,6 +3,7 @@
 namespace CSC\Protocol\Rest\Auth\Response\Processor;
 
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Translate\TranslateDictionary;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Response\Resolver\TokenResponseResolverInterface;
 use CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator;
@@ -58,7 +59,11 @@ class RestClearTokenResponseProcessor
     public function process(): Response
     {
         if (!$this->user instanceof BaseUser) {
-            throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, 'Not supported type of user', null, Response::HTTP_BAD_REQUEST);
+            throw new ServerException(
+                ServerException::ERROR_TYPE_INVALID_PARAMETER,
+                TranslateDictionary::KEY_NOT_SUPPORTED_TYPE_OF_USER,
+                null,
+                Response::HTTP_BAD_REQUEST);
         }
 
         $accessToken = $this->user->getAccessToken();
@@ -67,7 +72,12 @@ class RestClearTokenResponseProcessor
             $this->entityManager->remove($accessToken);
             $this->entityManager->flush();
         } catch (\Exception $e) {
-            throw new ServerException(ServerException::ERROR_SYSTEM_ERROR, 'Unable to clear token', null, Response::HTTP_BAD_REQUEST);
+            throw new ServerException(
+                ServerException::ERROR_SYSTEM_ERROR,
+                TranslateDictionary::KEY_UNABLE_CLEAR_TOKEN,
+                null,
+                Response::HTTP_BAD_REQUEST
+            );
         }
 
         $response = new Response();

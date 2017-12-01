@@ -36,7 +36,11 @@
             </call>
         </service>
 
-        <service id="csc.rest.security.authenticator.token" class="CSC\Protocol\Rest\Auth\Security\Authenticator\TokenAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true"/>
+        <service id="csc.rest.security.authenticator.token" class="CSC\Protocol\Rest\Auth\Security\Authenticator\TokenAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true">
+            <call method="setTokenChecker">
+                <argument type="service" id="csc.rest.checker.jwt_token" />
+            </call>
+        </service>
         <service id="csc.rest.security.authenticator.sso" class="CSC\Protocol\Rest\Auth\Security\Authenticator\SSOAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true"/>
         <service id="csc.rest.security.authenticator.credential" class="CSC\Protocol\Rest\Auth\Security\Authenticator\RestCredentialAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true"/>
 

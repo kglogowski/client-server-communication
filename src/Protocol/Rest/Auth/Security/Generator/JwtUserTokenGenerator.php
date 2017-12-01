@@ -4,6 +4,7 @@ namespace CSC\Protocol\Rest\Auth\Security\Generator;
 
 use CSC\DependencyInjection\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
+use Lcobucci\JWT\Token;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Lcobucci\JWT\Builder;
 
@@ -53,7 +54,6 @@ class JwtUserTokenGenerator implements TokenGeneratorInterface
     public function generateToken(): string
     {
         $signer = new Sha512();
-
 
         $token = (new Builder())->setIssuedAt(time());
 

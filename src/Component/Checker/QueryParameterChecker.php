@@ -2,6 +2,7 @@
 
 namespace CSC\Component\Checker;
 
+use CSC\Component\Translate\TranslateDictionary;
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
 use CSC\Server\Request\Exception\ServerRequestException;
@@ -13,9 +14,6 @@ use CSC\Server\Request\Exception\ServerRequestException;
  */
 class QueryParameterChecker
 {
-    const MESSAGE_NOT_SUPPORTED_FILTER = 'Not supported filter';
-    const MESSAGE_NOT_SUPPORTED_SORT_PARAMETER = 'Not supported sort parameter';
-
     /**
      * @param QueryFilterModel $filterModel
      * @param array            $filterSupportedParameters
@@ -27,7 +25,7 @@ class QueryParameterChecker
         if (!in_array($filterModel->getField(), $filterSupportedParameters, true)) {
             throw new ServerRequestException(
                 ServerRequestException::ERROR_TYPE_INVALID_PARAMETER,
-                self::MESSAGE_NOT_SUPPORTED_FILTER,
+                TranslateDictionary::KEY_NOT_SUPPORTED_FILTER,
                 [$filterModel->getField()]
             );
         }
@@ -44,7 +42,7 @@ class QueryParameterChecker
         if (!in_array($sortModel->getField(), $sortSupportedParameters, true)) {
             throw new ServerRequestException(
                 ServerRequestException::ERROR_TYPE_INVALID_PARAMETER,
-                self::MESSAGE_NOT_SUPPORTED_SORT_PARAMETER,
+                TranslateDictionary::KEY_NOT_SUPPORTED_SORT_PARAMETER,
                 [$sortModel->getField()]
             );
         }

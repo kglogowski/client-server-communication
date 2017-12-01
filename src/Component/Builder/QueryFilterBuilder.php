@@ -2,6 +2,7 @@
 
 namespace CSC\Component\Builder;
 
+use CSC\Component\Translate\TranslateDictionary;
 use CSC\Model\QueryFilterModel;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
@@ -420,7 +421,11 @@ class QueryFilterBuilder
         $fieldName = $this->createFieldName($alias, $filterModel->getField());
 
         if (3 !== count($values)) {
-            throw new ServerRequestException(ServerException::ERROR_TYPE_INVALID_PARAMETER, 'Bad parameter', [$filterModel->getField()]);
+            throw new ServerRequestException(
+                ServerException::ERROR_TYPE_INVALID_PARAMETER,
+                TranslateDictionary::KEY_BAD_PARAMETER,
+                [$filterModel->getField()]
+            );
         }
 
         list($y2, $x2, $distance) = $values;
@@ -538,7 +543,11 @@ class QueryFilterBuilder
             case self::TEXT_LIKE:
                 return '%s%%';
         }
-        throw new \Exception('Invalid Text pattern');
+        throw new ServerRequestException(
+            ServerException::ERROR_TYPE_INVALID_PARAMETER,
+            TranslateDictionary::KEY_INVALID_TEXT_PATTERN,
+            ['pattern' => $pattern]
+        );
     }
 
     /**

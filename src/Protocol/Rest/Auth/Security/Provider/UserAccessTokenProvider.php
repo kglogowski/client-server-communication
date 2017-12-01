@@ -75,7 +75,12 @@ class UserAccessTokenProvider
 
         $accessTokenRepository = $this->entityManager->getRepository($accessTokenClass);
         if (!$accessTokenRepository instanceof UserAccessTokenRepositoryInterface) {
-            throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, AbstractUserAuthenticator::MESSAGE_INVALID_REPOSITORY_CLASS, null, Response::HTTP_UNAUTHORIZED);
+            throw new ServerException(
+                ServerException::ERROR_TYPE_INVALID_PARAMETER,
+                AbstractUserAuthenticator::MESSAGE_INVALID_REPOSITORY_CLASS,
+                null,
+                Response::HTTP_UNAUTHORIZED
+            );
         }
 
         $accessToken = $accessTokenRepository->findOneByUserAndValidDateAndType($this->user, $this->tokenType);

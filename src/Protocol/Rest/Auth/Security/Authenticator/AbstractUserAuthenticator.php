@@ -3,6 +3,7 @@
 namespace CSC\Protocol\Rest\Auth\Security\Authenticator;
 
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Protocol\Rest\Auth\Security\Checker\TokenChecker;
 use CSC\Protocol\Rest\Auth\Security\Provider\UserAccessTokenProvider;
 use CSC\Protocol\Rest\Auth\Security\Resolver\UserAccessTokenResolverInterface;
 use CSC\Server\Exception\ServerException;
@@ -73,6 +74,11 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
      * @var TokenStorageInterface
      */
     protected $tokenStorage;
+
+    /**
+     * @var TokenChecker
+     */
+    protected $tokenChecker;
 
     /**
      * AbstractUserAuthenticator constructor.
@@ -189,5 +195,13 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
         $token = $this->tokenStorage->getToken();
 
         return $token && $token->isAuthenticated();
+    }
+
+    /**
+     * @param TokenChecker $checker
+     */
+    public function setTokenChecker(TokenChecker $checker)
+    {
+        $this->tokenChecker = $checker;
     }
 }
