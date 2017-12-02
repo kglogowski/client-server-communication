@@ -155,19 +155,19 @@ abstract class UserAccessToken
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return UserAccessToken
      */
-    public function setType(string $type): UserAccessToken
+    public function setType(?string $type): UserAccessToken
     {
         $this->type = $type;
 

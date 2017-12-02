@@ -55,10 +55,12 @@ class UserAccessTokenResolver implements UserAccessTokenResolverInterface
     public function resolve(UserAccessToken $userAccessToken): UserAccessToken
     {
         if (false === $userAccessToken->hasToken()) {
-            $data = array_merge([
-                'username' => $userAccessToken->getUser()->getUsername(),
-                'type' => $userAccessToken->getType()
-            ], $this->getData($userAccessToken->getUser()));
+            $data = $this->getData($userAccessToken->getUser());
+            $data['username'] = $userAccessToken->getUser()->getUsername();
+
+            if ($userAccessToken->getType()) {
+                $data['type'] = $userAccessToken->getType();
+            }
 
             $this->tokenGenerator->setData($data);
 

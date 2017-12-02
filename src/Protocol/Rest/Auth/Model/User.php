@@ -496,6 +496,10 @@ abstract class User implements UserInterface
      */
     public function getRoles(): array
     {
+        if (!$this->roles instanceof Collection) {
+            $this->roles = new ArrayCollection();
+        }
+
         return $this->roles->toArray();
     }
 
