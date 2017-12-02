@@ -52,6 +52,10 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         parent::configure();
     }
 
+    /**
+     * TODO Draft
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
@@ -89,8 +93,14 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
             ->setStatus($status)
         ;
 
-        $em->persist($user);
-        $em->flush();
+        $errors = $this->getContainer()->get('validator')->validate($user);
+
+        if (0 === $errors->count()) {
+            $em->persist($user);
+            $em->flush();
+        } else {
+            throw new \Exception($errors);
+        }
     }
 
     private function question(string $message, $default)

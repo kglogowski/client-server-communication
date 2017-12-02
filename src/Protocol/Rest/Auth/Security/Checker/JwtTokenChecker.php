@@ -35,6 +35,6 @@ class JwtTokenChecker implements TokenChecker
      */
     public function setConfig(array $config)
     {
-
+        $this->config = $config;
     }
 }
