@@ -8,6 +8,7 @@ use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
 use CSC\Model\Traits\LastLoginAtTrait;
 use CSC\Model\Traits\PasswordDateTrait;
+use CSC\Model\Traits\ResponseModelTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
 use CSC\Protocol\Rest\Auth\Security\Encoder\PasswordEncoder;
@@ -29,6 +30,7 @@ abstract class User implements UserInterface
     use CreatedAtTrait;
     use UpdatedAtTrait;
     use UpdateTimestampsTrait;
+    use ResponseModelTrait;
 
     /**
      * ID
@@ -481,14 +483,6 @@ abstract class User implements UserInterface
     public function isEnabled()
     {
         return self::STATUS_ACTIVE === $this->status;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getResult()
-    {
-        return $this;
     }
 
     /**

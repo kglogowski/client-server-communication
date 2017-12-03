@@ -2,10 +2,12 @@
 
 namespace CSC\Model\Interfaces;
 
+use CSC\Server\Response\Model\ServerResponseModel;
+
 /**
  * Interface PermissionInterface
  */
-interface PermissionInterface extends ExternalAccessibleEntity
+interface PermissionInterface extends ServerResponseModel, ExternalAccessibleEntity
 {
     /**
      * @param string $id
@@ -15,16 +17,16 @@ interface PermissionInterface extends ExternalAccessibleEntity
     public function setId(string $id): PermissionInterface;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return PermissionInterface
      */
-    public function setDescription(string $description): PermissionInterface;
+    public function setDescription(?string $description): PermissionInterface;
 
     /**
      * @return bool
@@ -48,5 +50,5 @@ interface PermissionInterface extends ExternalAccessibleEntity
      *
      * @return PermissionInterface
      */
-    public function setGroup($group): PermissionInterface;
+    public function setGroup(PermissionGroupInterface $group): PermissionInterface;
 }

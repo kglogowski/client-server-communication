@@ -10,12 +10,6 @@ use Doctrine\Common\Collections\Collection;
  */
 interface PermissionGroupInterface extends ServerResponseModel, ExternalAccessibleEntity
 {
-
-    /**
-     * @return string
-     */
-    public function getId(): string;
-
     /**
      * @param string $id
      *
@@ -26,14 +20,33 @@ interface PermissionGroupInterface extends ServerResponseModel, ExternalAccessib
     /**
      * @return string
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return PermissionGroupInterface
      */
-    public function setDescription(string $description): PermissionGroupInterface;
+    public function setDescription(?string $description): PermissionGroupInterface;
+
+    /**
+     * @return Collection
+     */
+    public function getPermissions(): Collection;
+
+    /**
+     * @param PermissionInterface $permission
+     *
+     * @return PermissionGroupInterface
+     */
+    public function addPermission(PermissionInterface $permission): PermissionGroupInterface;
+
+    /**
+     * @param PermissionInterface $permission
+     *
+     * @return PermissionGroupInterface
+     */
+    public function removePermission(PermissionInterface $permission): PermissionGroupInterface;
 
     /**
      * @return bool
@@ -46,33 +59,4 @@ interface PermissionGroupInterface extends ServerResponseModel, ExternalAccessib
      * @return PermissionGroupInterface
      */
     public function setActive(bool $active): PermissionGroupInterface;
-
-    /**
-     * @return Collection
-     */
-    public function getAttributes(): Collection;
-
-    /**
-     * @param Collection $attributes
-     *
-     * @return PermissionGroupInterface
-     */
-    public function setAttributes(Collection $attributes): PermissionGroupInterface;
-
-    /**
-     * @return string
-     */
-    public function getHref(): string;
-
-    /**
-     * @param string $href
-     *
-     * @return PermissionGroupInterface
-     */
-    public function setHref(string $href): PermissionGroupInterface;
-
-    /**
-     * @return PermissionGroupInterface
-     */
-    public function getResult(): PermissionGroupInterface;
 }

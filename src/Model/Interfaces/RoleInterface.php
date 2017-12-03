@@ -11,11 +11,6 @@ use Doctrine\Common\Collections\Collection;
 interface RoleInterface extends ServerResponseModel, ExternalAccessibleEntity
 {
     /**
-     * @return string|null A string representation of the role, or null
-     */
-    public function getRole();
-
-    /**
      * @param string $id
      *
      * @return RoleInterface
@@ -25,57 +20,33 @@ interface RoleInterface extends ServerResponseModel, ExternalAccessibleEntity
     /**
      * @return string
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 
     /**
-     * @param string $description
+     * @param null|string $description
      *
      * @return RoleInterface
      */
-    public function setDescription(string $description): RoleInterface;
+    public function setDescription(?string $description): RoleInterface;
 
     /**
-     * @return array
-     */
-    public function getAttributeIds(): array;
-
-    /**
-     * @param array $attributeIds
+     * @param PermissionInterface $permission
      *
      * @return RoleInterface
      */
-    public function setAttributeIds(array $attributeIds): RoleInterface;
+    public function addPermission(PermissionInterface $permission): RoleInterface;
 
     /**
-     * @return PermissionInterface[]|Collection
-     */
-    public function getAttributes(): Collection;
-
-    /**
-     * @param PermissionInterface[]|Collection $attributes
+     * @param PermissionInterface $permission
      *
      * @return RoleInterface
      */
-    public function setAttributes(Collection $attributes): RoleInterface;
+    public function removePermission(PermissionInterface $permission): RoleInterface;
 
     /**
-     * @return array
+     * @return Collection
      */
-    public function getPermissions(): array;
-
-    /**
-     * @param PermissionInterface $attribute
-     *
-     * @return RoleInterface
-     */
-    public function addAttribute(PermissionInterface $attribute): RoleInterface;
-
-    /**
-     * @param PermissionInterface $attribute
-     *
-     * @return RoleInterface
-     */
-    public function removeAttribute(PermissionInterface $attribute): RoleInterface;
+    public function getPermissions(): Collection;
 
     /**
      * @return bool
@@ -88,21 +59,4 @@ interface RoleInterface extends ServerResponseModel, ExternalAccessibleEntity
      * @return RoleInterface
      */
     public function setActive(bool $active): RoleInterface;
-
-    /**
-     * @return bool
-     */
-    public function isMigration(): bool;
-
-    /**
-     * @return bool
-     */
-    public function getMigration(): bool;
-
-    /**
-     * @param bool $migration
-     *
-     * @return RoleInterface
-     */
-    public function setMigration(bool $migration): RoleInterface;
 }
