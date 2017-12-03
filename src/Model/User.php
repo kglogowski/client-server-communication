@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Auth\Model;
+namespace CSC\Model;
 
 use CSC\Model\Interfaces\LinkToken;
 use CSC\Model\Interfaces\RoleInterface;
@@ -184,9 +184,7 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @param string $login
-     *
-     * @return UserInterface
+     * {@inheritdoc}
      */
     public function setLogin(string $login): UserInterface
     {
@@ -336,13 +334,9 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @param UserAccessToken|object $accessToken
-     *
-     * @return User
-     *
-     * @throws ServerException
+     * {@inheritdoc}
      */
-    public function setAccessToken($accessToken): User
+    public function setAccessToken($accessToken): UserInterface
     {
         if (!$accessToken instanceof UserAccessToken) {
             throw new ServerException(ServerException::ERROR_TYPE_INVALID_PARAMETER, 'Unexpected class of AccessToken', null, Response::HTTP_BAD_REQUEST);
@@ -486,15 +480,15 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @return RoleInterface[]
+     * {@inheritdoc}
      */
-    public function getRoles(): array
+    public function getRoles(): Collection
     {
         if (!$this->roles instanceof Collection) {
             $this->roles = new ArrayCollection();
         }
 
-        return $this->roles->toArray();
+        return $this->roles;
     }
 
     /**

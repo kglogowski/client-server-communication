@@ -4,7 +4,7 @@ namespace CSC\Protocol\Rest\Auth\Security\Resolver;
 
 use CSC\DependencyInjection\Configuration;
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Security\Generator\JwtUserTokenGenerator;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 

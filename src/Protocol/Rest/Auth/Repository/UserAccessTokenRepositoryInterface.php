@@ -19,11 +19,10 @@ interface UserAccessTokenRepositoryInterface
 
     /**
      * @param UserInterface $user
-     * @param string|null   $type
      *
      * @return mixed
      */
-    public function findOneByUserAndValidDateAndType(UserInterface $user, $type);
+    public function findOneByUserAndValidDate(UserInterface $user);
 
     /**
      * @param string $token

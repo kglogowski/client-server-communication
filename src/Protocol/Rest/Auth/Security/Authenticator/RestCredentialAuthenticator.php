@@ -2,8 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Security\Authenticator;
 
-use CSC\Protocol\Rest\Auth\Model\UserCredentials;
-use Psr\Log\LoggerInterface;
+use CSC\Model\UserCredentials;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

@@ -50,7 +50,7 @@ class RestGetRequestProcessor extends AbstractRestRequestProcessor
             throw new \Exception(sprintf('Entity "%s" must implement ServerResponseModel', get_class($object)));
         }
 
-        $this->checkVoters($dataObject->getEntityVoters(), $object);
+        $this->checkVoters($dataObject->getVoters(), $object);
 
         $dataObject->setResponseModel($this->responseModelFactory->create($object));
 

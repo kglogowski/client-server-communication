@@ -54,10 +54,10 @@ interface DataObject
      *
      * @return DataObject
      */
-    public function addEntityVoter(string $voter): DataObject;
+    public function addVoter(string $voter): DataObject;
 
     /**
      * @return array
      */
-    public function getEntityVoters(): array;
+    public function getVoters(): array;
 }

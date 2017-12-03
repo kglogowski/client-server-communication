@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Response\Processor;
 
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Response\Resolver\TokenResponseResolverInterface;
 use CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;

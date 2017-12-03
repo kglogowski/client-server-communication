@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Auth\Model;
+namespace CSC\Model;
 
 use JMS\Serializer\Annotation as JMS;
 

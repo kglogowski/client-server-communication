@@ -3,9 +3,8 @@
 namespace CSC\Protocol\Rest\Auth\Response\Resolver;
 
 use CSC\DependencyInjection\Configuration;
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Response\Factory\SSOCookieFactoryInterface;
-use CSC\Protocol\Rest\Auth\Security\Authenticator\SSOAuthenticator;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

@@ -104,7 +104,7 @@ abstract class AbstractDataObject implements DataObject
     /**
      * {@inheritdoc}
      */
-    public function addEntityVoter(string $voter): DataObject
+    public function addVoter(string $voter): DataObject
     {
         $this->voters[] = $voter;
 
@@ -114,7 +114,7 @@ abstract class AbstractDataObject implements DataObject
     /**
      * {@inheritdoc}
      */
-    public function getEntityVoters(): array
+    public function getVoters(): array
     {
         return $this->voters;
     }

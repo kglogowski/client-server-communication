@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Auth\Model;
+namespace CSC\Model;
 
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
@@ -15,8 +15,6 @@ abstract class UserAccessToken
     use CreatedAtTrait;
     use UpdatedAtTrait;
     use UpdateTimestampsTrait;
-
-    protected static $availableTypes = [];
 
     /**
      * @var int
@@ -42,11 +40,6 @@ abstract class UserAccessToken
      * @var string
      */
     protected $providerKey;
-
-    /**
-     * @var string
-     */
-    protected $type;
 
     /**
      * @return int
@@ -152,34 +145,5 @@ abstract class UserAccessToken
         $this->providerKey = $providerKey;
 
         return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string|null $type
-     *
-     * @return UserAccessToken
-     */
-    public function setType(?string $type): UserAccessToken
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @param string|null $type
-     * @return bool
-     */
-    public static function wrongType($type): bool
-    {
-        return !in_array($type, static::$availableTypes, true);
     }
 }

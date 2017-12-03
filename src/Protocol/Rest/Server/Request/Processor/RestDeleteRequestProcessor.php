@@ -63,6 +63,8 @@ class RestDeleteRequestProcessor extends AbstractRestRequestProcessor
 
         $this->validate($object, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
 
+        $this->checkVoters($dataObject->getVoters(), $object);
+
         $this->deleteExecutor->execute($object);
 
         $dataObject->setResponseModel($this->responseModelFactory->create(new BasicServerResponseModel()));

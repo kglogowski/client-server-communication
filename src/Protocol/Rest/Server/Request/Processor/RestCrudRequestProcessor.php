@@ -77,7 +77,7 @@ class RestCrudRequestProcessor extends AbstractRestRequestProcessor
 
         throw new HttpException(
             Response::HTTP_METHOD_NOT_ALLOWED,
-            sprintf('Http method %s is not available', $httpMethod)
+            sprintf('Http method "%s" is not available', strtoupper($httpMethod))
         );
     }
 }

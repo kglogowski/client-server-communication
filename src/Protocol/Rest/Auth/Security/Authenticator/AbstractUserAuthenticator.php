@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
-use CSC\Protocol\Rest\Auth\Model\User as BaseUser;
+use CSC\Model\User as BaseUser;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -34,11 +34,7 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
         MESSAGE_INVALID_REPOSITORY_CLASS = 'Invalid token repository class given'
     ;
 
-    const
-        ACCESS_TOKEN_REQUEST_KEY = 'csc_user_access_token_key',
-        TOKEN_KEY = 'token_key',
-        TOKEN_VALUE = 'token_value'
-    ;
+    const ACCESS_TOKEN_REQUEST_KEY = 'csc_user_access_token_key';
 
     /**
      * @var SerializerInterface
@@ -130,10 +126,8 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
         $tokenType = $request->headers->get(TokenAuthenticator::TYPE_HEADER_NAME);
 
         $this->tokenProvider->setUser($user);
-        $this->tokenProvider->setTokenType($tokenType);
 
         $accessToken = $this->tokenProvider->getByClassName($this->getAccessTokenClass());
-        $accessToken->setType($tokenType);
         $accessToken = $this->tokenResolver->resolve($accessToken);
 
         $accessToken->setProviderKey($user->getTokenKey());

@@ -3,7 +3,6 @@
 namespace CSC\Command\User;
 
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Protocol\Rest\Auth\Model\User;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -66,7 +65,7 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         $entity = $this->question('Please enter the path to the entity: ', 'AppBundle\Entity\User\User');
 
         try {
-            /** @var User $user */
+            /** @var UserInterface $user */
             $user = new $entity();
         } catch (\Error $e) {
             throw new \Exception("Entity does not exist");
@@ -86,9 +85,6 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         $user
             ->setLogin($login)
             ->setEmail($email)
-        ;
-
-        $user
             ->setupUserPassword($password)
             ->setStatus($status)
         ;

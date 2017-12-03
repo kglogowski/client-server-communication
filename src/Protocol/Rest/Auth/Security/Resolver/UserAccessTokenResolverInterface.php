@@ -2,7 +2,7 @@
 
 namespace CSC\Protocol\Rest\Auth\Security\Resolver;
 
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 
 /**
  * Interface UserAccessTokenResolverInterface

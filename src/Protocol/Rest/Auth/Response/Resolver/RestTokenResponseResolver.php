@@ -3,7 +3,7 @@
 namespace CSC\Protocol\Rest\Auth\Response\Resolver;
 
 use CSC\Component\Decorator\DateTime\DateTimeDecoratorInterface;
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

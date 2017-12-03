@@ -4,8 +4,7 @@ namespace CSC\Protocol\Rest\Auth\Security\Provider;
 
 use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Protocol\Rest\Auth\Model\User;
-use CSC\Protocol\Rest\Auth\Model\UserAccessToken;
+use CSC\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Repository\UserAccessTokenRepositoryInterface;
 use CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;
@@ -30,11 +29,6 @@ class UserAccessTokenProvider
     protected $entityManager;
 
     /**
-     * @var string
-     */
-    protected $tokenType;
-
-    /**
      * UserAccessTokenProvider constructor.
      *
      * @param EntityManagerProvider $entityManagerProvider
@@ -50,14 +44,6 @@ class UserAccessTokenProvider
     public function setUser(UserInterface $user)
     {
         $this->user = $user;
-    }
-
-    /**
-     * @param string|null $tokenType
-     */
-    public function setTokenType($tokenType)
-    {
-        $this->tokenType = $tokenType;
     }
 
     /**
@@ -83,7 +69,7 @@ class UserAccessTokenProvider
             );
         }
 
-        $accessToken = $accessTokenRepository->findOneByUserAndValidDateAndType($this->user, $this->tokenType);
+        $accessToken = $accessTokenRepository->findOneByUserAndValidDate($this->user);
         if (null === $accessToken) {
             $accessToken = new $accessTokenClass;
         }

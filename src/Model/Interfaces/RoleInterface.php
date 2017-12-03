@@ -44,7 +44,7 @@ interface RoleInterface extends ServerResponseModel, ExternalAccessibleEntity
     public function removePermission(PermissionInterface $permission): RoleInterface;
 
     /**
-     * @return Collection
+     * @return Collection|PermissionInterface[]
      */
     public function getPermissions(): Collection;
 

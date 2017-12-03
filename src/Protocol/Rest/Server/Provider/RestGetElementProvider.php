@@ -7,6 +7,7 @@ use CSC\Server\Exception\ServerException;
 use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
+use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -34,12 +35,12 @@ class RestGetElementProvider
     /**
      * @param RestDataObject $dataObject
      *
-     * @return object
+     * @return ServerResponseModel
      *
      * @throws \Exception
      * @throws ServerRequestException
      */
-    public function getElement(RestDataObject $dataObject)
+    public function getElement(RestDataObject $dataObject): ServerResponseModel
     {
         $repository = $this->em->getRepository($dataObject->getEntityName());
 
@@ -50,6 +51,13 @@ class RestGetElementProvider
                 ServerException::ERROR_TYPE_RESOURCE_NOT_FOUND,
                 TranslateDictionary::KEY_ELEMENT_DOES_NOT_EXIST
             );
+        }
+
+        if (!$element instanceof ServerResponseModel) {
+            throw new \Exception(sprintf('Class "%s" must implement interface: "%s"',
+                get_class($element),
+                ServerResponseModel::class
+            ));
         }
 
         return $element;

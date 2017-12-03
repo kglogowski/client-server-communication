@@ -2,6 +2,7 @@
 
 namespace CSC\Model\Interfaces;
 
+use CSC\Model\UserAccessToken;
 use CSC\Protocol\Rest\Auth\Interfaces\TokenKeyAware;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
@@ -18,6 +19,30 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
         STATUS_BLOCKED = 'BLOCKED',
         STATUS_ACTIVE = 'ACTIVE'
     ;
+
+    /**
+     * @return bool
+     */
+    public function hasId(): bool;
+
+    /**
+     * @param int $id
+     *
+     * @return UserInterface
+     */
+    public function setId(int $id): UserInterface;
+
+    /**
+     * @return string
+     */
+    public function getLogin(): string;
+
+    /**
+     * @param string $login
+     *
+     * @return UserInterface
+     */
+    public function setLogin(string $login): UserInterface;
 
     /**
      * @return string
@@ -89,4 +114,69 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
      * @return UserInterface
      */
     public function removeLinkToken(LinkToken $linkToken): UserInterface;
+
+    /**
+     * @return Collection|RoleInterface[]
+     */
+    public function getRoles(): Collection;
+
+    /**
+     * @return string|null
+     */
+    public function getPlainPassword();
+
+    /**
+     * @param string $password
+     *
+     * @return UserInterface
+     */
+    public function setPassword(string $password): UserInterface;
+
+    /**
+     * @param string|null $plainPassword
+     *
+     * @return UserInterface
+     */
+    public function setPlainPassword($plainPassword): UserInterface;
+
+    /**
+     * @param string $salt
+     *
+     * @return UserInterface
+     */
+    public function setSalt(string $salt): UserInterface;
+
+    /**
+     * @param string $plainPassword
+     *
+     * @return UserInterface
+     */
+    public function setupUserPassword(string $plainPassword): UserInterface;
+
+    /**
+     * @return null
+     */
+    public function getNullPassword();
+
+    /**
+     * @return string
+     */
+    public function regenerateSalt(): string;
+
+    /**
+     * @return UserAccessToken
+     */
+    public function getAccessToken(): UserAccessToken;
+
+    /**
+     * @return bool
+     */
+    public function hasAccessToken(): bool;
+
+    /**
+     * @param UserAccessToken|object $accessToken
+     *
+     * @return UserInterface
+     */
+    public function setAccessToken($accessToken): UserInterface;
 }

@@ -11,7 +11,7 @@ use CSC\Server\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use CSC\Protocol\Rest\Auth\Model\User as BaseUser;
+use CSC\Model\User as BaseUser;
 
 /**
  * Class RestClearTokenResponseProcessor

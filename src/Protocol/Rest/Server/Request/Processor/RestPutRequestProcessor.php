@@ -10,6 +10,7 @@ use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
 use CSC\Protocol\Rest\Server\Response\Factory\RestResponseModelFactory;
 use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Server\Response\Model\ServerResponseModel;
 
 /**
  * Class RestPutRequestProcessor
@@ -81,14 +82,16 @@ class RestPutRequestProcessor extends AbstractRestRequestProcessor
     }
 
     /**
-     * @param object               $object
+     * @param ServerResponseModel  $object
      * @param RestSimpleDataObject $dataObject
      *
      * @throws ServerRequestException
      */
-    public function processObject($object, RestSimpleDataObject $dataObject): void
+    public function processObject(ServerResponseModel $object, RestSimpleDataObject $dataObject): void
     {
         $this->validateExternalObject($object, $dataObject);
+
+        $this->checkVoters($dataObject->getVoters(), $object);
 
         $object = $this->mergeSimpleExecutor->execute($object);
 
