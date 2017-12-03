@@ -5,8 +5,8 @@
 
     <services>
         <!--General-->
-        <service id="csc.checker.query_parameter" class="CSC\Component\Checker\QueryParameterChecker">
-        </service>
+        <service id="csc.checker.query_parameter" class="CSC\Component\Checker\QueryParameterChecker" />
+        <service id="csc.checker.security" class="CSC\Component\Checker\SecurityChecker" parent="security.authorization_checker" />
 
         <!--Rest-->
         <service id="csc.rest.checker.insertable" class="CSC\Protocol\Rest\Server\Checker\InsertableChecker">

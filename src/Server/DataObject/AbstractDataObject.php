@@ -27,6 +27,11 @@ abstract class AbstractDataObject implements DataObject
     protected $validationGroups = [];
 
     /**
+     * @var array
+     */
+    protected $voters = [];
+
+    /**
      * @return bool
      */
     public function isAsync(): bool
@@ -94,5 +99,23 @@ abstract class AbstractDataObject implements DataObject
         $this->validationGroups[] = $validationGroup;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addEntityVoter(string $voter): DataObject
+    {
+        $this->voters[] = $voter;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEntityVoters(): array
+    {
+        return $this->voters;
     }
 }

@@ -36,5 +36,7 @@ class PasswordEncoder extends BasePasswordEncoder
         if ($this->isPasswordTooLong($raw)) {
             return false;
         }
+
+        return true;
     }
 }

@@ -47,4 +47,36 @@ class RestDataObjectManager
 
         return $this->responseProcessor->process($dataObject);
     }
+
+    /**
+     * @return RestRequestProcessor
+     */
+    public function getRequestProcessor(): RestRequestProcessor
+    {
+        return $this->requestProcessor;
+    }
+
+    /**
+     * @param RestRequestProcessor $requestProcessor
+     */
+    public function setRequestProcessor(RestRequestProcessor $requestProcessor)
+    {
+        $this->requestProcessor = $requestProcessor;
+    }
+
+    /**
+     * @return ServerResponseProcessor
+     */
+    public function getResponseProcessor(): ServerResponseProcessor
+    {
+        return $this->responseProcessor;
+    }
+
+    /**
+     * @param ServerResponseProcessor $responseProcessor
+     */
+    public function setResponseProcessor(ServerResponseProcessor $responseProcessor)
+    {
+        $this->responseProcessor = $responseProcessor;
+    }
 }

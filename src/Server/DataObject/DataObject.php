@@ -48,4 +48,16 @@ interface DataObject
      * @return DataObject
      */
     public function setValidationGroups(array $validationGroups): DataObject;
+
+    /**
+     * @param string $voter
+     *
+     * @return DataObject
+     */
+    public function addEntityVoter(string $voter): DataObject;
+
+    /**
+     * @return array
+     */
+    public function getEntityVoters(): array;
 }

@@ -2,9 +2,11 @@
 
 namespace CSC\Server\Request\Processor;
 
+use CSC\Component\Checker\SecurityChecker;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ValidationServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
+use CSC\Server\Response\Model\ServerResponseModel;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -31,6 +33,11 @@ abstract class AbstractServerRequestProcessor
      * @var Logger
      */
     protected $logger;
+
+    /**
+     * @var SecurityChecker
+     */
+    protected $securityChecker;
 
     /**
      * @param RequestStack $requestStack
@@ -88,5 +95,41 @@ abstract class AbstractServerRequestProcessor
     public function setLogger(Logger $logger)
     {
         $this->logger = $logger;
+    }
+
+    /**
+     * @param SecurityChecker $securityChecker
+     */
+    public function setSecurityChecker(SecurityChecker $securityChecker)
+    {
+        $this->securityChecker = $securityChecker;
+    }
+
+    /**
+     * @return SecurityChecker
+     */
+    protected function getSecurityChecker(): SecurityChecker
+    {
+        return $this->securityChecker;
+    }
+
+    /**
+     * @param array               $voters
+     * @param ServerResponseModel $object
+     */
+    protected function checkVoters(array $voters, ServerResponseModel $object)
+    {
+        foreach ($voters as $voter) {
+            $this->checkVoter($voter, $object);
+        }
+    }
+
+    /**
+     * @param string              $voter
+     * @param ServerResponseModel $object
+     */
+    protected function checkVoter(string $voter, ServerResponseModel $object)
+    {
+        $this->getSecurityChecker()->denyAccessUnlessGranted($voter, $object);
     }
 }
