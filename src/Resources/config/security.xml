@@ -81,5 +81,11 @@
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="csc.entity_manager.provider"/>
         </service>
+
+        <service id="csc.voter.abstract" class="CSC\Protocol\Rest\Auth\Security\Voter\AbstractVoter" abstract="true">
+            <call method="setEntityManager">
+                <argument type="service" id="csc.entity_manager.provider" />
+            </call>
+        </service>
     </services>
 </container>
