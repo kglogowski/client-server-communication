@@ -34,7 +34,7 @@ abstract class UserAccessTokenRepository extends EntityRepository implements Use
     /**
      * {@inheritdoc}
      */
-    public function findOneByUserAndValidDateAndType(UserInterface $user, $type)
+    public function findOneByUserAndValidDate(UserInterface $user)
     {
         $queryBuilder = $this->getBaseQuery();
         $this->joinWithUser($queryBuilder);
