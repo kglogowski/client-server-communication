@@ -116,9 +116,9 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
     public function removeLinkToken(LinkToken $linkToken): UserInterface;
 
     /**
-     * @return Collection|RoleInterface[]
+     * @return RoleInterface[]
      */
-    public function getRoles(): Collection;
+    public function getRoles(): array;
 
     /**
      * @return string|null
@@ -145,13 +145,6 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
      * @return UserInterface
      */
     public function setSalt(string $salt): UserInterface;
-
-    /**
-     * @param string $plainPassword
-     *
-     * @return UserInterface
-     */
-    public function setupUserPassword(string $plainPassword): UserInterface;
 
     /**
      * @return null

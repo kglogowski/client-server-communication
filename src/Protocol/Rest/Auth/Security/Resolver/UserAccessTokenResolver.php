@@ -58,10 +58,6 @@ class UserAccessTokenResolver implements UserAccessTokenResolverInterface
             $data = $this->getData($userAccessToken->getUser());
             $data['username'] = $userAccessToken->getUser()->getUsername();
 
-            if ($userAccessToken->getType()) {
-                $data['type'] = $userAccessToken->getType();
-            }
-
             $this->tokenGenerator->setData($data);
 
             $userAccessToken->setToken($this->tokenGenerator->generateToken());

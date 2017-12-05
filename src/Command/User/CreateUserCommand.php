@@ -85,7 +85,7 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         $user
             ->setLogin($login)
             ->setEmail($email)
-            ->setupUserPassword($password)
+            ->setPlainPassword($password)
             ->setStatus($status)
         ;
 

@@ -249,6 +249,8 @@ abstract class User implements UserInterface
     public function setPlainPassword($plainPassword): UserInterface
     {
         $this->plainPassword = $plainPassword;
+        $this->password = (new PasswordEncoder())->encodePassword($plainPassword, $this->getSalt());
+        $this->setPasswordDate(new \DateTime());
 
         return $this;
     }
@@ -261,20 +263,6 @@ abstract class User implements UserInterface
     public function setSalt(string $salt): UserInterface
     {
         $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * @param string $plainPassword
-     *
-     * @return UserInterface
-     */
-    public function setupUserPassword(string $plainPassword): UserInterface
-    {
-        $this->plainPassword = $plainPassword;
-        $this->password = (new PasswordEncoder())->encodePassword($plainPassword, $this->getSalt());
-        $this->setPasswordDate(new \DateTime());
 
         return $this;
     }
@@ -482,13 +470,13 @@ abstract class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getRoles(): Collection
+    public function getRoles(): array
     {
         if (!$this->roles instanceof Collection) {
             $this->roles = new ArrayCollection();
         }
 
-        return $this->roles;
+        return $this->roles->toArray();
     }
 
     /**
