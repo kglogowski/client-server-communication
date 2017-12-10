@@ -75,7 +75,10 @@ abstract class AbstractServerRequestProcessor
         $intersectValidationGroups = array_intersect($validationGroups, $supportedValidationGroups);
 
         if (count($validationGroups) !== count($intersectValidationGroups)) {
-            throw new \InvalidArgumentException('Model "%s" contains not supported validation groups', get_class($model));
+            throw new \InvalidArgumentException(sprintf(
+                'Model "%s" contains not supported validation groups',
+                get_class($model)
+            ));
         }
 
         $validateResponse = $this->validator->validate($model, null, $validationGroups);
