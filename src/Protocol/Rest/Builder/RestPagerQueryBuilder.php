@@ -151,12 +151,16 @@ class RestPagerQueryBuilder
     /**
      * @param QueryFilterModel $filterModel
      * @param string|null      $alias
+     * @param bool             $isManual
      *
      * @return RestPagerQueryBuilder
      */
-    public function addFilter(QueryFilterModel $filterModel, $alias = null): RestPagerQueryBuilder
+    public function addFilter(QueryFilterModel $filterModel, string $alias = null, bool $isManual = false): RestPagerQueryBuilder
     {
-        $this->checker->checkFilterParameter($filterModel, $this->supportFilterParameters);
+        if (false === $isManual) {
+            $this->checker->checkFilterParameter($filterModel, $this->supportFilterParameters);
+        }
+
         $this->filterBuilder->modernize($this->queryBuilder, $filterModel, $alias);
 
         return $this;
@@ -178,14 +182,18 @@ class RestPagerQueryBuilder
     }
 
     /**
-     * @param SortModel   $sortModel
-     * @param string|null $alias
+     * @param SortModel $sortModel
+     * @param null      $alias
+     * @param bool      $isManual
      *
      * @return RestPagerQueryBuilder
      */
-    public function addSort(SortModel $sortModel, $alias = null): RestPagerQueryBuilder
+    public function addSort(SortModel $sortModel, $alias = null, bool $isManual = false): RestPagerQueryBuilder
     {
-        $this->checker->checkSortParameter($sortModel, $this->supportSortParameters);
+        if (false === $isManual) {
+            $this->checker->checkSortParameter($sortModel, $this->supportSortParameters);
+        }
+
         $sortColumn = Inflector::camelize($sortModel->getField());
 
         if (null !== $alias) {
