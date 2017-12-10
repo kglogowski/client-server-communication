@@ -70,7 +70,10 @@ class RestPutRequestProcessor extends AbstractRestRequestProcessor
     {
         $this->checker->check($dataObject);
 
-        $object = $this->deserialize($dataObject->getFields(), $dataObject->getEntityName());
+        $changesObject = $this->deserialize($dataObject->getFields(), $dataObject->getEntityName());
+
+        /** @var ServerResponseModel $object */
+        $object = $this->patchExecutor->resolve($changesObject, $dataObject);
 
         if ($object instanceof EntityInitializer) {
             $object->initialize();

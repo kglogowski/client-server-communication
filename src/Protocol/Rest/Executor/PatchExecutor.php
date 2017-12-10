@@ -3,10 +3,13 @@
 namespace CSC\Protocol\Rest\Executor;
 
 use CSC\Component\Executor\AbstractDoctrineExecutor;
+use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
+use CSC\Protocol\Rest\Server\Provider\RestGetElementProvider;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
+use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Util\Inflector;
 
@@ -18,39 +21,34 @@ use Doctrine\Common\Util\Inflector;
 class PatchExecutor extends AbstractDoctrineExecutor
 {
     /**
-     * @param object               $changesObject
-     * @param RestSimpleDataObject $dataObject
-     *
-     * @return object
+     * @var RestGetElementProvider
      */
-    public function resolve($changesObject, RestSimpleDataObject $dataObject)
+    protected $provider;
+
+    /**
+     * PatchExecutor constructor.
+     *
+     * @param EntityManagerProvider  $entityManagerProvider
+     * @param RestGetElementProvider $provider
+     */
+    public function __construct(EntityManagerProvider $entityManagerProvider, RestGetElementProvider $provider)
     {
-        $object = $this->findObject($dataObject);
+        $this->provider = $provider;
 
-        $this->fillObject($object, $changesObject, json_decode($dataObject->getFields(), true));
-
-        return $object;
+        parent::__construct($entityManagerProvider);
     }
 
     /**
+     * @param object               $changesObject
      * @param RestSimpleDataObject $dataObject
      *
-     * @return object
-     *
-     * @throws ServerRequestException
+     * @return ServerResponseModel
      */
-    public function findObject(RestSimpleDataObject $dataObject)
+    public function resolve($changesObject, RestSimpleDataObject $dataObject): ServerResponseModel
     {
-        $repository = $this->getEntityManager()->getRepository($dataObject->getEntityName());
+        $object = $this->provider->getElement($dataObject);
 
-        $object = $repository->findOneBy($dataObject->getRoutingQuery());
-
-        if (null === $object) {
-            throw new ServerRequestException(
-                ServerException::ERROR_TYPE_RESOURCE_NOT_FOUND,
-                TranslateDictionary::KEY_PARAMETER_DOES_NOT_EXIST
-            );
-        }
+        $this->fillObject($object, $changesObject, json_decode($dataObject->getFields(), true));
 
         return $object;
     }

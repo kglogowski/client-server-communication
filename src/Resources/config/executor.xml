@@ -17,6 +17,7 @@
         <!--Rest-->
         <service id="csc.executor.patch" class="CSC\Protocol\Rest\Executor\PatchExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
+            <argument type="service" id="csc.rest.provider.get_element" />
         </service>
     </services>
 </container>
