@@ -18,6 +18,7 @@ interface RestDataObject extends DataObject, EntityNameAware
     const
         POST    = 'Post',
         PATCH   = 'Patch',
+        PUT     = 'Put',
         GET     = 'Get',
         DELETE  = 'Delete',
         ANY     = 'Any',
