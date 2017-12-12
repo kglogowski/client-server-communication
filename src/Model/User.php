@@ -472,11 +472,19 @@ abstract class User implements UserInterface
      */
     public function getRoles(): array
     {
+        return $this->getRolesAsCollection()->toArray();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRolesAsCollection(): Collection
+    {
         if (!$this->roles instanceof Collection) {
             $this->roles = new ArrayCollection();
         }
 
-        return $this->roles->toArray();
+        return $this->roles;
     }
 
     /**
@@ -498,7 +506,7 @@ abstract class User implements UserInterface
      */
     public function addRole(RoleInterface $role): UserInterface
     {
-        $this->roles->add($role);
+        $this->getRolesAsCollection()->add($role);
 
         return $this;
     }
@@ -510,7 +518,7 @@ abstract class User implements UserInterface
      */
     public function removeRole(RoleInterface $role): UserInterface
     {
-        $this->roles->removeElement($role);
+        $this->getRolesAsCollection()->removeElement($role);
 
         return $this;
     }
