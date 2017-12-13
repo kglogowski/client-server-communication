@@ -121,6 +121,11 @@ interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAcce
     public function getRoles(): array;
 
     /**
+     * @return Collection|RoleInterface[]
+     */
+    public function getRolesAsCollection(): Collection;
+
+    /**
      * @return string|null
      */
     public function getPlainPassword();
