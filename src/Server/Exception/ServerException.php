@@ -44,6 +44,16 @@ class ServerException extends \Exception implements HttpExceptionInterface, Norm
     const ERROR_TYPE_BUSY = 'busy_failed';
 
     /**
+     * No active element
+     */
+    const ERROR_NO_ACTIVE = 'no_active';
+
+    /**
+     * Expired
+     */
+    const ERROR_EXPIRED = 'expired';
+
+    /**
      * General error
      */
     const ERROR_SYSTEM_ERROR = 'system_error';

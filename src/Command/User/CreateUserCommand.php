@@ -3,6 +3,8 @@
 namespace CSC\Command\User;
 
 use CSC\Model\Interfaces\UserInterface;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -62,7 +64,7 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         $this->helper = $this->getHelper('question');
         $em = $this->getContainer()->get('csc.entity_manager.provider')->getEntityManager();
 
-        $entity = $this->question('Please enter the path to the entity: ', 'AppBundle\Entity\User\User');
+        $entity = $this->getEntityName();
 
         try {
             /** @var UserInterface $user */
@@ -71,6 +73,25 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
             throw new \Exception("Entity does not exist");
         }
 
+        $this->update($user, $em);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getEntityName(): string
+    {
+        return $this->question('Please enter the path to the entity: ', 'AppBundle\Entity\User\User');
+    }
+
+    /**
+     * @param UserInterface          $user
+     * @param EntityManagerInterface $em
+     *
+     * @throws \Exception
+     */
+    protected function update(UserInterface $user, EntityManagerInterface $em)
+    {
         $login = $this->question('Login: ', 'admin');
         $email = $this->question('Email: ', 'email@email.com');
         $password = $this->question('Password: ', 'admin');
@@ -99,7 +120,13 @@ class CreateUserCommand extends Command implements ContainerAwareInterface
         }
     }
 
-    private function question(string $message, $default)
+    /**
+     * @param string $message
+     * @param        $default
+     *
+     * @return string
+     */
+    protected function question(string $message, $default): string
     {
         $question = new Question($message, $default);
 

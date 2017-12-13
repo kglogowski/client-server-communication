@@ -52,7 +52,8 @@ class CSCExtension extends Extension
         $container->setParameter('csc.configuration', [
             Configuration::INDEX_TOKEN_LIFETIME => $config[Configuration::INDEX_TOKEN_LIFETIME],
             Configuration::INDEX_TOKEN_SECRET => $config[Configuration::INDEX_TOKEN_SECRET],
-            Configuration::INDEX_USE_SSO => $config[Configuration::INDEX_USE_SSO]
+            Configuration::INDEX_USE_SSO => $config[Configuration::INDEX_USE_SSO],
+            Configuration::INDEX_LINK_TOKEN_LIFETIME => $config[Configuration::INDEX_LINK_TOKEN_LIFETIME],
         ]);
 
         $container->setParameter('csc.pager_data_object', $config['pager_data_object']);

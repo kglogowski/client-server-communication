@@ -34,22 +34,39 @@ class RestGetElementProvider
 
     /**
      * @param RestDataObject $dataObject
+     * @param string|null    $alias
      *
      * @return ServerResponseModel
-     *
-     * @throws \Exception
-     * @throws ServerRequestException
      */
-    public function getElement(RestDataObject $dataObject): ServerResponseModel
+    public function getElement(RestDataObject $dataObject, ?string $alias = null): ServerResponseModel
     {
-        $repository = $this->em->getRepository($dataObject->getEntityName());
+        return $this->getElementByParameters(
+            $dataObject->getEntityName(),
+            $dataObject->getRoutingQuery(),
+            $alias
+        );
+    }
 
-        $element = $repository->findOneBy($dataObject->getRoutingQuery());
+    /**
+     * @param string      $entityName
+     * @param array       $parameters
+     * @param string|null $alias
+     *
+     * @return ServerResponseModel
+     * @throws ServerRequestException
+     * @throws \Exception
+     */
+    public function getElementByParameters(string $entityName, array $parameters, ?string $alias = null): ServerResponseModel
+    {
+        $repository = $this->em->getRepository($entityName);
+
+        $element = $repository->findOneBy($parameters);
 
         if (null === $element) {
             throw new ServerRequestException(
                 ServerException::ERROR_TYPE_RESOURCE_NOT_FOUND,
-                TranslateDictionary::KEY_ELEMENT_DOES_NOT_EXIST
+                TranslateDictionary::KEY_ELEMENT_DOES_NOT_EXIST,
+                $alias
             );
         }
 

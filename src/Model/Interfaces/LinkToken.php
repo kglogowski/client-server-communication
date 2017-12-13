@@ -16,6 +16,11 @@ interface LinkToken extends ExternalAccessibleEntity
     const INDEX_SEARCH_TOKEN = 'hash';
 
     /**
+     * @return \DateTimeInterface|null
+     */
+    public function getCreatedAt(): ?\DateTimeInterface;
+
+    /**
      * @return UserInterface
      */
     public function getUser(): UserInterface;

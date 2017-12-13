@@ -8,5 +8,12 @@
         <service id="csc.rest.generator.exception_response" class="CSC\Protocol\Rest\Server\Response\Generator\RestExceptionResponseGenerator">
             <argument type="service" id="csc.normalizer.exception" />
         </service>
+
+        <!--Rest-->
+        <service id="csc.rest.generator.link_token" class="CSC\Protocol\Rest\Component\Generator\LinkTokenGenerator">
+            <call method="setEntityManager">
+                <argument type="service" id="csc.entity_manager.provider" />
+            </call>
+        </service>
     </services>
 </container>

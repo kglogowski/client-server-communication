@@ -19,9 +19,10 @@ class Configuration implements ConfigurationInterface
     const SIMPLE_DATA_OBJECT_INSERTABLE_KEY = 'insertable_fields';
 
     const
-        INDEX_TOKEN_LIFETIME = 'token_lifetime',
-        INDEX_TOKEN_SECRET   = 'token_secret',
-        INDEX_USE_SSO        = 'use_sso'
+        INDEX_TOKEN_LIFETIME        = 'token_lifetime',
+        INDEX_TOKEN_SECRET          = 'token_secret',
+        INDEX_USE_SSO               = 'use_sso',
+        INDEX_LINK_TOKEN_LIFETIME   = 'link_token_lifetime'
     ;
 
     /**
@@ -34,6 +35,10 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('csc');
 
         $rootNode
+            ->children()
+                ->integerNode(self::INDEX_LINK_TOKEN_LIFETIME)->defaultValue(3600)
+                ->end()
+            ->end()
             ->children()
                 ->integerNode(self::INDEX_TOKEN_LIFETIME)
                 ->end()

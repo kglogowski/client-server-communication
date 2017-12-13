@@ -30,5 +30,10 @@
         <service id="csc.rest.provider.get_element" class="CSC\Protocol\Rest\Server\Provider\RestGetElementProvider">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
+        <service id="csc.rest.provider.link_token" class="CSC\Protocol\Rest\Component\Provider\LinkTokenProvider">
+            <argument>%csc.configuration%</argument>
+            <argument type="service" id="csc.rest.provider.get_element" />
+            <argument type="service" id="csc.entity_manager.provider" />
+        </service>
     </services>
 </container>

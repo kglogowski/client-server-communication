@@ -25,7 +25,7 @@ trait CreatedAtTrait
     /**
      * @return \DateTimeInterface|null
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         try {
             return DateTimeImmutableStaticFactory::create($this->createdAt);
