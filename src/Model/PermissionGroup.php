@@ -5,6 +5,7 @@ namespace CSC\Model;
 use CSC\Model\Interfaces\PermissionGroupInterface;
 use CSC\Model\Interfaces\PermissionInterface;
 use CSC\Model\Traits\ResponseModelTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -77,6 +78,10 @@ abstract class PermissionGroup implements PermissionGroupInterface
      */
     public function getPermissions(): Collection
     {
+        if (!$this->permissions instanceof Collection) {
+            $this->permissions = new ArrayCollection();
+        }
+
         return $this->permissions;
     }
 
@@ -85,7 +90,7 @@ abstract class PermissionGroup implements PermissionGroupInterface
      */
     public function addPermission(PermissionInterface $permission): PermissionGroupInterface
     {
-        $this->permissions->add($permission);
+        $this->getPermissions()->add($permission);
 
         return $this;
     }
@@ -95,7 +100,7 @@ abstract class PermissionGroup implements PermissionGroupInterface
      */
     public function removePermission(PermissionInterface $permission): PermissionGroupInterface
     {
-        $this->permissions->removeElement($permission);
+        $this->getPermissions()->removeElement($permission);
 
         return $this;
     }
