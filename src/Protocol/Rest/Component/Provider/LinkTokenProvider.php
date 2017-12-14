@@ -81,7 +81,7 @@ class LinkTokenProvider
             throw new ServerRequestException(ServerException::ERROR_NO_ACTIVE);
         }
 
-        $tokenTime = $token->getCreatedAt()->getTimestamp() + $this->lifetime < time();
+        $tokenTime = $token->getCreatedAt()->getTimestamp() + $this->lifetime;
 
         if ($tokenTime < time()) {
             $token->setStatus(LinkToken::STATUS_EXPIRED);
@@ -91,6 +91,16 @@ class LinkTokenProvider
         }
 
         return $token;
+    }
+
+    /**
+     * @param LinkToken $token
+     */
+    public function clearToken(LinkToken $token): void
+    {
+        $token->setStatus(LinkToken::STATUS_EXPIRED);
+
+        $this->entityManager->flush($token);
     }
 
     /**
