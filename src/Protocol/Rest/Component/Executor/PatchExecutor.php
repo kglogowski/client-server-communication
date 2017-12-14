@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Executor;
+namespace CSC\Protocol\Rest\Component\Executor;
 
 use CSC\Component\Executor\AbstractDoctrineExecutor;
 use CSC\Component\Provider\EntityManagerProvider;

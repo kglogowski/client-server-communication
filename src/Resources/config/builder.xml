@@ -9,7 +9,7 @@
         </service>
 
         <!--Rest-->
-        <service id="csc.rest.builder.pager_query" class="CSC\Protocol\Rest\Builder\RestPagerQueryBuilder">
+        <service id="csc.rest.builder.pager_query" class="CSC\Protocol\Rest\Component\Builder\RestPagerQueryBuilder">
             <argument type="service" id="csc.builder.filter" />
             <argument type="service" id="csc.checker.query_parameter" />
         </service>

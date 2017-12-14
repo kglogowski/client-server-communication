@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Protocol\Rest\Builder;
+namespace CSC\Protocol\Rest\Component\Builder;
 
 use CSC\Component\Checker\QueryParameterChecker;
 use CSC\Component\Builder\QueryFilterBuilder;

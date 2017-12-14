@@ -4,7 +4,7 @@ namespace CSC\Protocol\Rest\Server\Request\Processor;
 
 use CSC\Component\Executor\MergeExecutor;
 use CSC\Model\Interfaces\EntityInitializer;
-use CSC\Protocol\Rest\Executor\PatchExecutor;
+use CSC\Protocol\Rest\Component\Executor\PatchExecutor;
 use CSC\Protocol\Rest\Server\Checker\UpdatableChecker;
 use CSC\Protocol\Rest\Server\DataObject\RestDataObject;
 use CSC\Protocol\Rest\Server\DataObject\RestSimpleDataObject;
