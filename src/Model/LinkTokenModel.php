@@ -5,6 +5,7 @@ namespace CSC\Model;
 use CSC\Model\Interfaces\LinkToken;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\Traits\CreatedAtTrait;
+use CSC\Model\Traits\UpdateTimestampsTrait;
 
 /**
  * Class LinkTokenModel
@@ -12,6 +13,7 @@ use CSC\Model\Traits\CreatedAtTrait;
 abstract class LinkTokenModel implements LinkToken
 {
     use CreatedAtTrait;
+    use UpdateTimestampsTrait;
 
     /**
      * @var integer
