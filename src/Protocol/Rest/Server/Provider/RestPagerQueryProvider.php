@@ -4,8 +4,8 @@ namespace CSC\Protocol\Rest\Server\Provider;
 
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Protocol\Rest\Auth\Interfaces\GuardUserAware;
-use CSC\Protocol\Rest\Builder\PagerQueryBuilderAware;
-use CSC\Protocol\Rest\Builder\RestPagerQueryBuilder;
+use CSC\Protocol\Rest\Component\Builder\PagerQueryBuilderAware;
+use CSC\Protocol\Rest\Component\Builder\RestPagerQueryBuilder;
 use CSC\Protocol\Rest\Server\DataObject\RestPagerDataObject;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Provider\UserProvider;

@@ -46,9 +46,11 @@ class LinkTokenGenerator
     protected $entityName;
 
     /**
-     * generate
+     * @param bool $save
+     *
+     * @return LinkToken
      */
-    public function generate()
+    public function generate(bool $save = true)
     {
         $entity = $this->getEntityName();
 
@@ -65,6 +67,11 @@ class LinkTokenGenerator
             ->setUser($this->getUser())
             ->setToken($this->getUniqueToken())
         ;
+
+        if (true === $save) {
+            $this->entityManager->persist($token);
+            $this->entityManager->flush($token);
+        }
 
         return $token;
     }
