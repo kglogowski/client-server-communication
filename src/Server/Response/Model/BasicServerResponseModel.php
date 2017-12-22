@@ -2,6 +2,8 @@
 
 namespace CSC\Server\Response\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class AbstractServerResponseModel
  *
