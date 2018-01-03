@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 abstract class TokenAuthenticator extends AbstractUserAuthenticator
 {
-    const TOKEN_HEADER_NAME = 'Authorization';
+    const TOKEN_HEADER_NAME = 'X-AUTH-TOKEN';
     const TYPE_HEADER_NAME = 'Type-token';
 
     /**
