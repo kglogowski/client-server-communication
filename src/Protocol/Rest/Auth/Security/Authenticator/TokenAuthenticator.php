@@ -13,8 +13,11 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 abstract class TokenAuthenticator extends AbstractUserAuthenticator
 {
-    const TOKEN_HEADER_NAME = 'X-AUTH-TOKEN';
+    const TOKEN_HEADER_NAME = 'Authorization';
     const TYPE_HEADER_NAME = 'Type-token';
+
+    const TOKEN_TYPE_BEARER = 'Bearer';
+    const TOKEN_TYPE_BASIC = 'Basic';
 
     /**
      * {@inheritdoc}
@@ -26,6 +29,7 @@ abstract class TokenAuthenticator extends AbstractUserAuthenticator
         }
 
         $token = $request->headers->get(static::TOKEN_HEADER_NAME);
+        list($token) = sscanf($token, $this->getTokenType() . ' %s');
 
         if (null === $token) {
             return null;
@@ -60,5 +64,13 @@ abstract class TokenAuthenticator extends AbstractUserAuthenticator
     public function checkCredentials($credentials, UserInterface $user): bool
     {
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTokenType(): string
+    {
+        return self::TOKEN_TYPE_BEARER;
     }
 }
