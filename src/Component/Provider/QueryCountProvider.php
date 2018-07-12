@@ -11,7 +11,7 @@ use Doctrine\ORM\Query;
  */
 class QueryCountProvider
 {
-    const COUNT_ITEMS_QUERY_REPLACE_FROM = '/SELECT (.+) FROM/';
+    const COUNT_ITEMS_QUERY_REPLACE_FROM = '/SELECT ([A-z0-9]+).+ FROM/';
     const COUNT_ITEMS_QUERY_REPLACE_TO = 'SELECT COUNT(DISTINCT $1) FROM';
 
     const ORDER_BY_ITEMS_QUERY_REPLACE_FROM = '/ORDER BY.*/';
