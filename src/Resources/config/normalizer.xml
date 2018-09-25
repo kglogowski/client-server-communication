@@ -7,7 +7,7 @@
         <!--General-->
         <service id="csc.normalizer.exception" class="CSC\Component\Normalizer\ExceptionNormalizer">
         </service>
-        <!--Rest-->
+        <!---->
         <service id="csc.normalizer.http_exception" class="CSC\Component\Normalizer\HttpExceptionNormalizer">
         </service>
     </services>

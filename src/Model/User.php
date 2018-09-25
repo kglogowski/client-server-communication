@@ -11,7 +11,7 @@ use CSC\Model\Traits\PasswordDateTrait;
 use CSC\Model\Traits\ResponseModelTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
-use CSC\Protocol\Rest\Auth\Security\Encoder\PasswordEncoder;
+use CSC\Auth\Security\Encoder\PasswordEncoder;
 use CSC\Server\Exception\ServerException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

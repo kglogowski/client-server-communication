@@ -5,30 +5,30 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="csc.rest.security.encoder.password" class="CSC\Protocol\Rest\Auth\Security\Encoder\PasswordEncoder"/>
+        <service id="csc.security.encoder.password" class="CSC\Auth\Security\Encoder\PasswordEncoder"/>
 
-        <service id="csc.rest.security.provider.token_user" class="CSC\Protocol\Rest\Auth\Security\Provider\TokenUserProvider" abstract="true">
+        <service id="csc.security.provider.token_user" class="CSC\Auth\Security\Provider\TokenUserProvider" abstract="true">
             <argument type="service" id="csc.entity_manager.provider"/>
         </service>
 
-        <service id="csc.rest.security.provider.user_access_token" class="CSC\Protocol\Rest\Auth\Security\Provider\UserAccessTokenProvider">
+        <service id="csc.security.provider.user_access_token" class="CSC\Auth\Security\Provider\UserAccessTokenProvider">
             <argument type="service" id="csc.entity_manager.provider"/>
         </service>
 
-        <service id="csc.rest.security.resolver.user_access_token" class="CSC\Protocol\Rest\Auth\Security\Resolver\UserAccessTokenResolver">
-            <argument type="service" id="csc.rest.security.generator.jwt_user_token_generator"/>
+        <service id="csc.security.resolver.user_access_token" class="CSC\Auth\Security\Resolver\UserAccessTokenResolver">
+            <argument type="service" id="csc.security.generator.jwt_user_token_generator"/>
             <argument>%csc.configuration%</argument>
         </service>
 
-        <service id="csc.rest.security.generator.jwt_user_token_generator" class="CSC\Protocol\Rest\Auth\Security\Generator\JwtUserTokenGenerator">
+        <service id="csc.security.generator.jwt_user_token_generator" class="CSC\Auth\Security\Generator\JwtUserTokenGenerator">
             <argument>%csc.configuration%</argument>
         </service>
 
-        <service id="csc.rest.security.authenticator.user" class="CSC\Protocol\Rest\Auth\Security\Authenticator\AbstractUserAuthenticator" abstract="true">
+        <service id="csc.security.authenticator.user" class="CSC\Auth\Security\Authenticator\AbstractUserAuthenticator" abstract="true">
             <argument type="service" id="jms_serializer"/>
-            <argument type="service" id="csc.rest.security.encoder.password"/>
-            <argument type="service" id="csc.rest.security.provider.user_access_token"/>
-            <argument type="service" id="csc.rest.security.resolver.user_access_token"/>
+            <argument type="service" id="csc.security.encoder.password"/>
+            <argument type="service" id="csc.security.provider.user_access_token"/>
+            <argument type="service" id="csc.security.resolver.user_access_token"/>
             <argument type="service" id="csc.entity_manager.provider"/>
             <argument type="service" id="security.token_storage"/>
             <call method="setLogger">
@@ -36,53 +36,37 @@
             </call>
         </service>
 
-        <service id="csc.rest.security.authenticator.token" class="CSC\Protocol\Rest\Auth\Security\Authenticator\TokenAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true">
+        <service id="csc.security.authenticator.token" class="CSC\Auth\Security\Authenticator\TokenAuthenticator" parent="csc.security.authenticator.user" abstract="true">
             <call method="setTokenChecker">
-                <argument type="service" id="csc.rest.checker.jwt_token" />
+                <argument type="service" id="csc.checker.jwt_token" />
             </call>
         </service>
-        <service id="csc.rest.security.authenticator.sso" class="CSC\Protocol\Rest\Auth\Security\Authenticator\SSOAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true"/>
-        <service id="csc.rest.security.authenticator.credential" class="CSC\Protocol\Rest\Auth\Security\Authenticator\RestCredentialAuthenticator" parent="csc.rest.security.authenticator.user" abstract="true"/>
+        <service id="csc.security.authenticator.sso" class="CSC\Auth\Security\Authenticator\SSOAuthenticator" parent="csc.security.authenticator.user" abstract="true"/>
+        <service id="csc.security.authenticator.credential" class="CSC\Auth\Security\Authenticator\CredentialAuthenticator" parent="csc.security.authenticator.user" abstract="true"/>
 
         <service id="csc.decorator.plain_date_time" class="CSC\Component\Decorator\DateTime\PlainDateTimeDecorator"/>
 
-        <!-- FACTORY -->
-        <service id="csc.rest.security.response.factory.ssocookie.create" class="CSC\Protocol\Rest\Auth\Response\Factory\SSOCookieFactory"/>
-        <service id="csc.rest.security.response.factory.ssocookie.clear" class="CSC\Protocol\Rest\Auth\Response\Factory\SSOClearCookieFactory"/>
-
         <!-- RESOLVER -->
-        <service id="csc.rest.security.response.resolver.token" class="CSC\Protocol\Rest\Auth\Response\Resolver\RestTokenResponseResolver">
+        <service id="csc.security.response.resolver.token" class="CSC\Auth\Response\Resolver\TokenResponseResolver">
             <argument type="service" id="csc.decorator.plain_date_time"/>
         </service>
 
-        <service id="csc.rest.security.response.resolver.ssotoken_create" class="CSC\Protocol\Rest\Auth\Response\Resolver\SSOTokenResponseResolver">
-            <argument>%csc.configuration%</argument>
-            <argument type="service" id="csc.rest.security.response.factory.ssocookie.create"/>
-        </service>
-
-        <service id="csc.rest.security.response.resolver.ssotoken_clear" class="CSC\Protocol\Rest\Auth\Response\Resolver\SSOTokenResponseResolver">
-            <argument>%csc.configuration%</argument>
-            <argument type="service" id="csc.rest.security.response.factory.ssocookie.clear"/>
-        </service>
-
         <!-- PROCESSOR -->
-        <service id="csc.rest.security.response.processor.access_token" class="CSC\Protocol\Rest\Auth\Response\Processor\RestAccessTokenResponseProcessor">
-            <argument type="service" id="csc.rest.security.response.resolver.token"/>
-            <argument type="service" id="csc.rest.security.response.resolver.ssotoken_create"/>
+        <service id="csc.security.response.processor.access_token" class="CSC\Auth\Response\Processor\AccessTokenResponseProcessor">
+            <argument type="service" id="csc.security.response.resolver.token"/>
         </service>
 
-        <service id="csc.rest.security.response.processor.active_user" class="CSC\Protocol\Rest\Auth\Response\Processor\RestActiveUserResponseProcessor">
+        <service id="csc.security.response.processor.active_user" class="CSC\Auth\Response\Processor\ActiveUserResponseProcessor">
             <argument type="service" id="csc.provider.user_provider"/>
             <argument type="service" id="jms_serializer"/>
         </service>
 
-        <service id="csc.rest.security.response.processor.clear_token" class="CSC\Protocol\Rest\Auth\Response\Processor\RestClearTokenResponseProcessor">
-            <argument type="service" id="csc.rest.security.response.resolver.ssotoken_clear"/>
+        <service id="csc.security.response.processor.clear_token" class="CSC\Auth\Response\Processor\ClearTokenResponseProcessor">
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="csc.entity_manager.provider"/>
         </service>
 
-        <service id="csc.voter.abstract" class="CSC\Protocol\Rest\Auth\Security\Voter\AbstractVoter" abstract="true">
+        <service id="csc.voter.abstract" class="CSC\Auth\Security\Voter\AbstractVoter" abstract="true">
             <call method="setEntityManager">
                 <argument type="service" id="csc.entity_manager.provider" />
             </call>

@@ -1,12 +1,12 @@
 user.auth.token:
     path: /token
-    defaults: { _controller: "CSCBundle:RestUser:getToken" }
+    defaults: { _controller: "CSCBundle:User:getToken" }
     methods: [POST]
 user.auth.active_user:
     path: /active-user
-    defaults: { _controller: "CSCBundle:RestUser:getActiveUser" }
+    defaults: { _controller: "CSCBundle:User:getActiveUser" }
     methods: [GET]
 user.auth.clear:
     path: /token-remove
-    defaults: { _controller: "CSCBundle:RestUser:clearToken" }
+    defaults: { _controller: "CSCBundle:User:clearToken" }
     methods: [DELETE]

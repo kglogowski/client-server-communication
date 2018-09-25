@@ -4,11 +4,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!--Rest-->
-        <service id="csc.rest.controller.exception" class="CSC\Protocol\Rest\Controller\RestExceptionController">
-            <argument type="service" id="csc.rest.generator.exception_response" />
-            <argument type="service" id="fos_rest.view_handler" />
-            <argument type="service" id="fos_rest.exception.codes_map" />
+        <!---->
+        <service id="csc.controller.exception" class="CSC\Controller\ExceptionController">
+            <argument type="service" id="csc.generator.exception_response" />
+            <argument type="service" id="fos_view_handler" />
+            <argument type="service" id="fos_exception.codes_map" />
         </service>
     </services>
 </container>

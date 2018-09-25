@@ -4,15 +4,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!--Rest-->
+        <!---->
         <!--Request-->
-        <service id="csc.rest.factory.pager_request_model" class="CSC\Protocol\Rest\Server\Request\Factory\RestPagerRequestModelFactory">
+        <service id="csc.factory.pager_request_model" class="CSC\Server\Request\Factory\PagerRequestModelFactory">
         </service>
-        <service id="csc.rest.factory.plain_pager_request_model" class="CSC\Protocol\Rest\Server\Request\Factory\RestPlainPagerRequestModelFactory">
+        <service id="csc.factory.plain_pager_request_model" class="CSC\Server\Request\Factory\PlainPagerRequestModelFactory">
         </service>
 
         <!--Response-->
-        <service id="csc.rest.factory.response_model" class="CSC\Protocol\Rest\Server\Response\Factory\RestDefaultResponseModelFactory">
+        <service id="csc.factory.response_model" class="CSC\Server\Response\Factory\DefaultResponseModelFactory">
         </service>
     </services>
 </container>

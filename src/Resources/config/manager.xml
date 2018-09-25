@@ -4,17 +4,17 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="csc.rest.data_object_manager.pager" class="CSC\Protocol\Rest\Server\Manager\RestDataObjectManager">
-            <argument type="service" id="csc.rest.request_processor.pager" />
-            <argument type="service" id="csc.rest.response_processor" />
+        <service id="csc.data_object_manager.pager" class="CSC\Server\Manager\DataObjectManager">
+            <argument type="service" id="csc.request_processor.pager" />
+            <argument type="service" id="csc.response_processor" />
         </service>
-        <service id="csc.rest.data_object_manager.plain_pager" class="CSC\Protocol\Rest\Server\Manager\RestDataObjectManager">
-            <argument type="service" id="csc.rest.request_processor.plain_pager" />
-            <argument type="service" id="csc.rest.response_processor" />
+        <service id="csc.data_object_manager.plain_pager" class="CSC\Server\Manager\DataObjectManager">
+            <argument type="service" id="csc.request_processor.plain_pager" />
+            <argument type="service" id="csc.response_processor" />
         </service>
-        <service id="csc.rest.data_object_manager.crud" class="CSC\Protocol\Rest\Server\Manager\RestDataObjectManager">
-            <argument type="service" id="csc.rest.request_processor.crud" />
-            <argument type="service" id="csc.rest.response_processor" />
+        <service id="csc.data_object_manager.crud" class="CSC\Server\Manager\DataObjectManager">
+            <argument type="service" id="csc.request_processor.crud" />
+            <argument type="service" id="csc.response_processor" />
         </service>
     </services>
 </container>

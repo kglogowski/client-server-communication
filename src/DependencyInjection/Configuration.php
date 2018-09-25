@@ -21,7 +21,6 @@ class Configuration implements ConfigurationInterface
     const
         INDEX_TOKEN_LIFETIME        = 'token_lifetime',
         INDEX_TOKEN_SECRET          = 'token_secret',
-        INDEX_USE_SSO               = 'use_sso',
         INDEX_LINK_TOKEN_LIFETIME   = 'link_token_lifetime'
     ;
 
@@ -45,10 +44,6 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->children()
                 ->variableNode(self::INDEX_TOKEN_SECRET)
-                ->end()
-            ->end()
-            ->children()
-                ->booleanNode(self::INDEX_USE_SSO)
                 ->end()
             ->end()
             ->children()

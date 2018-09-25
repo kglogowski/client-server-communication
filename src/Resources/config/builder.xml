@@ -4,14 +4,10 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!--General-->
-        <service id="csc.builder.filter" class="CSC\Component\Builder\QueryFilterBuilder">
-        </service>
-
-        <!--Rest-->
-        <service id="csc.rest.builder.pager_query" class="CSC\Protocol\Rest\Component\Builder\RestPagerQueryBuilder">
-            <argument type="service" id="csc.builder.filter" />
-            <argument type="service" id="csc.checker.query_parameter" />
+        <service id="CSC\Component\Builder\QueryFilterBuilder" />
+        <service id="csc.builder.pager_query" class="CSC\Component\Builder\PagerQueryBuilder">
+            <argument type="service" id="CSC\Component\Builder\QueryFilterBuilder" />
+            <argument type="service" id="CSC\Component\Checker\QueryParameterChecker" />
         </service>
     </services>
 </container>

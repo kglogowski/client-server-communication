@@ -3,7 +3,7 @@
 namespace CSC\Model\Interfaces;
 
 use CSC\Model\UserAccessToken;
-use CSC\Protocol\Rest\Auth\Interfaces\TokenKeyAware;
+use CSC\Auth\Interfaces\TokenKeyAware;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;

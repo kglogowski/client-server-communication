@@ -15,10 +15,10 @@
         <service id="csc.provider.http_success_status" class="CSC\Component\Provider\HttpSuccessStatusProvider">
         </service>
 
-        <!--Rest-->
-        <service id="csc.rest.provider.pager_query" class="CSC\Protocol\Rest\Server\Provider\RestPagerQueryProvider">
+        <!---->
+        <service id="csc.provider.pager_query" class="CSC\Server\Provider\PagerQueryProvider">
             <argument type="service" id="csc.entity_manager.provider" />
-            <argument type="service" id="csc.rest.builder.pager_query" />
+            <argument type="service" id="csc.builder.pager_query" />
             <argument type="service" id="csc.provider.user_provider" />
             <argument>%csc.pager_data_object%</argument>
         </service>
@@ -27,12 +27,12 @@
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </call>
         </service>
-        <service id="csc.rest.provider.get_element" class="CSC\Protocol\Rest\Server\Provider\RestGetElementProvider">
+        <service id="csc.provider.get_element" class="CSC\Server\Provider\GetElementProvider">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.rest.provider.link_token" class="CSC\Protocol\Rest\Component\Provider\LinkTokenProvider">
+        <service id="csc.provider.link_token" class="CSC\Component\Provider\LinkTokenProvider">
             <argument>%csc.configuration%</argument>
-            <argument type="service" id="csc.rest.provider.get_element" />
+            <argument type="service" id="csc.provider.get_element" />
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
     </services>

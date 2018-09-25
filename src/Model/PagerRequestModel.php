@@ -4,7 +4,7 @@ namespace CSC\Model;
 
 use CSC\Server\Exception\ServerException;
 use CSC\Component\Translate\TranslateDictionary;
-use Doctrine\Common\Util\Inflector;
+use Doctrine\Common\Inflector\Inflector;
 use Doctrine\ORM\Query;
 
 /**

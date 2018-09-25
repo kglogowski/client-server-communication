@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="csc.rest.paginator.basic" class="CSC\Protocol\Rest\Server\Request\Paginator\RestBasicPagerPaginator">
+        <service id="csc.paginator.basic" class="CSC\Server\Request\Paginator\BasicPagerPaginator">
             <argument type="service" id="csc.provider.count" />
             <argument type="service" id="csc.provider.query_items" />
         </service>
