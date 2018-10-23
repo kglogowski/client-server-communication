@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Encoder;
+namespace CSC\Component\Auth\Security\Encoder;
 
 /**
  * Class Sha512StaticEncoder

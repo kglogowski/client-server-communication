@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Provider;
+namespace CSC\Component\Auth\Security\Provider;
 
 use CSC\Component\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,10 +1,10 @@
 <?php
 
-namespace CSC\Auth\Response\Processor;
+namespace CSC\Component\Auth\Response\Processor;
 
 use CSC\Model\UserAccessToken;
-use CSC\Auth\Response\Resolver\TokenResponseResolverInterface;
-use CSC\Auth\Security\Authenticator\AbstractUserAuthenticator;
+use CSC\Component\Auth\Response\Resolver\TokenResponseResolverInterface;
+use CSC\Component\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

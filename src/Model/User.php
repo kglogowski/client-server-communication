@@ -11,7 +11,7 @@ use CSC\Model\Traits\PasswordDateTrait;
 use CSC\Model\Traits\ResponseModelTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
-use CSC\Auth\Security\Encoder\PasswordEncoder;
+use CSC\Component\Auth\Security\Encoder\PasswordEncoder;
 use CSC\Server\Exception\ServerException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -433,38 +433,6 @@ abstract class User implements UserInterface
     public function getUsername()
     {
         return $this->login;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isAccountNonExpired()
-    {
-        // TODO: Implement isAccountNonExpired() method.
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isAccountNonLocked()
-    {
-        // TODO: Implement isAccountNonLocked() method.
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isCredentialsNonExpired()
-    {
-        // TODO: Implement isCredentialsNonExpired() method.
-        return true;
-    }
-
-    public function isEnabled()
-    {
-        return self::STATUS_ACTIVE === $this->status;
     }
 
     /**

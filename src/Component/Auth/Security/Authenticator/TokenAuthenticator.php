@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Auth\Security\Authenticator;
+namespace CSC\Component\Auth\Security\Authenticator;
 
-use CSC\Auth\Security\Checker\TokenChecker;
+use CSC\Component\Auth\Security\Checker\TokenChecker;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\UserInterface;

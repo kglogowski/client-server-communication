@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Response\Processor;
+namespace CSC\Component\Auth\Response\Processor;
 
 use CSC\Component\Provider\UserProvider;
 use CSC\Server\DataObject\DataObject;

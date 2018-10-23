@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Voter;
+namespace CSC\Component\Auth\Security\Voter;
 
 use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Model\Interfaces\UserInterface;

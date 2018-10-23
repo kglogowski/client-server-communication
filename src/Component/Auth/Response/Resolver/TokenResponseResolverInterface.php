@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Response\Resolver;
+namespace CSC\Component\Auth\Response\Resolver;
 
 use CSC\Model\UserAccessToken;
 use Symfony\Component\HttpFoundation\Response;

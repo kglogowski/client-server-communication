@@ -4,15 +4,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="csc.data_object_manager.pager" class="CSC\Server\Manager\DataObjectManager">
+        <service id="csc.data_object_manager.pager" class="CSC\Component\Rest\Manager">
             <argument type="service" id="csc.request_processor.pager" />
             <argument type="service" id="csc.response_processor" />
         </service>
-        <service id="csc.data_object_manager.plain_pager" class="CSC\Server\Manager\DataObjectManager">
+        <service id="csc.data_object_manager.plain_pager" class="CSC\Component\Rest\Manager">
             <argument type="service" id="csc.request_processor.plain_pager" />
             <argument type="service" id="csc.response_processor" />
         </service>
-        <service id="csc.data_object_manager.crud" class="CSC\Server\Manager\DataObjectManager">
+        <service id="csc.data_object_manager.crud" class="CSC\Component\Rest\Manager">
             <argument type="service" id="csc.request_processor.crud" />
             <argument type="service" id="csc.response_processor" />
         </service>

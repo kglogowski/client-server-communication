@@ -39,7 +39,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->children()
-                ->integerNode(self::INDEX_TOKEN_LIFETIME)
+                ->integerNode(self::INDEX_TOKEN_LIFETIME)->defaultValue(3600)
                 ->end()
             ->end()
             ->children()

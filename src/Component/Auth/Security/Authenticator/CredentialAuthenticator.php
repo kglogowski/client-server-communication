@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Authenticator;
+namespace CSC\Component\Auth\Security\Authenticator;
 
 use CSC\Model\UserCredentials;
 use Symfony\Component\HttpFoundation\Request;

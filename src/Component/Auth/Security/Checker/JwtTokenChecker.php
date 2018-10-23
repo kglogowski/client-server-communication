@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Checker;
+namespace CSC\Component\Auth\Security\Checker;
 
 use CSC\DependencyInjection\Configuration;
 use Lcobucci\JWT\Parser;

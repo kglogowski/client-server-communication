@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Auth\Response\Processor;
+namespace CSC\Component\Auth\Response\Processor;
 
 use CSC\Component\Provider\EntityManagerProvider;
 use CSC\Component\Translate\TranslateDictionary;
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Auth\Security\Authenticator\AbstractUserAuthenticator;
+use CSC\Component\Auth\Security\Authenticator\AbstractUserAuthenticator;
 use CSC\Server\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Generator;
+namespace CSC\Component\Auth\Security\Generator;
 
 use CSC\DependencyInjection\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha512;

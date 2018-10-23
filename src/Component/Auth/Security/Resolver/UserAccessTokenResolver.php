@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Auth\Security\Resolver;
+namespace CSC\Component\Auth\Security\Resolver;
 
 use CSC\DependencyInjection\Configuration;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\UserAccessToken;
-use CSC\Auth\Security\Generator\JwtUserTokenGenerator;
+use CSC\Component\Auth\Security\Generator\JwtUserTokenGenerator;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 /**

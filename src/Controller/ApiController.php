@@ -4,7 +4,7 @@ namespace CSC\Controller;
 
 use CSC\Server\DataObject\PagerDataObject;
 use CSC\Server\DataObject\SimpleDataObject;
-use CSC\Server\Manager\DataObjectManager;
+use CSC\Component\Rest\Manager;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
@@ -34,9 +34,9 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @return DataObjectManager
+     * @return Manager
      */
-    protected function getPagerDataObjectProcessorManager(): DataObjectManager
+    protected function getPagerDataObjectProcessorManager(): Manager
     {
         return $this->get('csc.data_object_manager.pager');
     }
@@ -72,9 +72,9 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @return DataObjectManager
+     * @return Manager
      */
-    protected function getSimpleDataObjectProcessorManager(): DataObjectManager
+    protected function getSimpleDataObjectProcessorManager(): Manager
     {
         return $this->get('csc.data_object_manager.crud');
     }

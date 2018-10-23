@@ -6,7 +6,7 @@
     <services>
         <!--General-->
         <service id="CSC\Component\Checker\QueryParameterChecker" />
-        <service id="csc.checker.security" class="CSC\Component\Checker\SecurityChecker" parent="security.authorization_checker" />
+        <service id="csc.checker.security" class="CSC\Component\Rest\Request\Checker\SecurityChecker" parent="security.authorization_checker" />
 
         <!---->
         <service id="csc.checker.insertable" class="CSC\Server\Checker\InsertableChecker">
@@ -15,7 +15,7 @@
         <service id="csc.checker.updatable" class="CSC\Server\Checker\UpdatableChecker">
             <argument>%csc.simple_data_object%</argument>
         </service>
-        <service id="csc.checker.jwt_token" class="CSC\Auth\Security\Checker\JwtTokenChecker">
+        <service id="csc.checker.jwt_token" class="CSC\Component\Auth\Security\Checker\JwtTokenChecker">
             <call method="setConfig">
                 <argument>%csc.configuration%</argument>
             </call>

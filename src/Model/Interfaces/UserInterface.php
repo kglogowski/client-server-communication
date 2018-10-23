@@ -3,16 +3,15 @@
 namespace CSC\Model\Interfaces;
 
 use CSC\Model\UserAccessToken;
-use CSC\Auth\Interfaces\TokenKeyAware;
+use CSC\Component\Auth\Interfaces\TokenKeyAware;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseInterface;
 
 /**
  * Interface UserInterface
  */
-interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAccessibleEntity, AdvancedUserInterface, \Serializable, TokenKeyAware
+interface UserInterface extends ServerResponseModel, BaseInterface, ExternalAccessibleEntity, \Serializable, TokenKeyAware
 {
     const
         STATUS_INACTIVE = 'INACTIVE',

@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Auth\Security\Authenticator;
+namespace CSC\Component\Auth\Security\Authenticator;
 
 use CSC\Component\Provider\EntityManagerProvider;
-use CSC\Auth\Security\Checker\TokenChecker;
-use CSC\Auth\Security\Provider\UserAccessTokenProvider;
-use CSC\Auth\Security\Resolver\UserAccessTokenResolverInterface;
+use CSC\Component\Auth\Security\Checker\TokenChecker;
+use CSC\Component\Auth\Security\Provider\UserAccessTokenProvider;
+use CSC\Component\Auth\Security\Resolver\UserAccessTokenResolverInterface;
 use CSC\Server\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;

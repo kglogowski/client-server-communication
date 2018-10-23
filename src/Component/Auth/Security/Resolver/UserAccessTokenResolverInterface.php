@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Security\Resolver;
+namespace CSC\Component\Auth\Security\Resolver;
 
 use CSC\Model\UserAccessToken;
 

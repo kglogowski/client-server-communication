@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Auth\Response\Resolver;
+namespace CSC\Component\Auth\Response\Resolver;
 
 use CSC\Component\Decorator\DateTime\DateTimeDecoratorInterface;
 use CSC\Model\UserAccessToken;
