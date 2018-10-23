@@ -77,18 +77,6 @@ abstract class AbstractRestDataObject extends AbstractDataObject implements Rest
     /**
      * {@inheritdoc}
      */
-    public function getSupportedSerializationGroups(): array
-    {
-        $serializationGroups = $this->supportedSerializationGroups();
-        $serializationGroups[] = self::ANY;
-        $serializationGroups[] = self::NONE;
-
-        return $serializationGroups;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getSerializationGroups(): array
     {
         return $this->serializationGroups;
@@ -104,22 +92,6 @@ abstract class AbstractRestDataObject extends AbstractDataObject implements Rest
         $this->serializationGroups = $serializationGroups;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supportedValidationGroups(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supportedSerializationGroups(): array
-    {
-        return [];
     }
 
     /**

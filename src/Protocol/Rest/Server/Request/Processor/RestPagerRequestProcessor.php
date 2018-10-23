@@ -68,7 +68,7 @@ class RestPagerRequestProcessor extends AbstractRestRequestProcessor
 
         $this->setupDataObject($dataObject);
 
-        $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($dataObject, $dataObject->getValidationGroups());
 
         /** @var RestPagerDataObject $dataObject */
         $requestModel = $this->requestModelFactory->create($dataObject);

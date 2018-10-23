@@ -163,12 +163,4 @@ abstract class AbstractRestPagerDataObject extends AbstractRestDataObject implem
 
         return $this;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supportedValidationGroups(): array
-    {
-        return [];
-    }
 }

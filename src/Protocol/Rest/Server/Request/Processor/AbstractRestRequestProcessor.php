@@ -41,7 +41,7 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
      */
     public function validateExternalObject($model, RestDataObject $dataObject)
     {
-        $this->validate($model, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($model, $dataObject->getValidationGroups());
     }
 
     /**
@@ -49,7 +49,7 @@ abstract class AbstractRestRequestProcessor extends AbstractServerRequestProcess
      */
     public function validateDataObject(RestDataObject $dataObject)
     {
-        $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($dataObject, $dataObject->getValidationGroups());
     }
 
     /**

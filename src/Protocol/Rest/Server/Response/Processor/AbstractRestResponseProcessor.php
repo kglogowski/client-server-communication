@@ -17,15 +17,7 @@ abstract class AbstractRestResponseProcessor implements ServerResponseProcessor
     {
         $context = new Context();
 
-        $supportedSerializationGroups = $dataObject->getSupportedSerializationGroups();
-
-        $intersectSerializationGroups = array_intersect($dataObject->getSerializationGroups(), $supportedSerializationGroups);
-
-        if (count($dataObject->getSerializationGroups()) !== count($intersectSerializationGroups)) {
-            throw new \InvalidArgumentException('Model contains not supported serialization groups');
-        }
-
-        $context->setGroups($intersectSerializationGroups);
+        $context->setGroups($dataObject->getSerializationGroups());
 
         return $context;
     }

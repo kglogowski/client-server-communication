@@ -48,21 +48,6 @@ interface RestDataObject extends DataObject, EntityNameAware
     public function setSerializationGroups(array $serializationGroups): RestDataObject;
 
     /**
-     * @return string[]
-     */
-    public function supportedValidationGroups(): array;
-
-    /**
-     * @return string[]
-     */
-    public function supportedSerializationGroups(): array;
-
-    /**
-     * @return string[]
-     */
-    public function getSupportedSerializationGroups(): array;
-
-    /**
      * @return string
      */
     public function getHttpMethod(): string;

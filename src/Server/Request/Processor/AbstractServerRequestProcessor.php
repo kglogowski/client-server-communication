@@ -66,21 +66,11 @@ abstract class AbstractServerRequestProcessor
     /**
      * @param object $model
      * @param array  $validationGroups
-     * @param array  $supportedValidationGroups
      *
      * @throws ValidationServerRequestException
      */
-    protected function validate($model, array $validationGroups = [], array $supportedValidationGroups = [])
+    protected function validate($model, array $validationGroups = [])
     {
-        $intersectValidationGroups = array_intersect($validationGroups, $supportedValidationGroups);
-
-        if (count($validationGroups) !== count($intersectValidationGroups)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Model "%s" contains not supported validation groups',
-                get_class($model)
-            ));
-        }
-
         $validateResponse = $this->validator->validate($model, null, $validationGroups);
 
         if (0 < $validateResponse->count()) {
