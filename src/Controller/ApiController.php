@@ -3,7 +3,9 @@
 namespace CSC\Controller;
 
 use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\PagerDataObject;
 use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObject;
 use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Manager;
 use CSC\Component\Rest\Request\Processor\RequestProcessor;
@@ -83,12 +85,15 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @param SimpleDataObjectInterface $dataObject
+     * @param SimpleDataObjectInterface $dataObject|null
      *
      * @return View
+     * @throws \Exception
      */
-    protected function processSimpleDataObject(SimpleDataObjectInterface $dataObject): View
+    protected function processSimpleDataObject(SimpleDataObjectInterface $dataObject = null): View
     {
+        $dataObject = $dataObject ?? new SimpleDataObject();
+
         $this->callSimpleDataObjectResolver($dataObject);
 
         if (array_key_exists(DataObject::VALUE_REQUEST_PROCESSOR, $dataObject->getRoutingParameters())) {
@@ -115,12 +120,15 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @param PagerDataObjectInterface $dataObject
+     * @param PagerDataObjectInterface $dataObject|null
      *
      * @return View
+     * @throws \Exception
      */
-    protected function processPagerOrderedDataObject(PagerDataObjectInterface $dataObject): View
+    protected function processPagerOrderedDataObject(PagerDataObjectInterface $dataObject = null): View
     {
+        $dataObject = $dataObject ?? new PagerDataObject();
+
         $this->callPagerOrderedResolver($dataObject);
 
         if (array_key_exists(DataObject::VALUE_REQUEST_PROCESSOR, $dataObject->getRoutingParameters())) {
