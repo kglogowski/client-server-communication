@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Response\Model;
+namespace CSC\Component\Rest\Response\Model;
 
 use JMS\Serializer\Annotation as JMS;
 

@@ -3,7 +3,7 @@
 namespace CSC\Server\Response\Processor;
 
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use FOS\RestBundle\View\View;
 
 /**

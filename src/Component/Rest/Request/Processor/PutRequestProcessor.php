@@ -10,7 +10,7 @@ use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Exception\ServerRequestException;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 
 /**
  * Class PutRequestProcessor

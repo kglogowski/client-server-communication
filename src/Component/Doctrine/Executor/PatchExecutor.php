@@ -6,7 +6,7 @@ use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Doctrine\Provider\GetElementProvider;
 use CSC\Exception\ServerRequestException;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Inflector\Inflector;
 

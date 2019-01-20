@@ -5,7 +5,7 @@ namespace CSC\Server\DataObject;
 use CSC\Translate\TranslateDictionary;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use Doctrine\Common\Inflector\Inflector;
 
 /**

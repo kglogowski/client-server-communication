@@ -6,7 +6,7 @@ use CSC\Server\DataObject\DataObject;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
 use CSC\Translate\TranslateDictionary;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use Doctrine\ORM\EntityManager;
 
 /**

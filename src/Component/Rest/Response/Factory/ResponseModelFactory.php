@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Rest\Response\Factory;
 
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 
 /**
  * Interface ResponseModelFactory

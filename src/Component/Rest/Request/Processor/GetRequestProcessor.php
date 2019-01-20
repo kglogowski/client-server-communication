@@ -5,7 +5,7 @@ namespace CSC\Component\Rest\Request\Processor;
 use CSC\Server\DataObject\DataObject;
 use CSC\Component\Doctrine\Provider\GetElementProvider;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 
 /**
  * Class GetRequestProcessor

@@ -8,7 +8,7 @@ use CSC\Component\Rest\Request\Provider\QueryProvider;
 use CSC\Component\Rest\Request\Factory\PagerRequestModelFactory;
 use CSC\Component\Rest\Request\Paginator\PagerPaginator;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
-use CSC\Server\Response\Model\PagerResponseModel;
+use CSC\Component\Rest\Response\Model\PagerResponseModel;
 
 /**
  * Class PagerRequestProcessor

@@ -3,7 +3,7 @@
 namespace CSC\Server\DataObject;
 
 use CSC\Model\Interfaces\EntityNameAware;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 
 /**
  * Interface DataObject

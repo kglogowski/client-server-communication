@@ -2,7 +2,7 @@
 
 namespace CSC\Model\Interfaces;
 
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 
 /**
  * Interface PermissionInterface

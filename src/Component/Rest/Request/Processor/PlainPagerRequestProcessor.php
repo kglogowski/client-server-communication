@@ -8,7 +8,7 @@ use CSC\Server\DataObject\PagerDataObject;
 use CSC\Component\Rest\Request\Provider\QueryProvider;
 use CSC\Component\Rest\Request\Factory\PlainPagerRequestModelFactory;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
-use CSC\Server\Response\Model\PlainPagerResponseModel;
+use CSC\Component\Rest\Response\Model\PlainPagerResponseModel;
 
 /**
  * Class PlainPagerRequestProcessor

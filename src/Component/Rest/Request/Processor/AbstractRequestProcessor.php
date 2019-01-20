@@ -8,7 +8,7 @@ use CSC\Server\DataObject\DataObject;
 use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Exception\ServerException;
 use CSC\Exception\ValidationException;
-use CSC\Server\Response\Model\ServerResponseModel;
+use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use Doctrine\ORM\EntityManager;
 use JMS\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;

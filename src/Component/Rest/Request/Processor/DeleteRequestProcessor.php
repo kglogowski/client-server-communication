@@ -7,7 +7,7 @@ use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Doctrine\Provider\GetElementProvider;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
-use CSC\Server\Response\Model\BasicServerResponseModel;
+use CSC\Component\Rest\Response\Model\BasicServerResponseModel;
 
 /**
  * Class DeleteRequestProcessor
