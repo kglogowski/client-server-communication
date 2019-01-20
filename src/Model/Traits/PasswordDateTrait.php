@@ -2,8 +2,8 @@
 
 namespace CSC\Model\Traits;
 
-use CSC\Component\Decorator\DateTime\DateTimeDecorator;
-use CSC\Component\Factory\DateTimeImmutableStaticFactory;
+use CSC\Util\DateTime\DateTimeDecorator;
+use CSC\Util\DateTime\Factory\DateTimeImmutableStaticFactory;
 use JMS\Serializer\Annotation as JMS;
 
 /**
