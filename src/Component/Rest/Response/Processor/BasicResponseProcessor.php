@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Rest\Response\Processor;
 
-use CSC\Component\Provider\HttpSuccessStatusProvider;
+use CSC\Component\Rest\Response\Provider\HttpSuccessStatusProvider;
 use CSC\Component\Rest\DataObject\DataObject;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Context\Context;

@@ -8,11 +8,11 @@
         <service id="csc.provider.user_provider" class="CSC\Component\Auth\Security\Provider\UserProvider">
             <argument type="service" id="security.token_storage" />
         </service>
-        <service id="csc.provider.count" class="CSC\Component\Provider\QueryCountProvider">
+        <service id="csc.provider.count" class="CSC\Component\Rest\Request\Provider\QueryCountProvider">
         </service>
-        <service id="csc.provider.query_items" class="CSC\Component\Provider\QueryItemsProvider">
+        <service id="csc.provider.query_items" class="CSC\Component\Rest\Request\Provider\QueryItemsProvider">
         </service>
-        <service id="csc.provider.http_success_status" class="CSC\Component\Provider\HttpSuccessStatusProvider">
+        <service id="csc.provider.http_success_status" class="CSC\Component\Rest\Response\Provider\HttpSuccessStatusProvider">
         </service>
 
         <!---->

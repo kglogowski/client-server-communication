@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Provider;
+namespace CSC\Component\Rest\Response\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

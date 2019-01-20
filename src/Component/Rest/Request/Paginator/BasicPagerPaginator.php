@@ -2,8 +2,8 @@
 
 namespace CSC\Component\Rest\Request\Paginator;
 
-use CSC\Component\Provider\QueryCountProvider;
-use CSC\Component\Provider\QueryItemsProvider;
+use CSC\Component\Rest\Request\Provider\QueryCountProvider;
+use CSC\Component\Rest\Request\Provider\QueryItemsProvider;
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
