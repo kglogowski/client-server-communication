@@ -58,6 +58,7 @@ class QueryFilterBuilder
      * @param string|null      $alias
      *
      * @return QueryBuilder
+     * @throws \Exception
      */
     public function modernize(QueryBuilder $queryBuilder, QueryFilterModel $filterModel, $alias)
     {
@@ -443,6 +444,7 @@ class QueryFilterBuilder
      * @param string|null      $alias
      *
      * @return QueryBuilder
+     * @throws \Exception
      */
     protected function addLikeTextFieldToQuery(QueryFilterModel $filterModel, QueryBuilder $qb, $alias): QueryBuilder
     {

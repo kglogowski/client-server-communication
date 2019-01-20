@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Resolver;
 
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -29,11 +29,11 @@ class SimpleResolver
     }
 
     /**
-     * @param SimpleDataObject $dataObject
+     * @param SimpleDataObjectInterface $dataObject
      *
-     * @return SimpleDataObject
+     * @return SimpleDataObjectInterface
      */
-    public function resolve(SimpleDataObject $dataObject): SimpleDataObject
+    public function resolve(SimpleDataObjectInterface $dataObject): SimpleDataObjectInterface
     {
         $dataObject
             ->setFields($this->request->getContent())

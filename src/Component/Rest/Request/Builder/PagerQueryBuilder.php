@@ -137,6 +137,7 @@ class PagerQueryBuilder
      * @param string|null        $alias
      *
      * @return PagerQueryBuilder
+     * @throws \Exception
      */
     public function addFilters(array $filterModels, $alias = null): PagerQueryBuilder
     {
@@ -153,6 +154,7 @@ class PagerQueryBuilder
      * @param bool             $isManual
      *
      * @return PagerQueryBuilder
+     * @throws \Exception
      */
     public function addFilter(QueryFilterModel $filterModel, string $alias = null, bool $isManual = false): PagerQueryBuilder
     {
@@ -170,6 +172,7 @@ class PagerQueryBuilder
      * @param string|null $alias
      *
      * @return PagerQueryBuilder
+     * @throws \Exception
      */
     public function addSorts(array $sortModels, $alias = null): PagerQueryBuilder
     {
@@ -186,6 +189,7 @@ class PagerQueryBuilder
      * @param bool      $isManual
      *
      * @return PagerQueryBuilder
+     * @throws \Exception
      */
     public function addSort(SortModel $sortModel, $alias = null, bool $isManual = false): PagerQueryBuilder
     {

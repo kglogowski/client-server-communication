@@ -7,7 +7,7 @@ use CSC\Model\Interfaces\EntityInitializer;
 use CSC\Component\Executor\PatchExecutor;
 use CSC\Server\Checker\UpdatableChecker;
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Response\Factory\ResponseModelFactory;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
@@ -62,9 +62,11 @@ class PutRequestProcessor extends AbstractRequestProcessor
 
 
     /**
-     * @param DataObject|SimpleDataObject $dataObject
+     * @param DataObject|SimpleDataObjectInterface $dataObject
      *
      * @return DataObject
+     *
+     * @throws \Exception
      */
     public function process(DataObject $dataObject): DataObject
     {
@@ -85,12 +87,12 @@ class PutRequestProcessor extends AbstractRequestProcessor
     }
 
     /**
-     * @param ServerResponseModel  $object
-     * @param SimpleDataObject $dataObject
+     * @param ServerResponseModel       $object
+     * @param SimpleDataObjectInterface $dataObject
      *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
-    public function processObject(ServerResponseModel $object, SimpleDataObject $dataObject): void
+    public function processObject(ServerResponseModel $object, SimpleDataObjectInterface $dataObject): void
     {
         $this->validateExternalObject($object, $dataObject);
 

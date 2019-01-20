@@ -10,7 +10,7 @@ namespace CSC\Model\Interfaces;
 interface EntityNameAware
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEntityName(): string;
+    public function getEntityName(): ?string;
 }

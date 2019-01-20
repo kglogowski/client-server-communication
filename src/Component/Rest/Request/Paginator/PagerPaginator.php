@@ -2,9 +2,9 @@
 
 namespace CSC\Server\Request\Paginator;
 
-use CSC\Server\DataObject\PagerDataObject;
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 
 /**
  * Interface PagerPaginatorInterface
@@ -14,10 +14,10 @@ use CSC\Model\PagerRequestModel;
 interface PagerPaginator
 {
     /**
-     * @param PagerRequestModel   $requestModel
-     * @param PagerDataObject $dataObject
+     * @param PagerRequestModel        $requestModel
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return PaginatorModel
      */
-    public function paginate(PagerRequestModel $requestModel, PagerDataObject $dataObject): PaginatorModel;
+    public function paginate(PagerRequestModel $requestModel, PagerDataObjectInterface $dataObject): PaginatorModel;
 }

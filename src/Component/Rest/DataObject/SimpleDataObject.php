@@ -2,24 +2,48 @@
 
 namespace CSC\Server\DataObject;
 
-use CSC\Server\DataObject\DataObject;
-
 /**
- * Interface SimpleDataObject
+ * Class SimpleDataObject
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-interface SimpleDataObject extends DataObject
+class SimpleDataObject extends AbstractDataObject implements SimpleDataObjectInterface
 {
     /**
-     * @return string|null
+     * JSON formatted field list
+     * Not required.
+     *
+     * @var string|null
      */
-    public function getFields();
+    protected $fields;
 
     /**
-     * @param string|null $fields
-     *
-     * @return SimpleDataObject
+     * {@inheritdoc}
      */
-    public function setFields(string $fields = null): SimpleDataObject;
+    public function getParameters(): array
+    {
+        return [
+            'fields' => $this->getFields(),
+            'routingParameters' => $this->getRoutingParameters(),
+            'httpMethod' => $this->getHttpMethod(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFields(string $fields = null): SimpleDataObjectInterface
+    {
+        $this->fields = $fields;
+
+        return $this;
+    }
 }

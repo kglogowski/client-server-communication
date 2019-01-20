@@ -2,7 +2,7 @@
 
 namespace CSC\Server\Checker;
 
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
@@ -15,34 +15,18 @@ use CSC\Component\Translate\TranslateDictionary;
 abstract class AbstractFieldsChecker implements FieldsChecker
 {
     /**
-     * @var array
-     */
-    protected $simpleDataObjectConfiguration;
-
-    /**
-     * AbstractFieldsChecker constructor.
-     *
-     * @param array $simpleDataObjectConfiguration
-     */
-    public function __construct(array $simpleDataObjectConfiguration)
-    {
-        $this->simpleDataObjectConfiguration = $simpleDataObjectConfiguration;
-    }
-
-    /**
-     * @param SimpleDataObject $dataObject
+     * @param SimpleDataObjectInterface $dataObject
      *
      * @return bool
      *
      * @throws ServerRequestException
      */
-    public function check(SimpleDataObject $dataObject): bool
+    public function check(SimpleDataObjectInterface $dataObject): bool
     {
-        $dataObjectClass = get_class($dataObject);
+        $availableFields = $this->getFields($dataObject);
 
-        if (array_key_exists($dataObjectClass, $this->simpleDataObjectConfiguration)) {
+        if (0 !== count($availableFields)) {
             $fields = json_decode($dataObject->getFields(), true) ?? [];
-            $availableFields = $this->simpleDataObjectConfiguration[$dataObjectClass][$this->getIndex()];
 
             if (0 < count($availableFields)) {
                 $transmittedFields = array_keys($fields);
@@ -63,7 +47,9 @@ abstract class AbstractFieldsChecker implements FieldsChecker
     }
 
     /**
-     * @return string
+     * @param SimpleDataObjectInterface $dataObject
+     *
+     * @return array
      */
-    abstract protected function getIndex(): string;
+    abstract protected function getFields(SimpleDataObjectInterface $dataObject): array;
 }

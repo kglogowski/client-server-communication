@@ -65,19 +65,23 @@ abstract class AbstractRequestProcessor implements RequestProcessor
 
     /**
      * @param object         $model
-     * @param DataObject $dataObject
+     * @param DataObject     $dataObject
+     *
+     * @throws \Exception
      */
     public function validateExternalObject($model, DataObject $dataObject)
     {
-        $this->validate($model, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($model, $dataObject->getValidationGroups());
     }
 
     /**
      * @param DataObject $dataObject
+     *
+     * @throws \Exception
      */
     public function validateDataObject(DataObject $dataObject)
     {
-        $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($dataObject, $dataObject->getValidationGroups());
     }
 
     /**
@@ -134,21 +138,11 @@ abstract class AbstractRequestProcessor implements RequestProcessor
     /**
      * @param object $model
      * @param array  $validationGroups
-     * @param array  $supportedValidationGroups
      *
      * @throws ValidationException
      */
-    protected function validate($model, array $validationGroups = [], array $supportedValidationGroups = [])
+    protected function validate($model, array $validationGroups = [])
     {
-        $intersectValidationGroups = array_intersect($validationGroups, $supportedValidationGroups);
-
-        if (count($validationGroups) !== count($intersectValidationGroups)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Model "%s" contains not supported validation groups',
-                get_class($model)
-            ));
-        }
-
         $validateResponse = $this->validator->validate($model, null, $validationGroups);
 
         if (0 < $validateResponse->count()) {

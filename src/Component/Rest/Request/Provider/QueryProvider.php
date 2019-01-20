@@ -2,8 +2,8 @@
 
 namespace CSC\Server\Provider;
 
-use CSC\Server\DataObject\PagerDataObject;
 use CSC\Model\PagerRequestModel;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\Query;
 
 /**
@@ -14,10 +14,10 @@ use Doctrine\ORM\Query;
 interface QueryProvider
 {
     /**
-     * @param PagerRequestModel   $requestModel
-     * @param PagerDataObject $dataObject
+     * @param PagerRequestModel        $requestModel
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return Query
      */
-    public function generateQuery(PagerRequestModel $requestModel, PagerDataObject $dataObject): Query;
+    public function generateQuery(PagerRequestModel $requestModel, PagerDataObjectInterface $dataObject): Query;
 }

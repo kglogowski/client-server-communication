@@ -4,8 +4,8 @@ namespace CSC\Server\Request\Factory;
 
 use CSC\Component\Resolver\FilterResolver;
 use CSC\Component\Resolver\SortResolver;
-use CSC\Server\DataObject\PagerDataObject;
 use CSC\Model\PagerRequestModel;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Component\Translate\TranslateDictionary;
@@ -18,13 +18,12 @@ use CSC\Component\Translate\TranslateDictionary;
 class PagerRequestModelFactory
 {
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return PagerRequestModel
-     *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
-    public function create(PagerDataObject $dataObject): PagerRequestModel
+    public function create(PagerDataObjectInterface $dataObject): PagerRequestModel
     {
         $missingKeys = $this->getMissingKeys($dataObject->getParameters());
 
@@ -40,11 +39,12 @@ class PagerRequestModelFactory
     }
 
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return PagerRequestModel
+     * @throws \Exception
      */
-    protected function createInstance(PagerDataObject $dataObject): PagerRequestModel
+    protected function createInstance(PagerDataObjectInterface $dataObject): PagerRequestModel
     {
         $requestModel = new PagerRequestModel();
         $dataObjectParameters = $dataObject->getParameters();
@@ -55,7 +55,7 @@ class PagerRequestModelFactory
             ->setLimit($dataObjectParameters['limit'])
             ->setPage($dataObjectParameters['page'])
             ->setRoutingParameters($dataObjectParameters['routingParameters'])
-            ->setMethodName($dataObjectParameters['methodName'])
+            ->setMethodName($dataObject->getMethodName())
             ->setEntityName($dataObject->getEntityName())
         ;
     }
@@ -65,7 +65,7 @@ class PagerRequestModelFactory
      */
     protected function getRequiredKeys(): array
     {
-        return ['filter', 'sort', 'limit', 'page', 'methodName'];
+        return ['filter', 'sort', 'limit', 'page'];
     }
 
     /**

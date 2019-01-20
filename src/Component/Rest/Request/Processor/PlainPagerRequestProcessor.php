@@ -54,12 +54,13 @@ class PlainPagerRequestProcessor extends AbstractRequestProcessor
      * @param DataObject $dataObject
      *
      * @return DataObject
+     * @throws \Exception
      */
     public function process(DataObject $dataObject): DataObject
     {
         $this->setupDataObject($dataObject);
 
-        $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($dataObject, $dataObject->getValidationGroups());
 
         /** @var PagerDataObject $dataObject */
         $requestModel = $this->requestModelFactory->create($dataObject);

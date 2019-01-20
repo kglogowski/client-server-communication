@@ -2,6 +2,7 @@
 
 namespace CSC\Controller;
 
+use CSC\Server\Response\Generator\ExceptionResponseGenerator;
 use FOS\RestBundle\Controller\ExceptionController as BaseController;
 use FOS\RestBundle\Util\ExceptionValueMap;
 use FOS\RestBundle\View\ViewHandlerInterface;

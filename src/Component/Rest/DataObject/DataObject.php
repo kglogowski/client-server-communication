@@ -15,14 +15,35 @@ interface DataObject extends EntityNameAware
     /**
      * Basic groups to validation and serialization
      */
+    const ANY = 'Any';
+
+    /**
+     * Key routing parameters Common
+     */
     const
-        POST    = 'Post',
-        PATCH   = 'Patch',
-        PUT     = 'Put',
-        GET     = 'Get',
-        DELETE  = 'Delete',
-        ANY     = 'Any',
-        NONE    = 'None'
+        VALUE_ENTITY_NAME = 'entityName',
+        VALUE_SERIALIZATION = 'serialization',
+        VALUE_VALIDATION = 'validation',
+        VALUE_VOTER = 'voter',
+        VALUE_REQUEST_PROCESSOR = 'requestProcessor',
+        VALUE_RESPONSE_PROCESSOR = 'responseProcessor'
+    ;
+
+    /**
+     * Key routing parameters Simple
+     */
+    const
+        VALUE_INSERTABLE = 'insertable',
+        VALUE_UPDATABLE = 'updatable'
+    ;
+
+    /**
+     * Key routing parameters Pager
+     */
+    const
+        VALUE_METHOD_NAME = 'methodName',
+        VALUE_AVAILABLE_FILTER = 'availableFilter',
+        VALUE_AVAILABLE_SORT = 'availableSort'
     ;
 
     /**
@@ -52,37 +73,6 @@ interface DataObject extends EntityNameAware
     public function getResponseModel(): ?ServerResponseModel;
 
     /**
-     * @return string[]
-     */
-    public function getValidationGroups(): array;
-
-    /**
-     * @param array $validationGroups
-     *
-     * @return DataObject
-     */
-    public function setValidationGroups(array $validationGroups): DataObject;
-
-    /**
-     * @param string $validationGroup
-     *
-     * @return DataObject
-     */
-    public function addValidationGroup(string $validationGroup): DataObject;
-
-    /**
-     * @param string $voter
-     *
-     * @return DataObject
-     */
-    public function addVoter(string $voter): DataObject;
-
-    /**
-     * @return array
-     */
-    public function getVoters(): array;
-
-    /**
      * @return array
      */
     public function getParameters(): array;
@@ -93,33 +83,6 @@ interface DataObject extends EntityNameAware
     public function hasParameters(): bool;
 
     /**
-     * @return array
-     */
-    public function getSerializationGroups(): array;
-
-    /**
-     * @param array $serializationGroups
-     *
-     * @return DataObject
-     */
-    public function setSerializationGroups(array $serializationGroups): DataObject;
-
-    /**
-     * @return string[]
-     */
-    public function supportedValidationGroups(): array;
-
-    /**
-     * @return string[]
-     */
-    public function supportedSerializationGroups(): array;
-
-    /**
-     * @return string[]
-     */
-    public function getSupportedSerializationGroups(): array;
-
-    /**
      * @return string
      */
     public function getHttpMethod(): string;
@@ -128,13 +91,6 @@ interface DataObject extends EntityNameAware
      * @param string $httpMethod
      */
     public function setHttpMethod(string $httpMethod);
-
-    /**
-     * Returns array of allowed HTTP request methods
-     *
-     * @return string[]
-     */
-    public function supportedHttpMethods(): array;
 
     /**
      * @return array
@@ -156,6 +112,14 @@ interface DataObject extends EntityNameAware
     public function getRoutingValue(string $key);
 
     /**
+     * @param string $key
+     * @param mixed  $default
+     *
+     * @return mixed
+     */
+    public function getValue(string $key, $default = null);
+
+    /**
      * @return array
      */
     public function getRoutingQuery(): array;
@@ -166,4 +130,34 @@ interface DataObject extends EntityNameAware
      * @return DataObject
      */
     public function setRoutingParameters(array $routingParameters): DataObject;
+
+    /**
+     * @return array
+     */
+    public function getValidationGroups(): array;
+
+    /**
+     * @return array
+     */
+    public function getSerializationGroups(): array;
+
+    /**
+     * @return array
+     */
+    public function getVoters(): array;
+
+    /**
+     * @return string|null
+     */
+    public function getRequestProcessor(): ?string;
+
+    /**
+     * @return string|null
+     */
+    public function getResponseProcessor(): ?string;
+
+    /**
+     * @return array
+     */
+    public function getProtectedParameters(): array;
 }

@@ -2,9 +2,9 @@
 
 namespace CSC\Server\Provider;
 
-use CSC\Server\DataObject\PagerDataObject;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 
@@ -26,12 +26,12 @@ class BasicQueryProvider implements QueryProvider
     }
 
     /**
-     * @param PagerRequestModel   $requestModel
-     * @param PagerDataObject $dataObject
+     * @param PagerRequestModel        $requestModel
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return Query
      */
-    public function generateQuery(PagerRequestModel $requestModel, PagerDataObject $dataObject): Query
+    public function generateQuery(PagerRequestModel $requestModel, PagerDataObjectInterface $dataObject): Query
     {
         $methodName = $requestModel->getMethodName();
         $entityName = $requestModel->getEntityName();

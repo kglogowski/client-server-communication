@@ -4,7 +4,6 @@ namespace CSC\Model;
 
 use CSC\Server\Exception\ServerException;
 use CSC\Component\Translate\TranslateDictionary;
-use Doctrine\Common\Inflector\Inflector;
 use Doctrine\ORM\Query;
 
 /**
@@ -184,21 +183,6 @@ class PagerRequestModel
         $this->checkRoutingParameterExists($key);
 
         return $this->routingParameters[$key];
-    }
-
-    /**
-     * @return array
-     */
-    public function getRoutingQuery(): array
-    {
-        $parameters = [];
-
-        foreach ($this->getRoutingParameters() as $key => $parameter) {
-            $key = Inflector::camelize($key);
-            $parameters[$key] = $parameter;
-        }
-
-        return $parameters;
     }
 
     /**

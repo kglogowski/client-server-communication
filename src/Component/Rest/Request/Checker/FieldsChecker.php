@@ -2,7 +2,7 @@
 
 namespace CSC\Server\Checker;
 
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Request\Exception\ServerRequestException;
 
 /**
@@ -13,11 +13,11 @@ use CSC\Server\Request\Exception\ServerRequestException;
 interface FieldsChecker
 {
     /**
-     * @param SimpleDataObject $dataObject
+     * @param SimpleDataObjectInterface $dataObject
      *
      * @return bool
      *
      * @throws ServerRequestException
      */
-    public function check(SimpleDataObject $dataObject): bool;
+    public function check(SimpleDataObjectInterface $dataObject): bool;
 }

@@ -6,10 +6,11 @@ use CSC\Model\Interfaces\UserInterface;
 use CSC\Component\Auth\Interfaces\GuardUserAware;
 use CSC\Component\Builder\PagerQueryBuilderAware;
 use CSC\Component\Builder\PagerQueryBuilder;
-use CSC\Server\DataObject\PagerDataObject;
+use CSC\Server\DataObject\DataObject;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Provider\UserProvider;
 use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 
@@ -20,12 +21,6 @@ use Doctrine\ORM\Query;
  */
 class PagerQueryProvider implements QueryProvider
 {
-    const
-        METHODS_DATA_OBJECT_CONFIGURATION_INDEX = 'methods',
-        FILTER_DATA_OBJECT_CONFIGURATION_INDEX = 'filter',
-        SORT_DATA_OBJECT_CONFIGURATION_INDEX = 'sort'
-    ;
-
     /**
      * @var EntityManager
      */
@@ -42,42 +37,34 @@ class PagerQueryProvider implements QueryProvider
     protected $userProvider;
 
     /**
-     * @var array
-     */
-    protected $pagerDataObjectConfiguration;
-
-    /**
      * PagerOrderedQueryProvider constructor.
      *
      * @param EntityManagerProvider $entityManagerProvider
-     * @param PagerQueryBuilder $pagerOrderedQueryBuilder
+     * @param PagerQueryBuilder     $pagerOrderedQueryBuilder
      * @param UserProvider          $userProvider
-     * @param array                 $pagerDataObjectConfiguration
      */
     public function __construct(
         EntityManagerProvider $entityManagerProvider,
         PagerQueryBuilder $pagerOrderedQueryBuilder,
-        UserProvider $userProvider,
-        array $pagerDataObjectConfiguration
+        UserProvider $userProvider
     )
     {
         $this->em = $entityManagerProvider->getEntityManager();
         $this->pagerOrderedQueryBuilder = $pagerOrderedQueryBuilder;
         $this->userProvider = $userProvider;
-        $this->pagerDataObjectConfiguration = $pagerDataObjectConfiguration;
     }
 
     /**
-     * @param PagerRequestModel   $requestModel
-     * @param PagerDataObject $dataObject
+     * @param PagerRequestModel        $requestModel
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return Query
      *
      * @throws \Exception
      */
-    public function generateQuery(PagerRequestModel $requestModel, PagerDataObject $dataObject): Query
+    public function generateQuery(PagerRequestModel $requestModel, PagerDataObjectInterface $dataObject): Query
     {
-        $methodName = $dataObject->getMethodName();
+        $methodName = $requestModel->getMethodName();
         $entityName = $requestModel->getEntityName();
 
         $repository = $this->em->getRepository($entityName);
@@ -96,22 +83,8 @@ class PagerQueryProvider implements QueryProvider
             }
         }
 
-        $dataObjectClass = get_class($dataObject);
-
-        if (!array_key_exists($dataObjectClass, $this->pagerDataObjectConfiguration)) {
-            throw new \LogicException(sprintf('Undefined data object configuration: %s', $dataObjectClass));
-        }
-
-        $methodsConfiguration = $this->pagerDataObjectConfiguration[$dataObjectClass][self::METHODS_DATA_OBJECT_CONFIGURATION_INDEX];
-
-        if (!array_key_exists($methodName, $methodsConfiguration)) {
-            throw new \LogicException(sprintf('Undefined method (%s) for configuration data object: %s', $methodName, $dataObjectClass));
-        }
-
-        $methodConfiguration = $methodsConfiguration[$methodName];
-
-        $this->pagerOrderedQueryBuilder->setSupportFilterParameters($methodConfiguration[self::FILTER_DATA_OBJECT_CONFIGURATION_INDEX]);
-        $this->pagerOrderedQueryBuilder->setSupportSortParameters($methodConfiguration[self::SORT_DATA_OBJECT_CONFIGURATION_INDEX]);
+        $this->pagerOrderedQueryBuilder->setSupportFilterParameters($dataObject->getValue(DataObject::VALUE_AVAILABLE_FILTER, []));
+        $this->pagerOrderedQueryBuilder->setSupportSortParameters($dataObject->getValue(DataObject::VALUE_AVAILABLE_SORT, []));
 
         return $repository->$methodName($requestModel);
     }

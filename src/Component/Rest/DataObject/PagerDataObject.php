@@ -3,69 +3,123 @@
 namespace CSC\Server\DataObject;
 
 /**
- * Interface PagerDataObject
+ * Class PagerDataObject
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */
-interface PagerDataObject extends DataObject
+class PagerDataObject extends AbstractDataObject implements PagerDataObjectInterface
 {
     /**
+     * @var int
+     */
+    private $page;
+
+    /**
+     */
+    private $limit;
+
+    /**
+     * @var string|null
+     */
+    private $sort;
+
+    /**
+     * @var string|null
+     */
+    private $filter;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParameters(): array
+    {
+        return [
+            'page' => $this->getPage(),
+            'limit' => $this->getLimit(),
+            'sort' => $this->getSort(),
+            'filter' => $this->getFilter(),
+            'routingParameters' => $this->getRoutingParameters(),
+        ];
+    }
+
+    /**
      * @return string
+     * @throws \Exception
      */
-    public function getMethodName(): string;
+    public function getMethodName(): string
+    {
+        return $this->getRoutingValue(self::VALUE_METHOD_NAME);
+    }
 
     /**
-     * @param string $methodName
-     *
-     * @return PagerDataObject
+     * {@inheritdoc}
      */
-    public function setMethodName(string $methodName): PagerDataObject;
+    public function getPage(): int
+    {
+        return $this->page;
+    }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getPage(): int;
+    public function setPage(int $page): PagerDataObjectInterface
+    {
+        $this->page = $page;
+
+        return $this;
+    }
 
     /**
-     * @param int $page
-     *
-     * @return PagerDataObject
+     * {@inheritdoc}
      */
-    public function setPage(int $page): PagerDataObject;
+    public function getLimit(): int
+    {
+        return $this->limit;
+    }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getLimit(): int;
+    public function setLimit(int $limit): PagerDataObjectInterface
+    {
+        $this->limit = $limit;
+
+        return $this;
+    }
 
     /**
-     * @param int $limit
-     *
-     * @return PagerDataObject
+     * {@inheritdoc}
      */
-    public function setLimit(int $limit): PagerDataObject;
+    public function getSort(): ?string
+    {
+        return $this->sort;
+    }
 
     /**
-     * @return string|null
+     * {@inheritdoc}
      */
-    public function getSort(): ?string;
+    public function setSort(string $sort): PagerDataObjectInterface
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
 
     /**
-     * @param string $sort
-     *
-     * @return PagerDataObject
+     * {@inheritdoc}
      */
-    public function setSort(string $sort): PagerDataObject;
+    public function getFilter(): ?string
+    {
+        return $this->filter;
+    }
 
     /**
-     * @return string|null
+     * {@inheritdoc}
      */
-    public function getFilter(): ?string;
+    public function setFilter(string $filter): PagerDataObjectInterface
+    {
+        $this->filter = $filter;
 
-    /**
-     * @param string $filter
-     *
-     * @return PagerDataObject
-     */
-    public function setFilter(string $filter): PagerDataObject;
+        return $this;
+    }
 }

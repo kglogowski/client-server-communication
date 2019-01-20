@@ -11,6 +11,8 @@ class InsertExecutor extends AbstractDoctrineExecutor
 {
     /**
      * @param object $object
+     *
+     * @throws \Exception
      */
     public function execute($object)
     {

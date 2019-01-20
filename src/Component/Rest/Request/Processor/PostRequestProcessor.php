@@ -5,9 +5,9 @@ namespace CSC\Server\Request\Processor;
 use CSC\Component\Executor\InsertExecutor;
 use CSC\Component\Executor\MergeExecutor;
 use CSC\Model\Interfaces\EntityInitializer;
-use CSC\Server\Checker\FieldsCheckerSimpleDataObjectInterface;
+use CSC\Server\Checker\InsertableChecker;
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Response\Factory\ResponseModelFactory;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
@@ -20,7 +20,7 @@ use CSC\Server\Response\Model\ServerResponseModel;
 class PostRequestProcessor extends AbstractRequestProcessor
 {
     /**
-     * @var FieldsCheckerSimpleDataObjectInterface
+     * @var InsertableChecker
      */
     protected $checker;
 
@@ -42,13 +42,13 @@ class PostRequestProcessor extends AbstractRequestProcessor
     /**
      * PostRequestProcessor constructor.
      *
-     * @param FieldsCheckerSimpleDataObjectInterface $checker
-     * @param InsertExecutor                         $insertExecutor
-     * @param MergeExecutor                          $mergeExecutor
-     * @param ResponseModelFactory               $responseModelFactory
+     * @param InsertableChecker    $checker
+     * @param InsertExecutor       $insertExecutor
+     * @param MergeExecutor        $mergeExecutor
+     * @param ResponseModelFactory $responseModelFactory
      */
     public function __construct(
-        FieldsCheckerSimpleDataObjectInterface $checker,
+        InsertableChecker $checker,
         InsertExecutor $insertExecutor,
         MergeExecutor $mergeExecutor,
         ResponseModelFactory $responseModelFactory
@@ -61,9 +61,10 @@ class PostRequestProcessor extends AbstractRequestProcessor
     }
 
     /**
-     * @param DataObject|SimpleDataObject $dataObject
+     * @param DataObject|SimpleDataObjectInterface $dataObject
      *
      * @return DataObject
+     * @throws \Exception
      */
     public function process(DataObject $dataObject): DataObject
     {
@@ -81,12 +82,12 @@ class PostRequestProcessor extends AbstractRequestProcessor
     }
 
     /**
-     * @param ServerResponseModel  $object
-     * @param SimpleDataObject $dataObject
+     * @param ServerResponseModel       $object
+     * @param SimpleDataObjectInterface $dataObject
      *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
-    public function processObject(ServerResponseModel $object, SimpleDataObject $dataObject)
+    public function processObject(ServerResponseModel $object, SimpleDataObjectInterface $dataObject)
     {
         $this->validateExternalObject($object, $dataObject);
 

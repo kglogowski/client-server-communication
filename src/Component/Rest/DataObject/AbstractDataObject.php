@@ -7,7 +7,6 @@ use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Inflector\Inflector;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class AbstractDataObject
@@ -23,11 +22,6 @@ abstract class AbstractDataObject implements DataObject
      * @var string
      */
     protected $httpMethod;
-
-    /**
-     * @var array
-     */
-    protected $serializationGroups = [];
 
     /**
      * @var array|null
@@ -47,12 +41,12 @@ abstract class AbstractDataObject implements DataObject
     /**
      * @var array
      */
-    protected $validationGroups = [];
+    protected $voters = [];
 
     /**
-     * @var array
+     * @var string|null
      */
-    protected $voters = [];
+    protected $entityName;
 
 
     /**
@@ -84,68 +78,6 @@ abstract class AbstractDataObject implements DataObject
     /**
      * {@inheritdoc}
      */
-    public function supportedHttpMethods(): array
-    {
-        return [
-            Request::METHOD_GET,
-            Request::METHOD_POST,
-            Request::METHOD_PATCH,
-            Request::METHOD_PUT,
-            Request::METHOD_DELETE,
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSupportedSerializationGroups(): array
-    {
-        $serializationGroups = $this->supportedSerializationGroups();
-        $serializationGroups[] = self::ANY;
-        $serializationGroups[] = self::NONE;
-
-        return $serializationGroups;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSerializationGroups(): array
-    {
-        return $this->serializationGroups;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSerializationGroups(array $serializationGroups): DataObject
-    {
-        $serializationGroups[] = self::ANY;
-
-        $this->serializationGroups = $serializationGroups;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supportedValidationGroups(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supportedSerializationGroups(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getRoutingParameters(): array
     {
         return $this->routingParameters;
@@ -153,6 +85,7 @@ abstract class AbstractDataObject implements DataObject
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function getRoutingParameter(string $key)
     {
@@ -162,11 +95,24 @@ abstract class AbstractDataObject implements DataObject
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritdoc}
+     * @throws \Exception
      */
     public function getRoutingValue(string $key)
     {
         $this->checkRoutingParameterExists($key);
+
+        return $this->routingParameters[$key];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getValue(string $key, $default = null)
+    {
+        if (!array_key_exists($key, $this->routingParameters)) {
+            return $default;
+        }
 
         return $this->routingParameters[$key];
     }
@@ -179,6 +125,10 @@ abstract class AbstractDataObject implements DataObject
         $parameters = [];
 
         foreach ($this->getRoutingParameters() as $key => $parameter) {
+            if (in_array($key, $this->getProtectedParameters(), true)) {
+                continue;
+            }
+
             $key = Inflector::camelize($key);
             $parameters[$key] = $parameter;
         }
@@ -253,41 +203,28 @@ abstract class AbstractDataObject implements DataObject
     }
 
     /**
+     * @return string
+     * @throws \Exception
+     */
+    public function getEntityName(): ?string
+    {
+        return $this->getRoutingValue(DataObject::VALUE_ENTITY_NAME);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSerializationGroups(): array
+    {
+        return $this->getValue(DataObject::VALUE_SERIALIZATION, []) + [self::ANY];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getValidationGroups(): array
     {
-        return $this->validationGroups;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setValidationGroups(array $validationGroups): DataObject
-    {
-        $this->validationGroups = $validationGroups;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addValidationGroup(string $validationGroup): DataObject
-    {
-        $this->validationGroups[] = $validationGroup;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addVoter(string $voter): DataObject
-    {
-        $this->voters[] = $voter;
-
-        return $this;
+        return $this->getValue(DataObject::VALUE_SERIALIZATION, []);
     }
 
     /**
@@ -295,6 +232,40 @@ abstract class AbstractDataObject implements DataObject
      */
     public function getVoters(): array
     {
-        return $this->voters;
+        return $this->getValue(DataObject::VALUE_VOTER, []);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRequestProcessor(): ?string
+    {
+        return $this->getValue(DataObject::VALUE_REQUEST_PROCESSOR);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getResponseProcessor(): ?string
+    {
+        return $this->getValue(DataObject::VALUE_RESPONSE_PROCESSOR);
+    }
+
+    /**
+     * @return array
+     */
+    public function getProtectedParameters(): array
+    {
+        return [
+            self::VALUE_ENTITY_NAME,
+            self::VALUE_SERIALIZATION,
+            self::VALUE_VALIDATION,
+            self::VALUE_VOTER,
+            self::VALUE_INSERTABLE,
+            self::VALUE_UPDATABLE,
+            self::VALUE_METHOD_NAME,
+            self::VALUE_AVAILABLE_FILTER,
+            self::VALUE_AVAILABLE_SORT,
+        ];
     }
 }

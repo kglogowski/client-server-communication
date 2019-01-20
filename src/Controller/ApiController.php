@@ -2,9 +2,12 @@
 
 namespace CSC\Controller;
 
-use CSC\Server\DataObject\PagerDataObject;
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\DataObject;
+use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Manager;
+use CSC\Server\Request\Processor\RequestProcessor;
+use CSC\Server\Response\Processor\ResponseProcessor;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
@@ -14,21 +17,21 @@ use FOS\RestBundle\View\View;
 class ApiController extends FOSRestController
 {
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
-     * @return PagerDataObject
+     * @return PagerDataObjectInterface
      */
-    protected function callPagerOrderedResolver(PagerDataObject $dataObject): PagerDataObject
+    protected function callPagerOrderedResolver(PagerDataObjectInterface $dataObject): PagerDataObjectInterface
     {
         return $this->get('csc.data_object.pager_resolver')->resolve($dataObject);
     }
 
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return View
      */
-    protected function callPagerOrderedProcessorManager(PagerDataObject $dataObject): View
+    protected function callPagerOrderedProcessorManager(PagerDataObjectInterface $dataObject): View
     {
         return $this->getPagerDataObjectProcessorManager()->process($dataObject);
     }
@@ -42,31 +45,31 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return View
      */
-    protected function callPlainPagerOrderedProcessorManager(PagerDataObject $dataObject): View
+    protected function callPlainPagerOrderedProcessorManager(PagerDataObjectInterface $dataObject): View
     {
         return $this->get('csc.data_object_manager.plain_pager')->process($dataObject);
     }
 
     /**
-     * @param SimpleDataObject $dataObject
+     * @param SimpleDataObjectInterface $dataObject
      *
-     * @return SimpleDataObject
+     * @return SimpleDataObjectInterface
      */
-    protected function callSimpleDataObjectResolver(SimpleDataObject $dataObject): SimpleDataObject
+    protected function callSimpleDataObjectResolver(SimpleDataObjectInterface $dataObject): SimpleDataObjectInterface
     {
         return $this->get('csc.data_object.simple_resolver')->resolve($dataObject);
     }
 
     /**
-     * @param SimpleDataObject $dataObject
+     * @param SimpleDataObjectInterface $dataObject
      *
      * @return View
      */
-    protected function callSimpleDataObjectProcessorManager(SimpleDataObject $dataObject): View
+    protected function callSimpleDataObjectProcessorManager(SimpleDataObjectInterface $dataObject): View
     {
         return $this->getSimpleDataObjectProcessorManager()->process($dataObject);
     }
@@ -80,24 +83,31 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @param SimpleDataObject $dataObject
-     * @param string[]             $validationGroups
-     * @param string[]             $serializationGroups
+     * @param SimpleDataObjectInterface $dataObject
      *
      * @return View
      */
-    protected function processSimpleDataObject(
-        SimpleDataObject $dataObject,
-        array $validationGroups = [],
-        array $serializationGroups = []
-    ): View
+    protected function processSimpleDataObject(SimpleDataObjectInterface $dataObject): View
     {
-        $dataObject
-            ->setSerializationGroups($serializationGroups)
-            ->setValidationGroups($validationGroups)
-        ;
-
         $this->callSimpleDataObjectResolver($dataObject);
+
+        if (array_key_exists(DataObject::VALUE_REQUEST_PROCESSOR, $dataObject->getRoutingParameters())) {
+            /** @var RequestProcessor $requestProcessor */
+            $requestProcessor = $this->container->get($dataObject->getRoutingValue(DataObject::VALUE_REQUEST_PROCESSOR));
+
+            $this->getSimpleDataObjectProcessorManager()
+                ->setRequestProcessor($requestProcessor)
+            ;
+        }
+
+        if (array_key_exists(DataObject::VALUE_RESPONSE_PROCESSOR, $dataObject->getRoutingParameters())) {
+            /** @var ResponseProcessor $responseProcessor */
+            $responseProcessor = $this->container->get($dataObject->getRoutingValue(DataObject::VALUE_RESPONSE_PROCESSOR));
+
+            $this->getSimpleDataObjectProcessorManager()
+                ->setResponseProcessor($responseProcessor)
+            ;
+        }
 
         $responseView = $this->callSimpleDataObjectProcessorManager($dataObject);
 
@@ -105,27 +115,31 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @param PagerDataObject $dataObject
-     * @param string              $methodName
-     * @param string[]            $validationGroups
-     * @param string[]            $serializationGroups
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return View
      */
-    protected function processPagerOrderedDataObject(
-        PagerDataObject $dataObject,
-        string $methodName,
-        array $validationGroups = [],
-        array $serializationGroups = []
-    ): View
+    protected function processPagerOrderedDataObject(PagerDataObjectInterface $dataObject): View
     {
-        $dataObject
-            ->setMethodName($methodName)
-            ->setSerializationGroups($serializationGroups)
-            ->setValidationGroups($validationGroups)
-        ;
-
         $this->callPagerOrderedResolver($dataObject);
+
+        if (array_key_exists(DataObject::VALUE_REQUEST_PROCESSOR, $dataObject->getRoutingParameters())) {
+            /** @var RequestProcessor $requestProcessor */
+            $requestProcessor = $this->container->get($dataObject->getRoutingValue(DataObject::VALUE_REQUEST_PROCESSOR));
+
+            $this->getPagerDataObjectProcessorManager()
+                ->setRequestProcessor($requestProcessor)
+            ;
+        }
+
+        if (array_key_exists(DataObject::VALUE_RESPONSE_PROCESSOR, $dataObject->getRoutingParameters())) {
+            /** @var ResponseProcessor $responseProcessor */
+            $responseProcessor = $this->container->get($dataObject->getRoutingValue(DataObject::VALUE_RESPONSE_PROCESSOR));
+
+            $this->getPagerDataObjectProcessorManager()
+                ->setResponseProcessor($responseProcessor)
+            ;
+        }
 
         $responseView = $this->callPagerOrderedProcessorManager($dataObject);
 

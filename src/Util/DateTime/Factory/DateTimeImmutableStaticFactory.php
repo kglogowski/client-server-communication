@@ -33,7 +33,7 @@ class DateTimeImmutableStaticFactory
         try {
             return \DateTimeImmutable::createFromFormat(DateTimeDecorator::DATE_FORMAT, $dateTime);
         } catch (\TypeError $e) {
-            throw new \TypeError(sprintf('Date shuold have format: %s', DateTimeDecorator::DATE_FORMAT));
+            throw new \TypeError(sprintf('Date should have format: %s', DateTimeDecorator::DATE_FORMAT));
         }
 
     }

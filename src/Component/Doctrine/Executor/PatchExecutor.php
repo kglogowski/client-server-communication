@@ -3,7 +3,7 @@
 namespace CSC\Component\Executor;
 
 use CSC\Component\Provider\EntityManagerProvider;
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Provider\GetElementProvider;
 use CSC\Server\Request\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
@@ -36,12 +36,13 @@ class PatchExecutor extends AbstractDoctrineExecutor
     }
 
     /**
-     * @param object           $changesObject
-     * @param SimpleDataObject $dataObject
+     * @param object                    $changesObject
+     * @param SimpleDataObjectInterface $dataObject
      *
      * @return ServerResponseModel
+     * @throws \Exception
      */
-    public function resolve($changesObject, SimpleDataObject $dataObject): ServerResponseModel
+    public function resolve($changesObject, SimpleDataObjectInterface $dataObject): ServerResponseModel
     {
         $object = $this->provider->getElement($dataObject);
 
@@ -53,6 +54,8 @@ class PatchExecutor extends AbstractDoctrineExecutor
     /**
      * @param object $object
      * @param bool   $flushAll
+     *
+     * @throws \Exception
      */
     public function execute($object, bool $flushAll = false)
     {

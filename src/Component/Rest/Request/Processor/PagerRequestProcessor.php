@@ -3,7 +3,7 @@
 namespace CSC\Server\Request\Processor;
 
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\PagerDataObject;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use CSC\Server\Provider\QueryProvider;
 use CSC\Server\Request\Factory\PagerRequestModelFactory;
 use CSC\Server\Request\Paginator\PagerPaginator;
@@ -62,15 +62,15 @@ class PagerRequestProcessor extends AbstractRequestProcessor
      * @param DataObject $dataObject
      *
      * @return DataObject
+     * @throws \Exception
      */
     public function process(DataObject $dataObject): DataObject
     {
-
         $this->setupDataObject($dataObject);
 
-        $this->validate($dataObject, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($dataObject, $dataObject->getValidationGroups());
 
-        /** @var PagerDataObject $dataObject */
+        /** @var PagerDataObjectInterface $dataObject */
         $requestModel = $this->requestModelFactory->create($dataObject);
 
         $query = $this->queryProvider->generateQuery($requestModel, $dataObject);

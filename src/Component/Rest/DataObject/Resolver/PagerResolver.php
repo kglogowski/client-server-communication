@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Resolver;
 
-use CSC\Server\DataObject\PagerDataObject;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -36,11 +36,11 @@ class PagerResolver
     }
 
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
-     * @return PagerDataObject
+     * @return PagerDataObjectInterface
      */
-    public function resolve(PagerDataObject $dataObject): PagerDataObject
+    public function resolve(PagerDataObjectInterface $dataObject): PagerDataObjectInterface
     {
         $dataObject
             ->setPage($this->request->get('page', 1))

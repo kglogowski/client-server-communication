@@ -4,7 +4,7 @@ namespace CSC\Server\Request\Processor;
 
 use CSC\Component\Executor\DeleteExecutor;
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Server\Provider\GetElementProvider;
 use CSC\Server\Response\Factory\ResponseModelFactory;
 use CSC\Server\Request\Exception\ServerRequestException;
@@ -51,17 +51,16 @@ class DeleteRequestProcessor extends AbstractRequestProcessor
     }
 
     /**
-     * @param DataObject|SimpleDataObject $dataObject
+     * @param DataObject|SimpleDataObjectInterface $dataObject
      *
      * @return DataObject
-     *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
     public function process(DataObject $dataObject): DataObject
     {
         $object = $this->elementProvider->getElement($dataObject);
 
-        $this->validate($object, $dataObject->getValidationGroups(), $dataObject->supportedValidationGroups());
+        $this->validate($object, $dataObject->getValidationGroups());
 
         $this->checkVoters($dataObject->getVoters(), $object);
 

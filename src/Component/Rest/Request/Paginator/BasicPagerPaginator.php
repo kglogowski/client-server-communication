@@ -2,11 +2,11 @@
 
 namespace CSC\Server\Request\Paginator;
 
-use CSC\Server\DataObject\PagerDataObject;
 use CSC\Component\Provider\QueryCountProvider;
 use CSC\Component\Provider\QueryItemsProvider;
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 
 /**
  * Class BasicPagerPaginator
@@ -38,17 +38,16 @@ class BasicPagerPaginator implements PagerPaginator
     }
 
     /**
-     * @param PagerRequestModel   $requestModel
-     * @param PagerDataObject $dataObject
+     * @param PagerRequestModel        $requestModel
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return PaginatorModel
+     * @throws \Exception
      */
-    public function paginate(PagerRequestModel $requestModel, PagerDataObject $dataObject): PaginatorModel
+    public function paginate(PagerRequestModel $requestModel, PagerDataObjectInterface $dataObject): PaginatorModel
     {
         $count = $this->countProvider->countItems($requestModel->getQuery());
         $items = $this->itemsProvider->getItems($requestModel->getQuery());
-
-        //TODO Dorobić obróbkę danych jak będzie taka potrzeba $this->itemsResolver->resolve($items, $dataObject);
 
         return (new PaginatorModel())
             ->setCount($count)

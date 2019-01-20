@@ -64,8 +64,7 @@ class LinkTokenProvider
 
     /**
      * @return LinkToken
-     *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
     public function provide(): LinkToken
     {
@@ -94,6 +93,8 @@ class LinkTokenProvider
 
     /**
      * @param LinkToken $token
+     *
+     * @throws \Exception
      */
     public function clearToken(LinkToken $token): void
     {

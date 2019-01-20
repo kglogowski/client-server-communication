@@ -6,6 +6,7 @@ use CSC\Model\PagerRequestModel;
 use CSC\Component\Resolver\SortResolver;
 use CSC\Component\Resolver\FilterResolver;
 use CSC\Server\DataObject\PagerDataObject;
+use CSC\Server\DataObject\PagerDataObjectInterface;
 use CSC\Server\Exception\ServerException;
 use CSC\Server\Request\Exception\ServerRequestException;
 
@@ -20,8 +21,7 @@ class PlainPagerRequestModelFactory
      * @param PagerDataObject $dataObject
      *
      * @return PagerRequestModel
-     *
-     * @throws ServerRequestException
+     * @throws \Exception
      */
     public function create(PagerDataObject $dataObject): PagerRequestModel
     {
@@ -35,11 +35,12 @@ class PlainPagerRequestModelFactory
     }
 
     /**
-     * @param PagerDataObject $dataObject
+     * @param PagerDataObjectInterface $dataObject
      *
      * @return PagerRequestModel
+     * @throws \Exception
      */
-    protected function createInstance(PagerDataObject $dataObject): PagerRequestModel
+    protected function createInstance(PagerDataObjectInterface $dataObject): PagerRequestModel
     {
         $requestModel = new PagerRequestModel();
         $dataObjectParameters = $dataObject->getParameters();
@@ -48,7 +49,7 @@ class PlainPagerRequestModelFactory
             ->setFilter((new FilterResolver())->resolveParams($dataObjectParameters['filter']))
             ->setSort((new SortResolver())->resolveParams($dataObjectParameters['sort']))
             ->setRoutingParameters($dataObjectParameters['routingParameters'])
-            ->setMethodName($dataObjectParameters['methodName'])
+            ->setMethodName($dataObject->getMethodName())
             ->setEntityName($dataObject->getEntityName())
         ;
     }
@@ -58,7 +59,7 @@ class PlainPagerRequestModelFactory
      */
     protected function getRequiredKeys(): array
     {
-        return ['filter', 'sort', 'methodName'];
+        return ['filter', 'sort'];
     }
 
     /**

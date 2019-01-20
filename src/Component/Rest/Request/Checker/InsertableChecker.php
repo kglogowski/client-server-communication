@@ -3,6 +3,8 @@
 namespace CSC\Server\Checker;
 
 use CSC\DependencyInjection\Configuration;
+use CSC\Server\DataObject\DataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 
 /**
  * Class InsertableChecker
@@ -14,8 +16,8 @@ class InsertableChecker extends AbstractFieldsChecker
     /**
      * {@inheritdoc}
      */
-    protected function getIndex(): string
+    protected function getFields(SimpleDataObjectInterface $dataObject): array
     {
-        return Configuration::SIMPLE_DATA_OBJECT_INSERTABLE_KEY;
+        return $dataObject->getValue(DataObject::VALUE_INSERTABLE, []);
     }
 }

@@ -37,6 +37,7 @@ class GetElementProvider
      * @param string|null    $alias
      *
      * @return ServerResponseModel
+     * @throws \Exception
      */
     public function getElement(DataObject $dataObject, ?string $alias = null): ServerResponseModel
     {

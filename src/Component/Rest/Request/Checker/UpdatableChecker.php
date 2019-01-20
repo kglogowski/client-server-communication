@@ -2,7 +2,8 @@
 
 namespace CSC\Server\Checker;
 
-use CSC\DependencyInjection\Configuration;
+use CSC\Server\DataObject\DataObject;
+use CSC\Server\DataObject\SimpleDataObjectInterface;
 
 /**
  * Class UpdatableChecker
@@ -14,8 +15,8 @@ class UpdatableChecker extends AbstractFieldsChecker
     /**
      * {@inheritdoc}
      */
-    protected function getIndex(): string
+    protected function getFields(SimpleDataObjectInterface $dataObject): array
     {
-        return Configuration::SIMPLE_DATA_OBJECT_UPDATABLE_KEY;
+        return $dataObject->getValue(DataObject::VALUE_UPDATABLE, []);
     }
 }

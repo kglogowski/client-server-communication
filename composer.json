@@ -16,11 +16,14 @@
     }
   },
   "require": {
+    "ext-json": "*",
+    "ext-pdo": "*",
     "php": ">=7.1.0",
-    "symfony/framework-bundle": "^4.1",
-    "symfony/security-bundle": "^4.1",
-    "symfony/translation": "^4.1",
-    "symfony/validator": "^4.1",
+    "symfony/symfony": "^3.4",
+    "symfony/framework-bundle": "^3.4",
+    "symfony/security-bundle": "^3.4",
+    "symfony/translation": "^3.4",
+    "symfony/validator": "^3.4",
     "symfony/monolog-bundle": "^3.3",
     "friendsofsymfony/rest-bundle": "^2.4",
     "doctrine/orm": "^2.6.2",
