@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Response\Generator;
+namespace CSC\Component\Rest\Response\Generator;
 
 use CSC\Exception\Normalizer\ExceptionNormalizerInterface;
 use CSC\Exception\Normalizer\Normalizer;

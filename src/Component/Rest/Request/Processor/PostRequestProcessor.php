@@ -6,8 +6,8 @@ use CSC\Component\Doctrine\Executor\InsertExecutor;
 use CSC\Component\Doctrine\Executor\MergeExecutor;
 use CSC\Model\Interfaces\EntityInitializer;
 use CSC\Component\Rest\Request\Checker\InsertableChecker;
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Component\Rest\Response\Model\ServerResponseModel;
 

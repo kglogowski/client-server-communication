@@ -68,7 +68,7 @@
         </service>
 
         <!--Response-->
-        <service id="csc.response_processor" class="CSC\Server\Response\Processor\BasicResponseProcessor">
+        <service id="csc.response_processor" class="CSC\Component\Rest\Response\Processor\BasicResponseProcessor">
             <argument type="service" id="csc.provider.http_success_status" />
         </service>
     </services>

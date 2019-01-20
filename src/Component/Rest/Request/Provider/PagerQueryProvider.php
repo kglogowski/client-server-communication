@@ -7,10 +7,10 @@ use CSC\Model\Interfaces\GuardUserAware;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Component\Rest\Request\Builder\PagerQueryBuilderAware;
 use CSC\Component\Rest\Request\Builder\PagerQueryBuilder;
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Doctrine\Provider\EntityManagerProvider;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 

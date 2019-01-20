@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Rest\Request\Checker;
 
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
 use CSC\Translate\TranslateDictionary;

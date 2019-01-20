@@ -2,12 +2,12 @@
 
 namespace CSC\Controller;
 
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\PagerDataObjectInterface;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Manager;
 use CSC\Component\Rest\Request\Processor\RequestProcessor;
-use CSC\Server\Response\Processor\ResponseProcessor;
+use CSC\Component\Rest\Response\Processor\ResponseProcessor;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 

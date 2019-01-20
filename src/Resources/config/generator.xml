@@ -5,7 +5,7 @@
 
     <services>
         <!--General-->
-        <service id="csc.generator.exception_response" class="CSC\Server\Response\Generator\ExceptionResponseGenerator">
+        <service id="csc.generator.exception_response" class="CSC\Component\Rest\Response\Generator\ExceptionResponseGenerator">
             <argument type="service" id="csc.normalizer.exception" />
         </service>
 

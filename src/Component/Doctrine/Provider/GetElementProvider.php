@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Doctrine\Provider;
 
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
 use CSC\Translate\TranslateDictionary;

@@ -3,8 +3,8 @@
 namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Component\Doctrine\Executor\DeleteExecutor;
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Doctrine\Provider\GetElementProvider;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Component\Rest\Response\Model\BasicServerResponseModel;

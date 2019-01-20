@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Rest\Request\Resolver;
 
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 

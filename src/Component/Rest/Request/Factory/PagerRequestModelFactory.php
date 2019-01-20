@@ -5,7 +5,7 @@ namespace CSC\Component\Rest\Request\Factory;
 use CSC\Component\Rest\Request\Resolver\FilterResolver;
 use CSC\Component\Rest\Request\Resolver\SortResolver;
 use CSC\Model\PagerRequestModel;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
 use CSC\Translate\TranslateDictionary;

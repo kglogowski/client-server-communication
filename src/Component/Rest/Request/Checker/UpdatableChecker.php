@@ -2,8 +2,8 @@
 
 namespace CSC\Component\Rest\Request\Checker;
 
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 
 /**
  * Class UpdatableChecker

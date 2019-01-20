@@ -3,7 +3,7 @@
 namespace CSC\Component\Auth\Response\Processor;
 
 use CSC\Component\Auth\Security\Provider\UserProvider;
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\JsonResponse;

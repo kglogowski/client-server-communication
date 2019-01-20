@@ -3,8 +3,8 @@
 namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Model\PagerRequestModel;
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\PagerDataObject;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\PagerDataObject;
 use CSC\Component\Rest\Request\Provider\QueryProvider;
 use CSC\Component\Rest\Request\Factory\PlainPagerRequestModelFactory;
 use CSC\Component\Rest\Response\Factory\ResponseModelFactory;

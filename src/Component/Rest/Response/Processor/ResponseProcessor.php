@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Server\Response\Processor;
+namespace CSC\Component\Rest\Response\Processor;
 
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Component\Rest\Response\Model\ServerResponseModel;
 use FOS\RestBundle\View\View;
 

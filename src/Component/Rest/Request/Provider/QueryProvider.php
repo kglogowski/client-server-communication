@@ -3,7 +3,7 @@
 namespace CSC\Component\Rest\Request\Provider;
 
 use CSC\Model\PagerRequestModel;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\Query;
 
 /**

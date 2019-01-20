@@ -4,7 +4,7 @@ namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Component\Rest\Request\Checker\SecurityChecker;
 use CSC\Translate\TranslateDictionary;
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Exception\ServerException;
 use CSC\Exception\ValidationException;

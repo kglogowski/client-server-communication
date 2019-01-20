@@ -2,8 +2,8 @@
 
 namespace CSC\Component\Rest\Request\Processor;
 
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use CSC\Component\Rest\Request\Provider\QueryProvider;
 use CSC\Component\Rest\Request\Factory\PagerRequestModelFactory;
 use CSC\Component\Rest\Request\Paginator\PagerPaginator;

@@ -3,7 +3,7 @@
 namespace CSC\Component\Doctrine\Executor;
 
 use CSC\Component\Doctrine\Provider\EntityManagerProvider;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Doctrine\Provider\GetElementProvider;
 use CSC\Exception\ServerRequestException;
 use CSC\Component\Rest\Response\Model\ServerResponseModel;

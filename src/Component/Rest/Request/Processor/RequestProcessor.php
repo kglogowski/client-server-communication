@@ -2,9 +2,9 @@
 
 namespace CSC\Component\Rest\Request\Processor;
 
-use CSC\Server\DataObject\DataObject;
-use CSC\Server\DataObject\PagerDataObjectInterface;
-use CSC\Server\DataObject\SimpleDataObjectInterface;
+use CSC\Component\Rest\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 
 /**
  * Interface RequestProcessor

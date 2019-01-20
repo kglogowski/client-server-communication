@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\DataObject;
+namespace CSC\Component\Rest\DataObject;
 
 use CSC\Translate\TranslateDictionary;
 use CSC\Exception\ServerException;

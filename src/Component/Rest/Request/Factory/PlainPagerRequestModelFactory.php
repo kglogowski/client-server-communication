@@ -5,8 +5,8 @@ namespace CSC\Component\Rest\Request\Factory;
 use CSC\Model\PagerRequestModel;
 use CSC\Component\Rest\Request\Resolver\SortResolver;
 use CSC\Component\Rest\Request\Resolver\FilterResolver;
-use CSC\Server\DataObject\PagerDataObject;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\PagerDataObject;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use CSC\Exception\ServerException;
 use CSC\Exception\ServerRequestException;
 

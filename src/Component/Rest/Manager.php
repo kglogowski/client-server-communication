@@ -2,9 +2,9 @@
 
 namespace CSC\Component\Rest;
 
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Component\Rest\Request\Processor\RequestProcessor;
-use CSC\Server\Response\Processor\ResponseProcessor;
+use CSC\Component\Rest\Response\Processor\ResponseProcessor;
 use FOS\RestBundle\View\View;
 
 /**

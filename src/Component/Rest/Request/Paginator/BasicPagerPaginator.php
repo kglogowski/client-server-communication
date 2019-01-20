@@ -6,7 +6,7 @@ use CSC\Component\Provider\QueryCountProvider;
 use CSC\Component\Provider\QueryItemsProvider;
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;
-use CSC\Server\DataObject\PagerDataObjectInterface;
+use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 
 /**
  * Class BasicPagerPaginator

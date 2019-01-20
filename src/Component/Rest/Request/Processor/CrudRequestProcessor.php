@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Rest\Request\Processor;
 
-use CSC\Server\DataObject\DataObject;
+use CSC\Component\Rest\DataObject\DataObject;
 use CSC\Exception\ServerRequestException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
