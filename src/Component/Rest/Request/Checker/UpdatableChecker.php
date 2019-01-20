@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Checker;
+namespace CSC\Component\Rest\Request\Checker;
 
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\SimpleDataObjectInterface;

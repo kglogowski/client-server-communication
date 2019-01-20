@@ -10,7 +10,7 @@
         </service>
 
         <!---->
-        <service id="csc.generator.link_token" class="CSC\Component\Generator\LinkTokenGenerator">
+        <service id="csc.generator.link_token" class="CSC\Component\Doctrine\Generator\LinkTokenGenerator">
             <call method="setEntityManager">
                 <argument type="service" id="csc.entity_manager.provider" />
             </call>

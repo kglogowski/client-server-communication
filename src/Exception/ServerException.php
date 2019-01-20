@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Server\Exception;
+namespace CSC\Exception;
 
-use CSC\Component\Normalizer\Normalizer;
+use CSC\Exception\Normalizer\Normalizer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 

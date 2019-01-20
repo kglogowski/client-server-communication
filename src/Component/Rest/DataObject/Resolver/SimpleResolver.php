@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Resolver;
+namespace CSC\Component\Rest\Request\Resolver;
 
 use CSC\Server\DataObject\SimpleDataObjectInterface;
 use Symfony\Component\HttpFoundation\Request;

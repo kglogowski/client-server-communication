@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Auth\Repository;
+namespace CSC\Component\Doctrine\Repository;
 
-use CSC\Component\Decorator\DateTime\PlainDateTimeDecorator;
+use CSC\Util\DateTime\PlainDateTimeDecorator;
 use CSC\Model\Interfaces\UserInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -33,6 +33,7 @@ abstract class UserAccessTokenRepository extends EntityRepository implements Use
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function findOneByUserAndValidDate(UserInterface $user)
     {
@@ -51,6 +52,7 @@ abstract class UserAccessTokenRepository extends EntityRepository implements Use
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function findOneByTokenAndValidDate(string $token)
     {

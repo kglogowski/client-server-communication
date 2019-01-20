@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Auth\Interfaces;
+namespace CSC\Model\Interfaces;
 
 /**
  * Interface TokenKeyAware

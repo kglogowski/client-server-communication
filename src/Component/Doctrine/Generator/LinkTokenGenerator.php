@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Generator;
+namespace CSC\Component\Doctrine\Generator;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Model\Interfaces\LinkToken;
 use CSC\Model\Interfaces\UserInterface;
 use Doctrine\ORM\EntityManager;
@@ -49,6 +49,7 @@ class LinkTokenGenerator
      * @param bool $save
      *
      * @return LinkToken
+     * @throws \Exception
      */
     public function generate(bool $save = true)
     {

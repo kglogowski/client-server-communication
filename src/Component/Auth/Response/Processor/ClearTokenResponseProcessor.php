@@ -2,11 +2,11 @@
 
 namespace CSC\Component\Auth\Response\Processor;
 
-use CSC\Component\Provider\EntityManagerProvider;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
+use CSC\Exception\ServerException;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Component\Auth\Security\Authenticator\AbstractUserAuthenticator;
-use CSC\Server\Exception\ServerException;
+use CSC\Translate\TranslateDictionary;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;

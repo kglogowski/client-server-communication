@@ -1,12 +1,11 @@
 <?php
 
-namespace CSC\Component\Provider;
+namespace CSC\Component\Doctrine\Provider;
 
 use CSC\DependencyInjection\Configuration;
 use CSC\Model\Interfaces\LinkToken;
-use CSC\Server\Provider\GetElementProvider;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
 use Doctrine\ORM\EntityManager;
 
 /**

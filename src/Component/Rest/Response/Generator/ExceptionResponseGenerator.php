@@ -2,8 +2,8 @@
 
 namespace CSC\Server\Response\Generator;
 
-use CSC\Component\Normalizer\ExceptionNormalizerInterface;
-use CSC\Component\Normalizer\Normalizer;
+use CSC\Exception\Normalizer\ExceptionNormalizerInterface;
+use CSC\Exception\Normalizer\Normalizer;
 use FOS\RestBundle\View\View;
 
 /**

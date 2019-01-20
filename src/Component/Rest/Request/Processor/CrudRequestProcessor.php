@@ -1,9 +1,9 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerRequestException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 

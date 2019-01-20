@@ -5,7 +5,7 @@
 
     <services>
         <!--General-->
-        <service id="csc.provider.user_provider" class="CSC\Component\Provider\UserProvider">
+        <service id="csc.provider.user_provider" class="CSC\Component\Auth\Security\Provider\UserProvider">
             <argument type="service" id="security.token_storage" />
         </service>
         <service id="csc.provider.count" class="CSC\Component\Provider\QueryCountProvider">
@@ -16,20 +16,20 @@
         </service>
 
         <!---->
-        <service id="csc.provider.pager_query" class="CSC\Server\Provider\PagerQueryProvider">
+        <service id="csc.provider.pager_query" class="CSC\Component\Rest\Request\Provider\PagerQueryProvider">
             <argument type="service" id="csc.entity_manager.provider" />
             <argument type="service" id="csc.builder.pager_query" />
             <argument type="service" id="csc.provider.user_provider" />
         </service>
-        <service id="csc.entity_manager.provider" class="CSC\Component\Provider\EntityManagerProvider">
+        <service id="csc.entity_manager.provider" class="CSC\Component\Doctrine\Provider\EntityManagerProvider">
             <call method="setEntityManager">
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </call>
         </service>
-        <service id="csc.provider.get_element" class="CSC\Server\Provider\GetElementProvider">
+        <service id="csc.provider.get_element" class="CSC\Component\Doctrine\Provider\GetElementProvider">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.provider.link_token" class="CSC\Component\Provider\LinkTokenProvider">
+        <service id="csc.provider.link_token" class="CSC\Component\Doctrine\Provider\LinkTokenProvider">
             <argument>%csc.configuration%</argument>
             <argument type="service" id="csc.provider.get_element" />
             <argument type="service" id="csc.entity_manager.provider" />

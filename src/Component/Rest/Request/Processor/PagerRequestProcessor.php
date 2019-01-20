@@ -1,13 +1,13 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\PagerDataObjectInterface;
-use CSC\Server\Provider\QueryProvider;
-use CSC\Server\Request\Factory\PagerRequestModelFactory;
-use CSC\Server\Request\Paginator\PagerPaginator;
-use CSC\Server\Response\Factory\ResponseModelFactory;
+use CSC\Component\Rest\Request\Provider\QueryProvider;
+use CSC\Component\Rest\Request\Factory\PagerRequestModelFactory;
+use CSC\Component\Rest\Request\Paginator\PagerPaginator;
+use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Server\Response\Model\PagerResponseModel;
 
 /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Component\Checker;
+namespace CSC\Component\Rest\Request\Checker;
 
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Translate\TranslateDictionary;
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerRequestException;
 
 /**
  * Class QueryParameterChecker

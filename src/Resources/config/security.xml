@@ -43,7 +43,7 @@
         </service>
         <service id="csc.security.authenticator.credential" class="CSC\Component\Auth\Security\Authenticator\CredentialAuthenticator" parent="csc.security.authenticator.user" abstract="true"/>
 
-        <service id="csc.decorator.plain_date_time" class="CSC\Component\Decorator\DateTime\PlainDateTimeDecorator"/>
+        <service id="csc.decorator.plain_date_time" class="CSC\Util\DateTime\PlainDateTimeDecorator"/>
 
         <!-- RESOLVER -->
         <service id="csc.security.response.resolver.token" class="CSC\Component\Auth\Response\Resolver\TokenResponseResolver">

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Request\Exception;
+namespace CSC\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationInterface;
 

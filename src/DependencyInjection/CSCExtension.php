@@ -30,7 +30,6 @@ class CSCExtension extends Extension
         $loader->load('builder.xml');
         $loader->load('checker.xml');
         $loader->load('controller.xml');
-        $loader->load('event_listener.xml');
         $loader->load('executor.xml');
         $loader->load('factory.xml');
         $loader->load('generator.xml');
@@ -54,8 +53,5 @@ class CSCExtension extends Extension
             Configuration::INDEX_TOKEN_SECRET => $config[Configuration::INDEX_TOKEN_SECRET],
             Configuration::INDEX_LINK_TOKEN_LIFETIME => $config[Configuration::INDEX_LINK_TOKEN_LIFETIME],
         ]);
-
-        $container->setParameter('csc.pager_data_object', $config['pager_data_object']);
-        $container->setParameter('csc.simple_data_object', $config['simple_data_object']);
     }
 }

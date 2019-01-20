@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Provider;
+namespace CSC\Component\Auth\Security\Provider;
 
 use CSC\Model\Interfaces\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -40,6 +40,7 @@ class UserProvider
             return null;
         }
 
+        /** @var UserInterface $user */
         if (!is_object($user = $token->getUser())) {
             // e.g. anonymous authentication
             return null;

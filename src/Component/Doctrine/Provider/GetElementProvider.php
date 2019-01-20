@@ -1,12 +1,11 @@
 <?php
 
-namespace CSC\Server\Provider;
+namespace CSC\Component\Doctrine\Provider;
 
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\Exception\ServerException;
-use CSC\Component\Provider\EntityManagerProvider;
-use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
+use CSC\Translate\TranslateDictionary;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\ORM\EntityManager;
 

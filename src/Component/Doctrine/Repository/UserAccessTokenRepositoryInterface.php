@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Auth\Repository;
+namespace CSC\Component\Doctrine\Repository;
 
 use CSC\Model\Interfaces\UserInterface;
 

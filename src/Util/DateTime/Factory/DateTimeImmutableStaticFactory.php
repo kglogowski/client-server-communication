@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Factory;
+namespace CSC\Util\DateTime\Factory;
 
-use CSC\Component\Decorator\DateTime\DateTimeDecorator;
+use CSC\Util\DateTime\DateTimeDecorator;
 
 /**
  * Class DateTimeImmutableStaticFactory

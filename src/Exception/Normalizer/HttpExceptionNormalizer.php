@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Normalizer;
+namespace CSC\Exception\Normalizer;
 
 /**
  * Class HttpExceptionNormalizer

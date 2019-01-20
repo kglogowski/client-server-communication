@@ -2,11 +2,11 @@
 
 namespace CSC\Component\Auth\Security\Authenticator;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Component\Auth\Security\Checker\TokenChecker;
 use CSC\Component\Auth\Security\Provider\UserAccessTokenProvider;
 use CSC\Component\Auth\Security\Resolver\UserAccessTokenResolverInterface;
-use CSC\Server\Exception\ServerException;
+use CSC\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerAwareInterface;
@@ -118,6 +118,7 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
@@ -167,6 +168,7 @@ abstract class AbstractUserAuthenticator extends AbstractGuardAuthenticator impl
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {

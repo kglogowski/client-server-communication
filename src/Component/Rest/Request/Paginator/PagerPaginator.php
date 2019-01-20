@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Request\Paginator;
+namespace CSC\Component\Rest\Request\Paginator;
 
 use CSC\Model\PaginatorModel;
 use CSC\Model\PagerRequestModel;

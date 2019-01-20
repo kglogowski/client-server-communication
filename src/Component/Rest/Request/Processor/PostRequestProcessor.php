@@ -1,15 +1,14 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
-use CSC\Component\Executor\InsertExecutor;
-use CSC\Component\Executor\MergeExecutor;
+use CSC\Component\Doctrine\Executor\InsertExecutor;
+use CSC\Component\Doctrine\Executor\MergeExecutor;
 use CSC\Model\Interfaces\EntityInitializer;
-use CSC\Server\Checker\InsertableChecker;
+use CSC\Component\Rest\Request\Checker\InsertableChecker;
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
-use CSC\Server\Response\Factory\ResponseModelFactory;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Server\Response\Model\ServerResponseModel;
 
 /**

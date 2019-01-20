@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Component\Executor;
+namespace CSC\Component\Doctrine\Executor;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
-use CSC\Server\Provider\GetElementProvider;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Component\Doctrine\Provider\GetElementProvider;
+use CSC\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Inflector\Inflector;

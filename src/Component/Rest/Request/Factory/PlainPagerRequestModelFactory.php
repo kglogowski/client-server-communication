@@ -1,14 +1,14 @@
 <?php
 
-namespace CSC\Server\Request\Factory;
+namespace CSC\Component\Rest\Request\Factory;
 
 use CSC\Model\PagerRequestModel;
-use CSC\Component\Resolver\SortResolver;
-use CSC\Component\Resolver\FilterResolver;
+use CSC\Component\Rest\Request\Resolver\SortResolver;
+use CSC\Component\Rest\Request\Resolver\FilterResolver;
 use CSC\Server\DataObject\PagerDataObject;
 use CSC\Server\DataObject\PagerDataObjectInterface;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
 
 /**
  * Class PlainPagerRequestModelFactory

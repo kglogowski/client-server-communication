@@ -4,11 +4,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="csc.data_object.pager_resolver" class="CSC\Component\Resolver\PagerResolver">
+        <service id="csc.data_object.pager_resolver" class="CSC\Component\Rest\Request\Resolver\PagerResolver">
             <argument type="service" id="request_stack"/>
             <argument>20</argument>
         </service>
-        <service id="csc.data_object.simple_resolver" class="CSC\Component\Resolver\SimpleResolver">
+        <service id="csc.data_object.simple_resolver" class="CSC\Component\Rest\Request\Resolver\SimpleResolver">
             <argument type="service" id="request_stack"/>
         </service>
     </services>

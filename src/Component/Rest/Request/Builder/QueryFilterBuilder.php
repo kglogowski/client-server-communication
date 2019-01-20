@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Component\Builder;
+namespace CSC\Component\Rest\Request\Builder;
 
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Translate\TranslateDictionary;
 use CSC\Model\QueryFilterModel;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
 use Doctrine\Common\Inflector\Inflector;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\Expr\Comparison;

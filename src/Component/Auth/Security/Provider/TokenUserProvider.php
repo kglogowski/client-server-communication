@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Auth\Security\Provider;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;

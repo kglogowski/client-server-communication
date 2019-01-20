@@ -5,17 +5,17 @@
 
     <services>
         <!--General-->
-        <service id="csc.executor.insert" class="CSC\Component\Executor\InsertExecutor">
+        <service id="csc.executor.insert" class="CSC\Component\Doctrine\Executor\InsertExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.executor.merge" class="CSC\Component\Executor\MergeExecutor">
+        <service id="csc.executor.merge" class="CSC\Component\Doctrine\Executor\MergeExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
-        <service id="csc.executor.delete" class="CSC\Component\Executor\DeleteExecutor">
+        <service id="csc.executor.delete" class="CSC\Component\Doctrine\Executor\DeleteExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
         </service>
         <!---->
-        <service id="csc.executor.patch" class="CSC\Component\Executor\PatchExecutor">
+        <service id="csc.executor.patch" class="CSC\Component\Doctrine\Executor\PatchExecutor">
             <argument type="service" id="csc.entity_manager.provider" />
             <argument type="service" id="csc.provider.get_element" />
         </service>

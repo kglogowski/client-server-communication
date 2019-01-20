@@ -6,13 +6,10 @@
     <services>
         <!---->
         <!--Request-->
-        <service id="csc.factory.pager_request_model" class="CSC\Server\Request\Factory\PagerRequestModelFactory">
-        </service>
-        <service id="csc.factory.plain_pager_request_model" class="CSC\Server\Request\Factory\PlainPagerRequestModelFactory">
-        </service>
+        <service id="csc.factory.pager_request_model" class="CSC\Component\Rest\Request\Factory\PagerRequestModelFactory" />
+        <service id="csc.factory.plain_pager_request_model" class="CSC\Component\Rest\Request\Factory\PlainPagerRequestModelFactory" />
 
         <!--Response-->
-        <service id="csc.factory.response_model" class="CSC\Server\Response\Factory\DefaultResponseModelFactory">
-        </service>
+        <service id="csc.factory.response_model" class="CSC\Component\Rest\Response\Factory\DefaultResponseModelFactory" />
     </services>
 </container>

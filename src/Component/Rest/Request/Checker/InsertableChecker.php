@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Checker;
+namespace CSC\Component\Rest\Request\Checker;
 
 use CSC\DependencyInjection\Configuration;
 use CSC\Server\DataObject\DataObject;

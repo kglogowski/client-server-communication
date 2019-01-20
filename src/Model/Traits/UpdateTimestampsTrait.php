@@ -9,6 +9,7 @@ trait UpdateTimestampsTrait
 {
     /**
      * Method for doctrine pre-persist and pre-update listener
+     * @throws \Exception
      */
     public function updateTimestamps()
     {

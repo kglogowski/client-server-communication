@@ -1,9 +1,9 @@
 <?php
 
-namespace CSC\Component\Normalizer;
+namespace CSC\Exception\Normalizer;
 
 /**
- * Interface NormailizeAware
+ * Interface Normalizer
  *
  * @author Krzysztof Głogowski <k.glogowski2@gmail.com>
  */

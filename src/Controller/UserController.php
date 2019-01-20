@@ -15,6 +15,7 @@ class UserController extends Controller
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getTokenAction(Request $request): Response
     {
@@ -39,6 +40,7 @@ class UserController extends Controller
 
     /**
      * @return Response
+     * @throws \Exception
      */
     public function clearTokenAction(): Response
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Builder;
+namespace CSC\Component\Rest\Request\Builder;
 
 /**
  * Interface PagerQueryBuilderAware

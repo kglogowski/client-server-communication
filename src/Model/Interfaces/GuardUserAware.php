@@ -1,8 +1,6 @@
 <?php
 
-namespace CSC\Component\Auth\Interfaces;
-
-use CSC\Model\Interfaces\UserInterface;
+namespace CSC\Model\Interfaces;
 
 /**
  * Interface GuardUserAware

@@ -1,13 +1,13 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Component\Rest\Request\Checker\SecurityChecker;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Translate\TranslateDictionary;
 use CSC\Server\DataObject\DataObject;
-use CSC\Component\Provider\EntityManagerProvider;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ValidationException;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
+use CSC\Exception\ServerException;
+use CSC\Exception\ValidationException;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\ORM\EntityManager;
 use JMS\Serializer\Serializer;

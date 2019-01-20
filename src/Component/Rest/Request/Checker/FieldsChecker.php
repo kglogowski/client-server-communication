@@ -1,9 +1,9 @@
 <?php
 
-namespace CSC\Server\Checker;
+namespace CSC\Component\Rest\Request\Checker;
 
 use CSC\Server\DataObject\SimpleDataObjectInterface;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Exception\ServerRequestException;
 
 /**
  * Interface FieldsChecker

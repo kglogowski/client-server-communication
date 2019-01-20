@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Resolver;
+namespace CSC\Component\Rest\Request\Resolver;
 
-use CSC\Component\Builder\QueryFilterBuilder;
+use CSC\Component\Rest\Request\Builder\QueryFilterBuilder;
 use CSC\Model\SortModel;
 
 /**

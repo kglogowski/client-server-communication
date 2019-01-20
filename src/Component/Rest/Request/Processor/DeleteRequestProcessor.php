@@ -1,13 +1,12 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
-use CSC\Component\Executor\DeleteExecutor;
+use CSC\Component\Doctrine\Executor\DeleteExecutor;
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
-use CSC\Server\Provider\GetElementProvider;
-use CSC\Server\Response\Factory\ResponseModelFactory;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Component\Doctrine\Provider\GetElementProvider;
+use CSC\Component\Rest\Response\Factory\ResponseModelFactory;
 use CSC\Server\Response\Model\BasicServerResponseModel;
 
 /**

@@ -6,7 +6,7 @@ use CSC\Server\DataObject\DataObject;
 use CSC\Server\DataObject\PagerDataObjectInterface;
 use CSC\Server\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Manager;
-use CSC\Server\Request\Processor\RequestProcessor;
+use CSC\Component\Rest\Request\Processor\RequestProcessor;
 use CSC\Server\Response\Processor\ResponseProcessor;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;

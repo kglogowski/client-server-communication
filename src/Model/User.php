@@ -12,7 +12,7 @@ use CSC\Model\Traits\ResponseModelTrait;
 use CSC\Model\Traits\UpdatedAtTrait;
 use CSC\Model\Traits\UpdateTimestampsTrait;
 use CSC\Component\Auth\Security\Encoder\PasswordEncoder;
-use CSC\Server\Exception\ServerException;
+use CSC\Exception\ServerException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Response;

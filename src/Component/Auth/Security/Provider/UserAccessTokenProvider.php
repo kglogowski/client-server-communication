@@ -2,12 +2,12 @@
 
 namespace CSC\Component\Auth\Security\Provider;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Model\Interfaces\UserInterface;
 use CSC\Model\UserAccessToken;
-use CSC\Component\Auth\Repository\UserAccessTokenRepositoryInterface;
+use CSC\Component\Doctrine\Repository\UserAccessTokenRepositoryInterface;
 use CSC\Component\Auth\Security\Authenticator\AbstractUserAuthenticator;
-use CSC\Server\Exception\ServerException;
+use CSC\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace CSC\Server\Provider;
+namespace CSC\Component\Rest\Request\Provider;
 
+use CSC\Component\Auth\Security\Provider\UserProvider;
+use CSC\Model\Interfaces\GuardUserAware;
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Component\Auth\Interfaces\GuardUserAware;
-use CSC\Component\Builder\PagerQueryBuilderAware;
-use CSC\Component\Builder\PagerQueryBuilder;
+use CSC\Component\Rest\Request\Builder\PagerQueryBuilderAware;
+use CSC\Component\Rest\Request\Builder\PagerQueryBuilder;
 use CSC\Server\DataObject\DataObject;
 use CSC\Model\PagerRequestModel;
-use CSC\Component\Provider\UserProvider;
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use CSC\Server\DataObject\PagerDataObjectInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;

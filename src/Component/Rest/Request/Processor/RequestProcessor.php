@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Request\Processor;
+namespace CSC\Component\Rest\Request\Processor;
 
 use CSC\Server\DataObject\DataObject;
 use CSC\Server\Response\Model\ServerResponseModel;

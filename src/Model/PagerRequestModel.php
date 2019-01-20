@@ -2,8 +2,8 @@
 
 namespace CSC\Model;
 
-use CSC\Server\Exception\ServerException;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Exception\ServerException;
+use CSC\Translate\TranslateDictionary;
 use Doctrine\ORM\Query;
 
 /**

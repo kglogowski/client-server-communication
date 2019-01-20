@@ -1,8 +1,6 @@
 <?php
 
-namespace CSC\Server\Request\Exception;
-
-use CSC\Server\Exception\ServerException;
+namespace CSC\Exception;
 
 /**
  * Class ServerRequestException

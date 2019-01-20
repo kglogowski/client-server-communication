@@ -2,10 +2,10 @@
 
 namespace CSC\Component\Auth\Security\Voter;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
+use CSC\Model\Interfaces\RoleInterface;
 use CSC\Model\Interfaces\UserInterface;
-use CSC\Model\User;
-use CSC\Server\Exception\ServerException;
+use CSC\Exception\ServerException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -34,6 +34,7 @@ abstract class AbstractVoter extends Voter
      * @param TokenInterface $token
      *
      * @return UserInterface
+     * @throws \Exception
      */
     protected function getUser(TokenInterface $token): UserInterface
     {
@@ -51,11 +52,14 @@ abstract class AbstractVoter extends Voter
      * @param UserInterface $user
      *
      * @return bool
+     * @throws \Exception
      */
     protected function checkPermission(string $permission, UserInterface $user): bool
     {
-        /** @var User $user */
-        foreach ($user->getRoles() as $role) {
+        /** @var RoleInterface[] $roles */
+        $roles = $user->getRoles();
+
+        foreach ($roles as $role) {
             foreach ($role->getPermissions() as $internalPermission) {
                 if ($internalPermission->getId() === $permission) {
                     return true;
@@ -63,7 +67,7 @@ abstract class AbstractVoter extends Voter
             }
         }
 
-        $this->accessForbidden();
+        return $this->accessForbidden();
     }
 
     /**

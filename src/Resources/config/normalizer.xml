@@ -5,10 +5,10 @@
 
     <services>
         <!--General-->
-        <service id="csc.normalizer.exception" class="CSC\Component\Normalizer\ExceptionNormalizer">
+        <service id="csc.normalizer.exception" class="CSC\Exception\Normalizer\ExceptionNormalizer">
         </service>
         <!---->
-        <service id="csc.normalizer.http_exception" class="CSC\Component\Normalizer\HttpExceptionNormalizer">
+        <service id="csc.normalizer.http_exception" class="CSC\Exception\Normalizer\HttpExceptionNormalizer">
         </service>
     </services>
 </container>

@@ -2,8 +2,6 @@
 
 namespace CSC\Server\DataObject;
 
-use CSC\Server\DataObject\DataObject;
-
 /**
  * Interface SimpleDataObject
  *

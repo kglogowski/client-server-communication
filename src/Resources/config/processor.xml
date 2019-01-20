@@ -6,47 +6,47 @@
     <services>
         <!--Request-->
         <!--Pager-->
-        <service id="csc.request_processor.pager" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\PagerRequestProcessor">
+        <service id="csc.request_processor.pager" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\PagerRequestProcessor">
             <argument type="service" id="csc.factory.pager_request_model" />
             <argument type="service" id="csc.provider.pager_query" />
             <argument type="service" id="csc.paginator.basic" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
-        <service id="csc.request_processor.plain_pager" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\PlainPagerRequestProcessor">
+        <service id="csc.request_processor.plain_pager" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\PlainPagerRequestProcessor">
             <argument type="service" id="csc.factory.plain_pager_request_model" />
             <argument type="service" id="csc.provider.pager_query" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
         <!--Simple-->
-        <service id="csc.request_processor.get" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\GetRequestProcessor">
+        <service id="csc.request_processor.get" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\GetRequestProcessor">
             <argument type="service" id="csc.provider.get_element" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
-        <service id="csc.request_processor.post" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\PostRequestProcessor">
+        <service id="csc.request_processor.post" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\PostRequestProcessor">
             <argument type="service" id="csc.checker.insertable" />
             <argument type="service" id="csc.executor.insert" />
             <argument type="service" id="csc.executor.merge" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
-        <service id="csc.request_processor.put" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\PutRequestProcessor">
+        <service id="csc.request_processor.put" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\PutRequestProcessor">
             <argument type="service" id="csc.checker.updatable" />
             <argument type="service" id="csc.executor.patch" />
             <argument type="service" id="csc.executor.merge" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
-        <service id="csc.request_processor.delete" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\DeleteRequestProcessor">
+        <service id="csc.request_processor.delete" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\DeleteRequestProcessor">
             <argument type="service" id="csc.provider.get_element" />
             <argument type="service" id="csc.executor.delete" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
-        <service id="csc.request_processor.crud" parent="csc.processor.abstract" class="CSC\Server\Request\Processor\CrudRequestProcessor">
+        <service id="csc.request_processor.crud" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\CrudRequestProcessor">
             <argument type="service" id="csc.request_processor.post" />
             <argument type="service" id="csc.request_processor.get" />
             <argument type="service" id="csc.request_processor.put" />
             <argument type="service" id="csc.request_processor.delete" />
         </service>
         <!--Abstract-->
-        <service id="csc.processor.abstract" class="CSC\Server\Request\Processor\AbstractRequestProcessor" abstract="true">
+        <service id="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\AbstractRequestProcessor" abstract="true">
             <call method="setEntityManager">
                 <argument type="service" id="csc.entity_manager.provider" />
             </call>

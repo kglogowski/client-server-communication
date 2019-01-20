@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Builder;
+namespace CSC\Component\Rest\Request\Builder;
 
-use CSC\Component\Checker\QueryParameterChecker;
+use CSC\Component\Rest\Request\Checker\QueryParameterChecker;
 use CSC\Model\SortModel;
 use CSC\Model\QueryFilterModel;
 use Doctrine\Common\Inflector\Inflector;

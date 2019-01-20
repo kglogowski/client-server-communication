@@ -2,8 +2,6 @@
 
 namespace CSC\Server\Response\Model;
 
-use CSC\Server\Response\Model\ServerResponseModel;
-
 /**
  * Class PlainPagerResponseModel
  *

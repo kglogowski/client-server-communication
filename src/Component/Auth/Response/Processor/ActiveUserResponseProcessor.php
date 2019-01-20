@@ -2,7 +2,7 @@
 
 namespace CSC\Component\Auth\Response\Processor;
 
-use CSC\Component\Provider\UserProvider;
+use CSC\Component\Auth\Security\Provider\UserProvider;
 use CSC\Server\DataObject\DataObject;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\Serializer;

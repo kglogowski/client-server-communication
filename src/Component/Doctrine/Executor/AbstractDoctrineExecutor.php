@@ -1,8 +1,8 @@
 <?php
 
-namespace CSC\Component\Executor;
+namespace CSC\Component\Doctrine\Executor;
 
-use CSC\Component\Provider\EntityManagerProvider;
+use CSC\Component\Doctrine\Provider\EntityManagerProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Executor;
+namespace CSC\Component\Doctrine\Executor;
 
 /**
  * Class InsertExecutor

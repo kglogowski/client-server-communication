@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Provider;
+namespace CSC\Component\Rest\Request\Provider;
 
 use CSC\Model\PagerRequestModel;
 use CSC\Server\DataObject\PagerDataObjectInterface;

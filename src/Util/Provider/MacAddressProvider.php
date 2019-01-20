@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Auth\Provider;
+namespace CSC\Util\Provider;
 
 /**
  * Class MacAddressProvider

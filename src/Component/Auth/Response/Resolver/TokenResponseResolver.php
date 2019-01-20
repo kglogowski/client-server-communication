@@ -2,8 +2,8 @@
 
 namespace CSC\Component\Auth\Response\Resolver;
 
-use CSC\Component\Decorator\DateTime\DateTimeDecoratorInterface;
 use CSC\Model\UserAccessToken;
+use CSC\Util\DateTime\DateTimeDecoratorInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

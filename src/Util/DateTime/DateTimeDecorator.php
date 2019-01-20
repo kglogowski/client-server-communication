@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Decorator\DateTime;
+namespace CSC\Util\DateTime;
 
 /**
  * Class DateTimeDecorator

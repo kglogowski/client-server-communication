@@ -1,10 +1,10 @@
 <?php
 
-namespace CSC\Component\Executor;
+namespace CSC\Component\Doctrine\Executor;
 
 use CSC\Model\Interfaces\ExternalAccessibleEntity;
-use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Exception\ServerRequestException;
+use CSC\Translate\TranslateDictionary;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadata;
 

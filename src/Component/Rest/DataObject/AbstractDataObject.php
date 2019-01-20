@@ -2,9 +2,9 @@
 
 namespace CSC\Server\DataObject;
 
-use CSC\Component\Translate\TranslateDictionary;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ServerRequestException;
+use CSC\Translate\TranslateDictionary;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
 use CSC\Server\Response\Model\ServerResponseModel;
 use Doctrine\Common\Inflector\Inflector;
 

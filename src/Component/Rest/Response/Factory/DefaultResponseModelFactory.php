@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Server\Response\Factory;
+namespace CSC\Component\Rest\Response\Factory;
 
 use CSC\Server\Response\Model\BasicServerResponseModel;
 use CSC\Server\Response\Model\ServerResponseModel;

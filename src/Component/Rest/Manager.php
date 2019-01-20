@@ -3,7 +3,7 @@
 namespace CSC\Component\Rest;
 
 use CSC\Server\DataObject\DataObject;
-use CSC\Server\Request\Processor\RequestProcessor;
+use CSC\Component\Rest\Request\Processor\RequestProcessor;
 use CSC\Server\Response\Processor\ResponseProcessor;
 use FOS\RestBundle\View\View;
 

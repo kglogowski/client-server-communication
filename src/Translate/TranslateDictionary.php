@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Translate;
+namespace CSC\Translate;
 
 /**
  * Class TranslateDictionary

@@ -1,11 +1,11 @@
 <?php
 
-namespace CSC\Server\Checker;
+namespace CSC\Component\Rest\Request\Checker;
 
 use CSC\Server\DataObject\SimpleDataObjectInterface;
-use CSC\Server\Exception\ServerException;
-use CSC\Server\Request\Exception\ServerRequestException;
-use CSC\Component\Translate\TranslateDictionary;
+use CSC\Exception\ServerException;
+use CSC\Exception\ServerRequestException;
+use CSC\Translate\TranslateDictionary;
 
 /**
  * Class AbstractFieldsChecker
