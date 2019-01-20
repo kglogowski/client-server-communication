@@ -266,6 +266,8 @@ abstract class AbstractDataObject implements DataObject
             self::VALUE_METHOD_NAME,
             self::VALUE_AVAILABLE_FILTER,
             self::VALUE_AVAILABLE_SORT,
+            self::VALUE_REQUEST_PROCESSOR,
+            self::VALUE_RESPONSE_PROCESSOR,
         ];
     }
 }
