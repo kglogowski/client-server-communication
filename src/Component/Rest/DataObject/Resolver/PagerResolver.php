@@ -1,6 +1,6 @@
 <?php
 
-namespace CSC\Component\Rest\Request\Resolver;
+namespace CSC\Component\Rest\DataObject\Resolver;
 
 use CSC\Component\Rest\DataObject\PagerDataObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
