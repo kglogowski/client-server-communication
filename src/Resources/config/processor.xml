@@ -39,6 +39,11 @@
             <argument type="service" id="csc.executor.delete" />
             <argument type="service" id="csc.factory.response_model" />
         </service>
+        <service id="csc.request_processor.soft_delete" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\SoftDeleteProcessor">
+            <argument type="service" id="csc.provider.get_element" />
+            <argument type="service" id="csc.executor.delete" />
+            <argument type="service" id="csc.factory.response_model" />
+        </service>
         <service id="csc.request_processor.crud" parent="csc.processor.abstract" class="CSC\Component\Rest\Request\Processor\CrudRequestProcessor">
             <argument type="service" id="csc.request_processor.post" />
             <argument type="service" id="csc.request_processor.get" />
