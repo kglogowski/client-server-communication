@@ -216,7 +216,7 @@ abstract class AbstractDataObject implements DataObject
      */
     public function getSerializationGroups(): array
     {
-        return $this->getValue(DataObject::VALUE_SERIALIZATION, []) + [self::ANY];
+        return array_merge($this->getValue(DataObject::VALUE_SERIALIZATION, []), [self::ANY]);
     }
 
     /**
