@@ -224,7 +224,7 @@ abstract class AbstractDataObject implements DataObject
      */
     public function getValidationGroups(): array
     {
-        return $this->getValue(DataObject::VALUE_SERIALIZATION, []);
+        return $this->getValue(DataObject::VALUE_VALIDATION, []);
     }
 
     /**
