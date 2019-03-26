@@ -1,6 +1,3 @@
-Unfinished, not to use!!
-=======
-
 Installation
 ------------
 
@@ -14,30 +11,8 @@ Installation
                 new JMS\SerializerBundle\JMSSerializerBundle(),
                 new FOS\RestBundle\FOSRestBundle(),
             ];
-    ```
-3. Add configuration for simple and pager data object checkers:
-    ```yaml
-    #example
-    csc:
-      simple_data_object:
-          AppBundle\DataObject\TestSimpleDataObject:
-              insertable_fields:
-                  - name
-                  - description
-              updatable_fields:
-                  - name
-                  - description
-      pager_data_object:
-          AppBundle\DataObject\TestPagerDataObject:
-              methods:
-                  getTracesList:
-                      filter:
-                          - id
-                      sort:
-                          - id
-      
-    ```
-4. Configure your config.yml
+
+3. Configure your config.yml
     ```yaml
         fos_rest:
            routing_loader:
@@ -58,6 +33,50 @@ Installation
                    - { path: '^/', priorities: ['json'], fallback_format: json, prefer_extension: false }
            service:
                view_handler: fos_rest.view_handler.default
+    ```
+4. Configure route
+    ```yaml
+    #Example pager
+    admin.invoice.pager:
+        path:     /invoices
+        methods:  [GET]
+        defaults:
+            _controller: "InspectorBundle:Invoice:pager"
+            entityName: 'InspectorBundle\Entity\Invoice\Invoice'
+            methodName: 'listInvoice'
+            availableFilter: ['partner','created_at','payment_deadline_at','sold_at','delivery_at']
+            sortAvailable: ['partner','created_at','payment_deadline_at','sold_at','delivery_at']
+    
+    #Example post
+    admin.invoice.post:
+        path:     /invoices
+        methods:  [POST]
+        defaults:
+            _controller: "InspectorBundle:Invoice:post"
+            entityName: 'InspectorBundle\Entity\Invoice\Invoice'
+            validation: ['Post']
+            insertable: ['partner_id','campaigns','delivered_at','sold_at','description','name','vat','days_to_pay']
+    
+    #Example put
+    admin.invoice.put:
+        path:     /invoices/{id}
+        methods:  [PUT]
+        requirements:
+            id: '\d+'
+        defaults:
+            _controller: "InspectorBundle:Invoice:put"
+            entityName: 'InspectorBundle\Entity\Invoice\Invoice'
+            validation: ['Put']
+            updatable: ['delivered_at','sold_at','description','name','vat','days_to_pay']
+    
+    #Example custom processor
+    admin.invoice.bulk-pay:
+        path:     /invoices/bulk-pay
+        methods:  [PUT]
+        defaults:
+            _controller: "InspectorBundle:Invoice:bulkPay"
+            entityName: 'InspectorBundle\Entity\Invoice\Invoice'
+            requestProcessor: 'InspectorBundle\Server\Processor\Request\InvoicePayProcessor' #Service
     ```
 5. Configure security.yml:
     ```yaml
