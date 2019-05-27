@@ -2,7 +2,7 @@
 
 namespace CSC\Translate;
 
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Trait TranslateTrait

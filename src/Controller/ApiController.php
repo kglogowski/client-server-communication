@@ -10,13 +10,13 @@ use CSC\Component\Rest\DataObject\SimpleDataObjectInterface;
 use CSC\Component\Rest\Manager;
 use CSC\Component\Rest\Request\Processor\RequestProcessor;
 use CSC\Component\Rest\Response\Processor\ResponseProcessor;
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 
 /**
  * Class ApiController
  */
-class ApiController extends FOSRestController
+class ApiController extends AbstractFOSRestController
 {
     /**
      * @param PagerDataObjectInterface $dataObject
